@@ -1,0 +1,46 @@
+version: '3'
+
+# Build up the ansible container for our demo
+services:
+
+  ansible:
+    build: Docker-Ansible
+    depends_on:
+      - server1
+      - server2
+    volumes:
+      # We will place the desired executable srctips (playbooks) under /opt/scripts
+      - ${PWD}/../runtime/opt/ansible:/opt/ansible
+      - ${PWD}/../runtime/opt/scripts:/opt/scripts
+      # The location of the .ssh files for the ansible servers
+      - ${PWD}/../runtime/.ssh:/root/.ssh
+    environment:
+      hostname1: demo.server1
+      hostname2: demo.server2
+
+  server1:
+    build: Docker-Server
+    hostname: demo.server1
+    ports:
+      - "2224:22"
+      - "8081:8080"
+    volumes:
+      - ${PWD}/../runtime/.ssh:/root/.ssh
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      hostname: demo.server1
+
+  server2:
+    build: Docker-Server
+    depends_on:
+      - server1
+    # Set the desired biuld order due to the certificates 
+    hostname: demo.server2
+    ports:
+      - "2225:22"
+      - "8082:8080"
+    volumes:
+      - ${PWD}/../runtime/.ssh:/root/.ssh
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      hostname: demo.server2

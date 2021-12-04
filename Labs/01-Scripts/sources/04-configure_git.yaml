@@ -1,0 +1,15 @@
+- hosts: all
+  gather_facts: False
+  vars:
+    - packages: ["git", "nmap"]
+  tasks:
+    - name: Installing {{ packages }} on {{ hostname }}
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ packages }}"
+    - name: Add a setting to ~/.gitconfig
+      community.general.git_config:
+        name: user.name
+        scope: global
+        value: "Nir Geier"

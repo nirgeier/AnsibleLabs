@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# The desired file name to run
+FILE_NAME=/opt/scripts/script.sh
+
+# Create the desired file
+touch ${PWD}/../runtime/$FILE_NAME
+
+# Generta the desired script for printing out ansible verison
+cat << EOF > ${PWD}/../runtime/${FILE_NAME}
+#!/bin/bash
+ansible --version
+EOF
+
+# Set the execution mode
+chmod +x ${PWD}/../runtime/$FILE_NAME
+
+# Execute the script on the ansible contianer
+docker exec -it 00-setup_ansible_1 $FILE_NAME
