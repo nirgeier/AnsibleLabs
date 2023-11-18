@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile SCSS without source map",
+            "type": "shell",
+            "command": "sass",
+            "args": [
+                "${file}",
+                "${fileDirname}/${fileBasenameNoExtension}.css",
+                "--no-source-map"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

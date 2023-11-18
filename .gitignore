@@ -1,0 +1,6 @@
+.history
+.ssh
+**/runtime/**
+**/*demo*/**
+.vercel
+**/mkdocs-site/** 
