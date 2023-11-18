@@ -1,0 +1,66 @@
+version: '3'
+
+# Build up the ansible container for our demo
+services:
+
+  ansible-manager:
+    build: Ansible-Server
+    container_name: ansible-server
+    depends_on:
+      - ansible-server1
+      - ansible-server2
+      - ansible-server3
+    volumes:
+      - ${PWD}/../../runtime/.ssh-server:/etc/ssh
+      - ${PWD}/../../runtime/.ssh:/root/.ssh
+      - ${PWD}/../../runtime/labs-scripts:/labs-scripts
+    environment:
+      HOST_HOSTNAME: ansible-server
+      hostname1: demo.server1
+      hostname2: demo.server2
+      hostname3: demo.server3
+
+  ansible-server1:
+    build: Ansible-Machine
+    container_name: demo.server1
+    hostname: demo.server1
+    ports:
+      - "0.0.0.0:3001:22"
+      - "0.0.0.0:5001:5000"
+      - "0.0.0.0:8081:8080"
+    volumes:
+      - ${PWD}/../../runtime/.ssh:/root/.ssh
+      - ${PWD}/../../runtime/labs-scripts:/labs-scripts
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      hostname: demo.server1
+
+  ansible-server2:
+    build: Ansible-Machine
+    container_name: demo.server2
+    hostname: demo.server2
+    ports:
+      - "0.0.0.0:3002:22"
+      - "0.0.0.0:5002:5000"
+      - "0.0.0.0:8082:8080"
+    volumes:
+      - ${PWD}/../../runtime/.ssh:/root/.ssh
+      - ${PWD}/../../runtime/labs-scripts:/labs-scripts
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      hostname: demo.server2
+
+  ansible-server3:
+    build: Ansible-Machine
+    container_name: demo.server3
+    hostname: demo.server3
+    ports:
+      - "0.0.0.0:3003:22"
+      - "0.0.0.0:5003:5000"
+      - "0.0.0.0:8083:8080"
+    volumes:
+      - ${PWD}/../../runtime/.ssh:/root/.ssh
+      - ${PWD}/../../runtime/labs-scripts:/labs-scripts
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      hostname: demo.server3

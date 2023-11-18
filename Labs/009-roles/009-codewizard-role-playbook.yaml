@@ -1,0 +1,9 @@
+---
+# tasks file for dynamic_motd
+- name: Executing codewizard_lab_role
+  hosts: all
+  become: true
+  become_method: ansible.builtin.su
+
+  roles:
+    - codewizard_lab_role
