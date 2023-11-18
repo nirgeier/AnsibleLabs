@@ -1,0 +1,3 @@
+[submodule "Labs/009-roles/codewizard_lab_role"]
+	path = Labs/009-roles/codewizard_lab_role
+	url = git@github.com:nirgeier/AnsibleRoleLab.git

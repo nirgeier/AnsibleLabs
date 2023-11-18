@@ -1,0 +1,64 @@
+---
+# Build up the ansible container for our demo
+
+services:
+
+  ansible-controller:
+    build: Ansible-Controller
+    image: nirgeier/ansible-controller
+    container_name: ansible-controller
+    depends_on:
+      - linux-server-1
+      - linux-server-2
+      - linux-server-3
+    environment:
+      HOST_HOSTNAME: ansible-controller
+      hostname1: linux-server-1
+      hostname2: linux-server-2
+      hostname3: linux-server-3
+    volumes:
+      - ${PWD}/../../runtime/.ssh:/root/.ssh
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${PWD}/../../runtime/labs-scripts:/labs-scripts
+
+  linux-server-1:
+    build: Linux-Server
+    image: nirgeier/linux-server-1
+    container_name: linux-server-1
+    hostname: linux-server-1
+    ports:
+      - "0.0.0.0:3001:22"
+      - "0.0.0.0:5001:5000"
+      - "0.0.0.0:8081:8080"
+    environment:
+      hostname: linux-server-1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  linux-server-2:
+    build: Linux-Server
+    image: nirgeier/linux-server-2
+    container_name: linux-server-2
+    hostname: linux-server-2
+    ports:
+      - "0.0.0.0:3002:22"
+      - "0.0.0.0:5002:5000"
+      - "0.0.0.0:8082:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      hostname: linux-server-2
+
+  linux-server-3:
+    build: Linux-Server
+    image: nirgeier/linux-server-2
+    container_name: linux-server-3
+    hostname: linux-server-3
+    ports:
+      - "0.0.0.0:3003:22"
+      - "0.0.0.0:5003:5000"
+      - "0.0.0.0:8083:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      hostname: linux-server-3

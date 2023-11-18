@@ -1,0 +1,5 @@
+- hosts: linux-server-1
+  tasks:
+    - name: Show facts available on the system
+      ansible.builtin.debug:
+        var: ansible_facts
