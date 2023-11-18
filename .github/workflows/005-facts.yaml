@@ -1,0 +1,23 @@
+name: 005-facts
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "**/Labs/005-facts/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "**/Labs/005-facts/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Execute the step demo to verify that all is working
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v4
+
+      - name: Test Lab
+        working-directory: Labs/005-facts
+        run: bash ./_demo.sh

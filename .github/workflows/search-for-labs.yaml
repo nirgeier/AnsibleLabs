@@ -1,0 +1,46 @@
+name: Verify Ansible Labs
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  ###
+  ### Search for the folders to run the tests on
+  ###
+  pre_build:
+    runs-on: ubuntu-latest
+    outputs:
+      fodlers: ${{ steps.search_folders.outputs.dirs }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Find directories with _demo.sh
+        id: search_folders
+        run: |
+          echo "dirs=$(find . -name '*_demo.sh' | sort -u | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+
+  build:
+    
+    runs-on: ubuntu-latest
+    needs: pre_build
+    # Define the given fodlers to run 
+    strategy:
+      fail-fast: true
+      matrix: 
+        dir: ${{fromJson(needs.pre_build.outputs.fodlers)}}
+    
+    # Execute the step demo to verify that all is working
+    steps:
+             
+      - name: Trigger Lab workflows
+        uses: benc-uk/workflow-dispatch@v1.2.3
+        with:
+          workflow: Verify Lab
+          token: ${{ secrets.GITHUB_TOKEN }}
+          inputs: '{"demoPath": "${{ matrix.dir}}"}'      
+    
