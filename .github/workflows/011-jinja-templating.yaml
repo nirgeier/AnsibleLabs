@@ -1,0 +1,23 @@
+name: 011-jinja-templating
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "**/Labs/011-jinja-templating/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "**/Labs/011-jinja-templating/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Execute the step demo to verify that all is working
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v4
+
+      - name: Test Lab
+        working-directory: Labs/011-jinja-templating
+        run: bash ./_demo.sh

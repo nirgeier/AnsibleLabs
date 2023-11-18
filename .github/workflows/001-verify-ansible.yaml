@@ -1,0 +1,23 @@
+name: 001-verify-ansible
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "**/Labs/001-verify-ansible/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "**/Labs/001-verify-ansible/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Execute the step demo to verify that all is working
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v4
+
+      - name: Test Lab
+        working-directory: Labs/001-verify-ansible
+        run: bash ./_demo.sh
