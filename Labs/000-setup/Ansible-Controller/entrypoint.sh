@@ -16,6 +16,9 @@ Port                    22
 Protocol                2
 EOF
 
+# switch to the labs folder
+cd /labs-scripts
+
 # Start the ssh service
 echo "* Start sshd service"
 /usr/sbin/sshd -D &

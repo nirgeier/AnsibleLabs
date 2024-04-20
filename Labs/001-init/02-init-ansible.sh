@@ -54,19 +54,19 @@ Host                linux-server-1
     HostName        linux-server-1
     IdentityFile    /root/.ssh/linux-server-1
     User            root
-    Port            3001
+    Port            22
 
 Host                linux-server-2
     HostName        linux-server-2
     IdentityFile    /root/.ssh/linux-server-2
     User            root
-    Port            3002
+    Port            22
 
 Host                linux-server-3
     HostName        linux-server-3
     IdentityFile    /root/.ssh/linux-server-3
     User            root
-    Port            3003
+    Port            22
 EOF
 
 echo -e "${Cyan}* Creating $RUNTIME_FOLDER/labs-scripts/inventory"

@@ -39,10 +39,10 @@ echo -e "${Green}Starting docker containers${COLOR_OFF}"
 docker-compose up -d --build > /dev/null
 
 # Sleep for few seconds so the enntrypoint will finish its running
-echo -e "* ${Yellow}Sleeping 15 seconds - waiting for container to start ${COLOR_OFF}"
+echo -e "* ${Yellow}Sleeping 5 seconds - waiting for container to start ${COLOR_OFF}"
 echo -e ""
 
-for i in {1..15}; 
+for i in {1..5}; 
 do 
     echo -e -n "${Red}." 
     sleep 1
