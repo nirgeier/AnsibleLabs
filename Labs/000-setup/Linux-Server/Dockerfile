@@ -24,7 +24,7 @@ HEALTHCHECK           \
   --start-period=10s  \
   --retries=10         \
   CMD                                 \
-  ssh -i ~/.ssh/$hostname             \
+  ssh -i ~/.ssh/$HOSTNAME             \
   -o StrictHostKeyChecking=accept-new \
   root@localhost                      \
   exit

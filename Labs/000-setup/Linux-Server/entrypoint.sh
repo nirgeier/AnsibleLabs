@@ -6,8 +6,8 @@
 #
 function create_ssh_key_file(){
     # Check to see if we have certificzte
-    echo "* Creating SSH key for $hostname [$ssh_key_file]"
-    ssh-keygen -R $hostname
+    echo "* Creating SSH key for $HOSTNAME [$ssh_key_file]"
+    ssh-keygen -R $HOSTNAME
     ssh-keygen -t rsa -q -P '' -f $ssh_key_file <<<y
 }
 
@@ -19,7 +19,7 @@ echo "* Verify the existance of authorized_keys"
 touch       /root/.ssh/authorized_keys
 
 # The ssh file we loooking for
-ssh_key_file=/root/.ssh/$hostname
+ssh_key_file=/root/.ssh/$HOSTNAME
 
 # Check to see if we have certificzte
 create_ssh_key_file
@@ -57,7 +57,7 @@ sleep 10
 for i in {1..5}
 do
     # Try to connect with ssh 
-    ssh -v -i ~/.ssh/$hostname -o StrictHostKeyChecking=accept-new root@localhost
+    ssh -v -i ~/.ssh/$HOSTNAME -o StrictHostKeyChecking=accept-new root@localhost
     # Verify that ssh is running, if not restart it and retry
     if [[ "$?" -eq 0 ]]; 
     then

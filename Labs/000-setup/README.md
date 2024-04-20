@@ -9,9 +9,9 @@
 
 <!-- inPage TOC start -->
 
-## Lab Highlights:
+## Lab Highlights: <!-- omit in toc-->
 
-- [Lab Highlights:](#lab-highlights)
+- [Lab Highlights: ](#lab-highlights-)
   - [01. Install Ansible](#01-install-ansible)
   - [01.01. Build the Ansible container \& servers](#0101-build-the-ansible-container--servers)
   - [01.03. Verify the ssh service on our demo servers](#0103-verify-the-ssh-service-on-our-demo-servers)
