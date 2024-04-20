@@ -7,15 +7,8 @@ services:
     build: Ansible-Controller
     image: nirgeier/ansible-controller
     container_name: ansible-controller
-    depends_on:
-      - linux-server-1
-      - linux-server-2
-      - linux-server-3
     environment:
-      HOST_HOSTNAME: ansible-controller
-      hostname1: linux-server-1
-      hostname2: linux-server-2
-      hostname3: linux-server-3
+      ANSIBLE_CONFIG: /labs-scripts/ansible.cfg
     volumes:
       - ${PWD}/../../runtime/.ssh:/root/.ssh
       - /var/run/docker.sock:/var/run/docker.sock

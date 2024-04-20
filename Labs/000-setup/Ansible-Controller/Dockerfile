@@ -34,6 +34,12 @@ COPY    entrypoint.sh   /entrypoint.sh
 RUN     chmod +x        /entrypoint.sh
 
 USER    root
+
+###
+### Debug
+###
+RUN apt install -y inetutils-ping
+
 # Run the loading script
 ENTRYPOINT      ["/entrypoint.sh"]
 

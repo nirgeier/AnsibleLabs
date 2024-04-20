@@ -77,9 +77,9 @@ cat <<EOF > $RUNTIME_FOLDER/labs-scripts/inventory
 ###
 
 [servers]
-  linux-server-1
-  linux-server-2
-  linux-server-3
+  linux-server-1 ansible_ssh_common_args='-o UserKnownHostsFile=$RUNTIME_FOLDER/.ssh/known_hosts'
+  linux-server-2 ansible_ssh_common_args='-o UserKnownHostsFile=$RUNTIME_FOLDER/.ssh/known_hosts'
+  linux-server-3 ansible_ssh_common_args='-o UserKnownHostsFile=$RUNTIME_FOLDER/.ssh/known_hosts'
 EOF
 
 echo -e "${Cyan}* List created files and folders"
