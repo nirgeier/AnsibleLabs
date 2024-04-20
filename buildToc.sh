@@ -26,7 +26,7 @@ for lab in $(ls -d */); do
     # Remove trailing slash from directory name
     labname=${lab%%/}
     # Add directory to the README.md with a link
-    echo "| [${labname}](./Labs/${labname}))| ${labname} |" >> $OUTPUT_FILE
+    echo "| [${labname}](./Labs/${labname})| ${labname} |" >> $OUTPUT_FILE
 done
 
 cat $OUTPUT_FILE
