@@ -1,0 +1,23 @@
+name: 002-no-inventory
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "**/Labs/002-no-inventory/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "**/Labs/002-no-inventory/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Execute the step demo to verify that all is working
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v4
+
+      - name: Test Lab
+        working-directory: Labs/002-no-inventory
+        run: bash ./_demo.sh

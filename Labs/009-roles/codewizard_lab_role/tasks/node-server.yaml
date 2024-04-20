@@ -1,0 +1,58 @@
+---
+- name: Copy Node server
+  ansible.builtin.template:
+    src: templates/node-server.j2
+    dest: /node-server.js
+    mode: 600
+  become: true
+  become_method: ansible.builtin.su
+
+- name: Install "pm2" node.js package.
+  community.general.npm:
+    name: "pm2"
+    global: true
+  become: true
+  become_method: ansible.builtin.su
+
+- name: Get running node processes
+  shell: "ps -ef | grep -v grep | grep -w node | awk '{print $2}'"
+  register: running_processes
+
+- name: Kill running node server (if any)
+  shell: "kill {{ item }}"
+  with_items: "{{ running_processes.stdout_lines }}"
+
+- name: Wait for the process to die
+  wait_for:
+    path: "/proc/{{ item }}/status"
+    state: absent
+  with_items: "{{ running_processes.stdout_lines }}"
+  ignore_errors: true
+  register: killed_processes
+
+- name: Force kill stuck processes
+  shell: "kill -9 {{ item }}"
+  with_items: "{{ killed_processes.results | select('failed') | map(attribute='item') | list }}"
+
+- name: Start Node server
+  ansible.builtin.command:
+    chdir: /
+    cmd: "pm2 start -f /node-server.js"
+  register: server_status
+  changed_when: server_status.rc != 0
+
+- name: Print server status
+  ansible.builtin.debug:
+    msg: "{{ server_status.stdout_lines }}"
+  when: server_status.rc == 0
+
+- name: Check server
+  uri:
+    url: http://localhost:5000
+    method: GET
+    status_code: 200
+  register: server_status
+
+- name: Print server status
+  ansible.builtin.debug:
+    msg: "{{ server_status.status }} - {{ server_status.msg }}"

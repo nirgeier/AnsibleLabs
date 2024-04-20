@@ -1,0 +1,18 @@
+---
+###
+### This file contain the variables for the Demo lab
+###
+
+# Defaults file for codewizard_lab_role
+motd_message: "Welcome to Ansible Roles Lab"
+
+apt_packages:
+  - python3
+  - nodejs
+  - npm
+
+apt_packages_verify:
+  - python3
+  - npm
+
+package_state: latest

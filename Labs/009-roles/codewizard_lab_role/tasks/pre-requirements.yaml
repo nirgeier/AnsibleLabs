@@ -1,0 +1,17 @@
+---
+- name: Install Packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: "{{ package_state }}"
+  # Loop over the required packages to install
+  with_items: "{{ apt_packages }}"
+
+- name: Verify Packages Installation
+  ansible.builtin.command: "{{ item }} --version"
+  register: packages_version
+  with_items: "{{ apt_packages_verify }}"
+
+- name: Print package version
+  ansible.builtin.debug:
+    msg: "{{ item.stdout_lines  }}"
+  with_items: "{{ packages_version.results }}"

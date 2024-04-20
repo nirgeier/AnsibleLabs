@@ -2,3 +2,7 @@
 .ssh
 **/runtime/**
 **/*demo*/**
+**/.env
+diff.sh 
+006-loop-and-conditions.sh
+

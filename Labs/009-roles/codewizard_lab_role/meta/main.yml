@@ -1,0 +1,7 @@
+---
+galaxy_info:
+  author: Nir Geier
+  description: Ansible Roles Demo
+  company: Nir Geier - CodeWizard
+  license: GPL-2.0-or-later
+  min_ansible_version: 3.1.2

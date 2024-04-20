@@ -1,0 +1,23 @@
+name: 003a-facts-cli
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "**/Labs/003a-facts-cli/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "**/Labs/003a-facts-cli/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Execute the step demo to verify that all is working
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v4
+
+      - name: Test Lab
+        working-directory: Labs/003a-facts-cli
+        run: bash ./_demo.sh

@@ -1,5 +1,7 @@
 ---
-# tasks file for dynamic_motd
+###
+### The playbook for using our role
+### 
 - name: Executing codewizard_lab_role
   hosts: all
   become: true

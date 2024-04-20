@@ -1,0 +1,23 @@
+name: 005-01-install-git
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "**/Labs/005a-git/005-01-install-git/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "**/Labs/005a-git/005-01-install-git/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Execute the step demo to verify that all is working
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v4
+
+      - name: Test Lab
+        working-directory: Labs/005a-git/005-01-install-git
+        run: bash ./_demo.sh

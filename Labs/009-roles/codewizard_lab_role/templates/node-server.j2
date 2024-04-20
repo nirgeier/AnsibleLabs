@@ -1,0 +1,19 @@
+const
+    // Set the server port which will be listening to
+    // Those 2 values are passed from the env file
+    SERVER_PORT = 5000,
+    SERVER_NAME = "{{ inventory_hostname }}";
+
+// Create the basic http server
+require('http')
+    .createServer((request, response) => {
+
+        // Send reply to user
+        response.end(`<h1>Hello from ${SERVER_NAME}.</h1>`);
+
+    }).listen(SERVER_PORT, () => {
+        // Notify users that the server is up and running
+        console.log(`${SERVER_NAME} is up. 
+            Please click or point your browser to:
+            http://localhost:${SERVER_PORT}`);
+    });

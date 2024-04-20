@@ -1,0 +1,13 @@
+---
+- name: Include Pre-Requirements task
+  ansible.builtin.include_tasks:
+    file: pre-requirements.yaml
+
+- name: Include motd task
+  ansible.builtin.include_tasks:
+    file: motd.yaml
+
+- name: Deploy node server
+  ansible.builtin.include_tasks:
+    file: node-server.yaml
+    

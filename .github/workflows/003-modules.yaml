@@ -1,0 +1,23 @@
+name: 003-modules
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "**/Labs/003-modules/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "**/Labs/003-modules/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Execute the step demo to verify that all is working
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v4
+
+      - name: Test Lab
+        working-directory: Labs/003-modules
+        run: bash ./_demo.sh

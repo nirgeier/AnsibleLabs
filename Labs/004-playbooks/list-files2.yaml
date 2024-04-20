@@ -1,0 +1,15 @@
+---
+- name: List files in a directory
+
+  hosts: linux-server-1
+  tasks:
+    - name: Find files
+      find:
+        paths: "/kata"
+        file_type: file
+      register: files_to_print
+
+    - name: Print files
+      debug:
+        msg: "{{ item.path }}"
+      with_items: "{{ files_to_print.files }}"

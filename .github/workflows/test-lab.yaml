@@ -1,0 +1,25 @@
+name: Verify Lab
+on:
+  ###
+  ### Listen for invokation requests from the main ci
+  ### 
+  workflow_dispatch:
+    inputs:
+      demoPath:
+        description: "The path of the lab to test"
+        required: true
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    name: "Test ${{ github.event.inputs.demoPath }}"
+
+    # Execute the step demo to verify that all is working
+    steps:
+
+      # Check out the code
+      - uses: actions/checkout@v4
+      
+      - name: Test Lab 
+        run:  bash ${{ github.event.inputs.demoPath }}/_demo.sh

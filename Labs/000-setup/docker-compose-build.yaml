@@ -1,18 +1,28 @@
 ---
 # Build up the ansible container for our demo
+
 services:
 
   ansible-controller:
+    build: 
+      context: Ansible-Controller
     image: nirgeier/ansible-controller
     container_name: ansible-controller
     environment:
-       ANSIBLE_CONFIG: /labs-scripts/ansible.cfg
+      ANSIBLE_CONFIG: /labs-scripts/ansible.cfg
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${ROOT_FOLDER}/runtime/.ssh:/root/.ssh
       - ${ROOT_FOLDER}/runtime/labs-scripts:/labs-scripts
-
   linux-server-1:
+    build: 
+      context: Linux-Server
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm/v6
+          - linux/arm/v7
+          - linux/arm64
     image: nirgeier/linux-server-1
     container_name: linux-server-1
     hostname: linux-server-1
@@ -26,6 +36,14 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   linux-server-2:
+    build: 
+      context: Linux-Server
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm/v6
+          - linux/arm/v7
+          - linux/arm64
     image: nirgeier/linux-server-2
     container_name: linux-server-2
     hostname: linux-server-2
@@ -39,6 +57,14 @@ services:
       hostname: linux-server-2
 
   linux-server-3:
+    build: 
+      context: Linux-Server
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm/v6
+          - linux/arm/v7
+          - linux/arm64
     image: nirgeier/linux-server-3
     container_name: linux-server-3
     hostname: linux-server-3
