@@ -61,7 +61,7 @@ ______________________________________________________________________
 
 - Ansible is based upon YAML
 
-- An Ansible playbook is a file that contains a set of instructions that Ansible can use to automate tasks on remote hosts1. Playbooks are written in YAML, a human-readable markup language1. A playbook typically consists of one or more ‘plays’, a collection of tasks run in sequence1.
+- An Ansible playbook is a file that contains a set of instructions that Ansible can use to automate tasks on remote hosts. Playbooks are written in YAML, a human-readable markup language. A playbook typically consists of one or more ‘plays’, a collection of tasks run in sequence.
 
 Here’s a brief overview of how `Ansible playbooks` work:
 
