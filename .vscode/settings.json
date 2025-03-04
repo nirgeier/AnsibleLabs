@@ -1,5 +1,5 @@
 {
-    "ansible.python.interpreterPath": "/usr/local/bin/python3.12",
+    "ansible.python.interpreterPath": "/sbin/python",
     "cSpell.words": [
         "Geier"
     ],

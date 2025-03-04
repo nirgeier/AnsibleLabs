@@ -39,10 +39,10 @@
 - This is where `Ansible Playbook` is jumping in.
 - `Ansible Playbooks` are essentially **blueprints of automation tasks**. 
 - They are written in `YAML`, and are used to **automate tasks on remote hosts**. 
-- In summary, `Ansible Playbook`s offer a repeatable, reusable, simple configuration management and multi-machine deployment system, well suited to deploying complex applications. 
-- They are a **powerful** tool for automating infrastructure management4.
+- In summary, `Ansible Playbooks` offer a repeatable, reusable, simple configuration management and multi-machine deployment system, well suited to deploying complex applications. 
+- They are a **powerful** tool for automating infrastructure management.
 
-### Ansible Playbooks KeyPoints:
+### Ansible Playbooks Key Points:
 
 - **Structure** 
   A playbook is composed of one or more `plays` in an **ordered list** (Sequence). 
@@ -349,6 +349,9 @@ localhost                  : ok=3    changed=1    unreachable=0    failed=0    s
 - Lets write some playbooks tasks
 - Lab: Install and start apache2 server
 
+> [!TIP]
+> It's considered best practice to use the FQDN name of all modules used in your playbook.
+> It is done to prevent naming collision between builtin modules and community/self made ones.
 ---
 
 <p style="text-align: center;">
