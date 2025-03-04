@@ -105,7 +105,7 @@
 
 - In Linux Ansible is based upon `ssh`, so in order to run Ansible playbooks.
 - By default it will use the default ssh keys unless we supply it with ssh configuration file.
-- In this demo we will use use our own `ssh.config`
+- In this demo we will use our own `ssh.config`
 
     ```sh
     ### $RUNTIME_FOLDER/labs-scripts/ssh.config
@@ -153,10 +153,12 @@
 - It provides a structured way to define `hosts` and `groups`, enabling efficient targeting and execution of tasks on specific hosts or groups of hosts.
 
 - The simplest inventory is a **single file** with a list of `hosts` and `groups`. 
-- The default location for this file is `/etc/ansible/hosts`. 
-- You can specify a different inventory file at the command line using the `-i <path>` when executing ansible commands.
-- This inventory is written in the form of an `ini` file. 
+- This inventory is written in the `ini` format. 
 - It also can be written in other formats such as `YAML` and `Dynamic Inventory` which dynamically configure the inventory with scripts. 
+- The default location for this file is `/etc/ansible/hosts`.
+- If `/etc/ansible/hosts` doesn't exists, ansible will look for user specific inventory file at `$HOME/.ansible/hosts`
+- You can specify a different inventory file at the command line using the `-i <path>` when executing ansible commands or by exporting the `ANSIBLE_INVENTORY` enviroment variable.
+- Using `-i <path>` takes precedence over enviroment variable.
 
 - The inventory configuration we will use for the labs:
     ```ini
