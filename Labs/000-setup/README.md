@@ -28,7 +28,7 @@
 
 ### 01. Install Ansible
 
-- You can use `Ansible` locally on your system or use the demo Ansible playground inside docker container
+- You can use `Ansible` locally on your system or use the [demo Ansible playground](https://killercoda.com/codewizard/scenario/Ansible) inside docker container
 - This lab contains the `Ansible controller` & `linux-servers` as playground environment.
 
 ### Build the Ansible container & servers

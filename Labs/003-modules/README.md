@@ -27,7 +27,7 @@
 
 ## What is a Module?
 
-- A module is a **common operations in infrastructure operations** 
+- A module is a unit of code in Ansible that performs **common operations in infrastructure management**, such as configuring systems, installing software, or managing resources. 
 - Ansible has a **huge** number of modules. 
 - You can browser and search ansible builtin modules under the [Build In Ansible Modules](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/index.html#modules)
 - Module are used for task automation.
