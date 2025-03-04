@@ -43,13 +43,14 @@
 
 > [!IMPORTANT]  
 > In this lab we will be placing the files under the `/labs-scripts` folder.  
-> The folder is mounted to our docker container under `<PROJECT_ROOT>/runtime` folder
+> The folder is mounted to our docker container under `<PROJECT_ROOT>/runtime` folder.
+> You're encouraged to review  the `docker-compose.yaml` file throughout the lab session. 
 
 
 ### 01.01. Create the `ansible.cfg` file
 
-- `ansible.cfg` is a configuration file for Ansible which contains the configuration for our ansible project and to control Ansible’s behavior.
-- `ansible.cfg` is an `INI` file.
+- `ansible.cfg` contains the configuration for our ansible project and to control Ansible’s behavior.
+- `ansible.cfg` uses the `INI` format.
 
 * **File Locations**: 
 
