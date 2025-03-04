@@ -12,14 +12,17 @@ source $ROOT_FOLDER/_utils/common.sh
 # Get the current directory of our lab
 CURRENT_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
-# Remove all docker-conatiner
-echo -e "${Yellow}Removing old docker containers${COLOR_OFF}"
-docker stop $(docker ps -aq)
-docker rm   $(docker ps -aq)
+# check if any running containers
+if [ $(docker ps -aq | wc -l) -gt 1 ]; then
+    # Remove all docker-conatiner
+    echo -e "${Yellow}Removing old docker containers${COLOR_OFF}"
+    docker stop $(docker ps -aq)
+    docker rm   $(docker ps -aq)
 
-# Stop any existing demo containers
-docker-compose -f $CURRENT_DIR/docker-compose.yaml down
-sleep 5
+    # Stop any existing demo containers
+    docker-compose -f $CURRENT_DIR/docker-compose.yaml down
+    sleep 5
+fi
 
 echo -e "${Yellow}Removing old content${COLOR_OFF}"
 rm -rf $RUNTIME_FOLDER
@@ -41,8 +44,7 @@ sleep 5
 echo -e "* ${Yellow}Sleeping 5 seconds - waiting for container to start ${COLOR_OFF}"
 echo -e ""
 
-for i in {1..5}; 
-do 
+for i in {1..5}; do  
     echo -e -n "${Red}." 
     sleep 1
 done
