@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name:: Create User
+  hosts: all
   tasks:
     - name: Create User
       ansible.builtin.user:
@@ -10,9 +11,8 @@
         generate_ssh_key: true
         ssh_key_bits: 2048
         ssh_key_file: .ssh/id_rsa
-        create_home: true
-  
+        create_home: true 
     - name: Verifying user
       ansible.builtin.debug:
         msg: "Found user: {{ ansible_ssh_host }}"
-        
+      

@@ -2,7 +2,7 @@
 #!/bin/bash
 
 ###
-### This scrcipt will create the tests for this repository
+### This script will create the tests for this repository
 ### 
 
 # Get the root folder of our demo folder
@@ -11,7 +11,7 @@ ROOT_FOLDER=$(git rev-parse --show-toplevel)
 # Set the base folder for our labs
 LABS_FOLDER="$ROOT_FOLDER/Labs/"
 
-# Search for the foolder to test
+# Search for the folder to test
 demoFiles=$(find $ROOT_FOLDER -name '*_demo.sh' | sort -u)
 
 # Labs build status file
@@ -25,18 +25,18 @@ echo "| -  | - |" >> $labsStatus
 for file in $demoFiles
 do
     # Get the path to the folder
-    labPath=$(dirname Labs/${file#$LABS_FOLDER})
+    labPath=$(dirname ${file#$LABS_FOLDER})
 
     # Get the path to the folder
     labId=$(basename $(dirname $file))
 
     escapedLabPath=$(echo $labPath | sed 's/\//\\\//g')
     # Replace tokens with values and write to a new file
-    gsed "s/<LAB_ID>/$labId/g" ${ROOT_FOLDER}/tests/test-template.yaml  | \
-    gsed "s/<LAB_PATH>/$escapedLabPath/g" > $ROOT_FOLDER/.github/workflows/${labId}.yaml 
+    gsed -e "s/<LAB_ID>/$labId/g" ${ROOT_FOLDER}/tests/test-template.yaml  | \
+    gsed -e "s/<LAB_PATH>/Labs\/$escapedLabPath/g" > $ROOT_FOLDER/.github/workflows/${labId}.yaml 
     
     # Add the build status
-    echo    "| [$labId]($labPath) " \
+    echo    "| [$labId](/Labs/$labPath) " \
             "| <a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/${labId}.yaml">"              \
             "<img src=\"https://github.com/nirgeier/AnsibleLabs/actions/workflows/${labId}.yaml/badge.svg\"> "  \
             "</a>" >> $labsStatus

@@ -38,12 +38,12 @@ echo -e   "${Yellow}* Getting the commit id of the desired commits/branches ${Co
 commit1=$(git rev-parse --short $1)
 commit2=$(git rev-parse --short $2)
 
-# Creare the commit folder
-echo  -e  "${Yellow}* Creating the diff folde [$commit1-$commit2] ${Color_Off}"
+# Create the commit folder
+echo  -e  "${Yellow}* Creating the diff folder [$commit1-$commit2] ${Color_Off}"
 DIFF_FOLDER=$ROOT_FOLDER/diff/$commit1-$commit2
 mkdir -p $DIFF_FOLDER
 
-# We need to proceess the diff from the root folder
+# We need to process the diff from the root folder
 cd $ROOT_FOLDER
 
 # Get list of changed files

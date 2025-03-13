@@ -11,8 +11,6 @@
 
 --- 
 
-<!-- inPage TOC start -->
-
 ## Lab Highlights: <!-- omit in toc-->
 
 - [Lab 000 - Setup](#lab-000---setup)
@@ -24,11 +22,9 @@
 
 ---
 
-<!-- inPage TOC end -->
-
 ### 01. Install Ansible
 
-- You can use `Ansible` locally on your system or use the demo Ansible playground inside docker container
+- You can use `Ansible` locally on your system or use the [demo Ansible playground](https://killercoda.com/codewizard/scenario/Ansible) based upon docker container(s)
 - This lab contains the `Ansible controller` & `linux-servers` as playground environment.
 
 ### Build the Ansible container & servers
@@ -47,7 +43,6 @@
 | :collision: `linux-server-1`          | Linux container with ssh only (no ansible installed) |
 | :collision: `linux-server-2`          | Linux container with ssh only (no ansible installed) |
 | :collision: `linux-server-3`          | Linux container with ssh only (no ansible installed) |
-
 
 * For the demo we will also need a shred folder(s) where the certificates and the configuration will be stored
 
