@@ -6,6 +6,13 @@ services:
   ansible-controller:
     build: 
       context: Ansible-Controller
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
+          - linux/arm/v6
+          - linux/arm/v7
+          - linux/arm/v8
     image: nirgeier/ansible-controller
     container_name: ansible-controller
     environment:
@@ -20,10 +27,11 @@ services:
       x-bake:
         platforms:
           - linux/amd64
+          - linux/arm64
           - linux/arm/v6
           - linux/arm/v7
-          - linux/arm64
-    image: nirgeier/linux-server-1
+          - linux/arm/v8
+    image: nirgeier/linux-server
     container_name: linux-server-1
     hostname: linux-server-1
     ports:
@@ -41,10 +49,11 @@ services:
       x-bake:
         platforms:
           - linux/amd64
+          - linux/arm64
           - linux/arm/v6
           - linux/arm/v7
-          - linux/arm64
-    image: nirgeier/linux-server-2
+          - linux/arm/v8
+    image: nirgeier/linux-server
     container_name: linux-server-2
     hostname: linux-server-2
     ports:
@@ -62,10 +71,11 @@ services:
       x-bake:
         platforms:
           - linux/amd64
+          - linux/arm64
           - linux/arm/v6
           - linux/arm/v7
-          - linux/arm64
-    image: nirgeier/linux-server-3
+          - linux/arm/v8
+    image: nirgeier/linux-server
     container_name: linux-server-3
     hostname: linux-server-3
     ports:

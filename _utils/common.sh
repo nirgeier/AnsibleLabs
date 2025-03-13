@@ -4,28 +4,58 @@
 ### Colors
 ##########################################
 
-# Reset
-COLOR_OFF='\033[0m'       # Text Reset
+# Load the colors palette
+source <(curl -s https://raw.githubusercontent.com/nirgeier/labs-assets/refs/heads/main/assets/scripts/colors.sh)
 
-# Regular Colors
-Black='\033[0;30m'        # Black
-Red='\033[0;31m'          # Red
-Green='\033[0;32m'        # Green
-Yellow='\033[0;33m'       # Yellow
-Blue='\033[0;34m'         # Blue
-Purple='\033[0;35m'       # Purple
-Cyan='\033[0;36m'         # Cyan
-White='\033[0;37m'        # White
+##########################################
+### Global functions
+##########################################
+# Add to profile for permanent availability
+docker_compose() {
+    if docker compose version >/dev/null 2>&1; then
+      docker compose "$@"
+    elif command -v docker-compose >/dev/null 2>&1; then
+      docker-compose "$@"
+    else
+      echo "Error: Docker Compose not found" >&2
+      return 1
+    fi
+}
 
-# Bold
-BBlack='\033[1;30m'       # Black
-BRed='\033[1;31m'         # Red
-BGreen='\033[1;32m'       # Green
-BYellow='\033[1;33m'      # Yellow
-BBlue='\033[1;34m'        # Blue
-BPurple='\033[1;35m'      # Purple
-BCyan='\033[1;36m'        # Cyan
-BWhite='\033[1;37m'       # White
+# Detect the system architecture
+# Detect the true platform, accounting for macOS Rosetta
+detect_platform() {
+  OS=$(uname -s)
+  ARCH=$(uname -m)
+
+  # Special handling for macOS
+  if [ "$OS" = "Darwin" ]; then
+    # Check if the kernel is ARM64 (even if running under Rosetta)
+    if uname -v | grep -q 'RELEASE_ARM64'; then
+      echo "linux/arm64"
+    else
+      # Check if running under Rosetta translation (ARM64 host)
+      if sysctl -n sysctl.proc_translated 2>/dev/null | grep -q '1'; then
+        echo "linux/arm64"
+      else
+        # Fallback to architecture (may be x86_64 for older Macs)
+        case $ARCH in
+          "x86_64") echo "linux/amd64" ;;
+          "arm64")  echo "linux/arm64" ;;
+          *)        echo "Unsupported architecture: $ARCH" >&2; exit 1 ;;
+        esac
+      fi
+    fi
+  else
+    # For Linux/other systems
+    case $ARCH in
+      "x86_64")  echo "linux/amd64" ;;
+      "aarch64") echo "linux/arm64" ;;
+      "arm64")   echo "linux/arm64" ;;
+      *)         echo "Unsupported architecture: $ARCH" >&2; exit 1 ;;
+    esac
+  fi
+  }
 
 ##########################################
 ### Folders

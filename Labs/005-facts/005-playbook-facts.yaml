@@ -1,5 +1,5 @@
 ---
-- name: Basic playbook samples 
+- name: Basic playbook samples
   hosts: all
   tasks:
     # Collect the facts about with the build in debug module
@@ -9,7 +9,7 @@
 
     # Collect the facts and save them in json files
     - name: Gather facts
-      setup:
+      ansible.builtin.setup:
 
     - name: Save facts to a file
       delegate_to: localhost

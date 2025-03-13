@@ -19,25 +19,25 @@ then
     exit 0;
 fi
 
-echo -e "${Yellow}Creating the runtime folder${COLOR_OFF}"
+echo -e "${YELLOW}Creating the runtime folder${COLOR_OFF}"
 mkdir -p $ROOT_FOLDER/runtime/labs-scripts/
 
-echo -e "${Yellow}Removing prevoius content${COLOR_OFF}"
+echo -e "${YELLOW}Removing previous content${COLOR_OFF}"
 rm -rf $ROOT_FOLDER/runtime/labs-scripts/
 
-echo -e "${Yellow}Copying content${COLOR_OFF}"
+echo -e "${YELLOW}Copying content${COLOR_OFF}"
 cp -R $ROOT_FOLDER/Labs/001-init $ROOT_FOLDER/runtime/labs-scripts/
 
-echo -e "${Yellow}Copying content${COLOR_OFF}"
+echo -e "${YELLOW}Copying content${COLOR_OFF}"
 cp -R $1 $ROOT_FOLDER/runtime/labs-scripts/
 
 # Set the execution mode
-echo -e "${Yellow}Setting execution to sh files${COLOR_OFF}"
+echo -e "${YELLOW}Setting execution to sh files${COLOR_OFF}"
 #ls -la $ROOT_FOLDER/runtime/labs-scripts/
 
-# Execute the script on the ansible contianer
+# Execute the script on the ansible container
 echo -e ""
-echo -e "${Yellow}\$ docker exec -it ansible-controller /$ANSIBLE_SCRIPT${COLOR_OFF}"
+echo -e "${YELLOW}\$ docker exec -it ansible-controller /$ANSIBLE_SCRIPT${COLOR_OFF}"
 echo -e ""
 
 docker exec -it ansible-controller /$ANSIBLE_SCRIPT

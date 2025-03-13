@@ -15,12 +15,11 @@
     - name: Execute 'uname -a'
       shell: uname -a
       register: task_output
-      
     # Using register we can now display the output contents
     # We must use `.stdout` to display the output itself
     - name: Print 'uname -a' output
-      debug: 
-        msg: "{{ task_output.stdout}}"   
+      debug:
+        msg: "{{ task_output.stdout }}"
 
     # In class Hands-on task
     - name: Execute 'id'

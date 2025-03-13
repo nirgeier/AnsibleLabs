@@ -5,6 +5,7 @@ services:
   ansible-controller:
     image: nirgeier/ansible-controller
     container_name: ansible-controller
+    platform: ${TARGET_PLATFORM}
     environment:
        ANSIBLE_CONFIG: /labs-scripts/ansible.cfg
     volumes:
@@ -13,7 +14,7 @@ services:
       - ${ROOT_FOLDER}/runtime/labs-scripts:/labs-scripts
 
   linux-server-1:
-    image: nirgeier/linux-server-1
+    image: nirgeier/linux-server
     container_name: linux-server-1
     hostname: linux-server-1
     ports:
@@ -26,7 +27,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   linux-server-2:
-    image: nirgeier/linux-server-2
+    image: nirgeier/linux-server
     container_name: linux-server-2
     hostname: linux-server-2
     ports:
@@ -36,7 +37,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      hostname: linux-server-2
+      hostname: linux-server
 
   linux-server-3:
     image: nirgeier/linux-server-3

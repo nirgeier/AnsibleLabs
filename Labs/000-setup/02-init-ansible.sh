@@ -9,10 +9,10 @@ source $ROOT_FOLDER/_utils/common.sh
 ###
 ### Create the required files for this demo
 ###
-echo -e "${Yellow}-----------------------------------${COLOR_OFF}"
-echo -e "${Cyan}* Creating the required files"
+echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
+echo -e "${CYAN}* Creating the required files"
 
-echo -e "${Cyan}* Creating $RUNTIME_FOLDER/labs-scripts/ansible.cfg${COLOR_OFF}"
+echo -e "${CYAN}* Creating $RUNTIME_FOLDER/labs-scripts/ansible.cfg${COLOR_OFF}"
 cat << "EOF" > $RUNTIME_FOLDER/labs-scripts/ansible.cfg
 ##
 ## This is the main configuration file for our demo application
@@ -25,7 +25,7 @@ cat << "EOF" > $RUNTIME_FOLDER/labs-scripts/ansible.cfg
 # Define that inventory info is in the file named “inventory”
 inventory = inventory
 
-# Forcet output in colors
+# Force output in colors
 force_color       = True
 
 # Specify remote hosts, so we do not need to config them in main ssh config
@@ -39,10 +39,10 @@ ssh_args  =     -F ssh.config                   \
                 -o ControlMaster=auto           \
                 -o ControlPersist=60s           \
                 -o StrictHostKeyChecking=no     \
-                -o UserKnownHostsFile=/root/.ssh/known_hosts
+                -o UserKnownHostsFile=../.ssh/known_hosts
 EOF
 
-echo -e "${Cyan}* Creating $RUNTIME_FOLDER/labs-scripts/ssh.config${COLOR_OFF}"
+echo -e "${CYAN}* Creating $RUNTIME_FOLDER/labs-scripts/ssh.config${COLOR_OFF}"
 cat << "EOF" > $RUNTIME_FOLDER/labs-scripts/ssh.config
 # Set up the desired hosts
 # keep in mind that we have set up the hosts in the docker-compose
@@ -64,24 +64,24 @@ Host *
 # the hosts are defined in the docker-compose which we created in the setup lab)
 Host                linux-server-1
     HostName        linux-server-1
-    IdentityFile    /root/.ssh/linux-server-1
+    IdentityFile    ../.ssh/linux-server-1
     User            root
     Port            22
 
 Host                linux-server-2
     HostName        linux-server-2
-    IdentityFile    /root/.ssh/linux-server-2
+    IdentityFile    ../.ssh/linux-server-2
     User            root
     Port            22
 
 Host                linux-server-3
     HostName        linux-server-3
-    IdentityFile    /root/.ssh/linux-server-3
+    IdentityFile    ../.ssh/linux-server-3
     User            root
     Port            22
 EOF
 
-echo -e "${Cyan}* Creating $RUNTIME_FOLDER/labs-scripts/inventory${COLOR_OFF}"
+echo -e "${CYAN}* Creating $RUNTIME_FOLDER/labs-scripts/inventory${COLOR_OFF}"
 cat << "EOF" > $RUNTIME_FOLDER/labs-scripts/inventory
 ###
 ### List of servers which we want ansible to connect to
@@ -89,10 +89,10 @@ cat << "EOF" > $RUNTIME_FOLDER/labs-scripts/inventory
 ###
 
 [servers]
-  linux-server-1 ansible_ssh_common_args='-o UserKnownHostsFile=/root/.ssh/known_hosts'
-  linux-server-2 ansible_ssh_common_args='-o UserKnownHostsFile=/root/.ssh/known_hosts'
-  linux-server-3 ansible_ssh_common_args='-o UserKnownHostsFile=/root/.ssh/known_hosts'
+  linux-server-1 ansible_ssh_common_args='-o UserKnownHostsFile=../.ssh/known_hosts'
+  linux-server-2 ansible_ssh_common_args='-o UserKnownHostsFile=../.ssh/known_hosts'
+  linux-server-3 ansible_ssh_common_args='-o UserKnownHostsFile=../.ssh/known_hosts'
 EOF
 
-echo -e "${Cyan}* List created files and folders${COLOR_OFF}"
+echo -e "${CYAN}* List created files and folders${COLOR_OFF}"
 tree -a $RUNTIME_FOLDER

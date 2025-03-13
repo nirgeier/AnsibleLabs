@@ -17,16 +17,16 @@ rm    -rf ${ROOT_FOLDER}/roles_demo
 mkdir ${ROOT_FOLDER}/roles_demo
 cd    ${ROOT_FOLDER}/roles_demo
 
-echo -e "${Yellow}Initilaizing the role${COLOR_OFF}"
-echo -e "${White}$ ${Green}ansible-galaxy init codewizard_lab_role${COLOR_OFF}"
+echo -e "${YELLOW}Initilaizing the role${COLOR_OFF}"
+echo -e "${White}$ ${GREEN}ansible-galaxy init codewizard_lab_role${COLOR_OFF}"
 ansible-galaxy init codewizard_lab_role
 
-echo -e "${Yellow}Switching to the role folder${COLOR_OFF}"
+echo -e "${YELLOW}Switching to the role folder${COLOR_OFF}"
 cd codewizard_lab_role
 
-echo -e "${Yellow}Creating content${COLOR_OFF}"
+echo -e "${YELLOW}Creating content${COLOR_OFF}"
 
-echo -e "${Green}* Generating defaults/main.yml${COLOR_OFF}"
+echo -e "${GREEN}* Generating defaults/main.yml${COLOR_OFF}"
 cat << 'EOF' > defaults/main.yml
 ---
 ###
@@ -50,7 +50,7 @@ apt_packages_verify:
 package_state: latest
 EOF
 
-echo -e "${Green}* Generating tasks/node-server.yml${COLOR_OFF}"
+echo -e "${GREEN}* Generating tasks/node-server.yml${COLOR_OFF}"
 cat << 'EOF' > tasks/node-server.yml
 ---
 - name: Copy Node server
@@ -112,7 +112,7 @@ cat << 'EOF' > tasks/node-server.yml
     msg: "{{ server_status.status }} - {{ server_status.msg }}"
 EOF
 
-echo -e "${Green}* Generating tasks/motd.yml${COLOR_OFF}"
+echo -e "${GREEN}* Generating tasks/motd.yml${COLOR_OFF}"
 cat << 'EOF' > tasks/motd.yml
 - name: Copy template
   ansible.builtin.template:
@@ -123,7 +123,7 @@ cat << 'EOF' > tasks/motd.yml
   become_method: ansible.builtin.su
 EOF
 
-echo -e "${Green}* Generating tasks/main.yml${COLOR_OFF}"
+echo -e "${GREEN}* Generating tasks/main.yml${COLOR_OFF}"
 cat << 'EOF' > tasks/main.yml
 ---
 - name: Include Pre-Requirements task
@@ -139,7 +139,7 @@ cat << 'EOF' > tasks/main.yml
     file: node-server.yaml
 EOF
 
-echo -e "${Green}* Generating tasks/pre-requirements.yml${COLOR_OFF}"
+echo -e "${GREEN}* Generating tasks/pre-requirements.yml${COLOR_OFF}"
 cat << 'EOF' > tasks/pre-requirements.yml
 ---
 - name: Install Packages
@@ -160,7 +160,7 @@ cat << 'EOF' > tasks/pre-requirements.yml
   with_items: "{{ packages_version.results }}"
 EOF  
 
-echo -e "${Green}* Generating templates/motd.j2${COLOR_OFF}"
+echo -e "${GREEN}* Generating templates/motd.j2${COLOR_OFF}"
 cat << 'EOF' > templates/motd.j2
 _____             _          _    _  _                      _ 
 /  __ \           | |        | |  | |(_)                    | |
@@ -180,7 +180,7 @@ Hostname:   {{ inventory_hostname }}
 {{ custom_message | default('') }}
 EOF
 
-echo -e "${Green}* Generating templates/node-server.j2${COLOR_OFF}"
+echo -e "${GREEN}* Generating templates/node-server.j2${COLOR_OFF}"
 cat << 'EOF' > templates/node-server.j2
 const
   // Set the server port which will be listening to
@@ -203,7 +203,7 @@ const
     });
 EOF
 
-echo -e "${Green}* Generating 009-role-playbook.yml${COLOR_OFF}"
+echo -e "${GREEN}* Generating 009-role-playbook.yml${COLOR_OFF}"
 cat << 'EOF' > 009-role-playbook.yml
 ---
 ###
@@ -218,6 +218,6 @@ cat << 'EOF' > 009-role-playbook.yml
     - codewizard_lab_role
 EOF 
 
-echo -e "${Yellow}Verifying role creation${COLOR_OFF}"
+echo -e "${YELLOW}Verifying role creation${COLOR_OFF}"
 tree -a codewizard_lab_role
 
