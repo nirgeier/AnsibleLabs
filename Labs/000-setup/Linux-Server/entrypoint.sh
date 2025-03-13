@@ -2,10 +2,10 @@
 
 # 
 # This script will create the required keys for the ansible playground
-# We will connect to this continaer using ssh key
+# We will connect to this continuer using ssh key
 #
 function create_ssh_key_file(){
-    # Check to see if we have certificzte
+    # Check to see if we have certificate
     echo "* Creating SSH key for $HOSTNAME [$ssh_key_file]"
     ssh-keygen -R $HOSTNAME
     ssh-keygen -t rsa -q -P '' -f $ssh_key_file <<<y
@@ -15,13 +15,13 @@ function create_ssh_key_file(){
 mkdir -p    /root/.ssh
 
 # Verify the authorized_keys for first use
-echo "* Verify the existance of authorized_keys"
+echo "* Verify the existence of authorized_keys"
 touch       /root/.ssh/authorized_keys
 
-# The ssh file we loooking for
+# The ssh file we looking for
 ssh_key_file=/root/.ssh/$HOSTNAME
 
-# Check to see if we have certificzte
+# Check to see if we have certificate
 create_ssh_key_file
 
 # echo "* Add keys to authorized_keys"
@@ -50,7 +50,6 @@ echo "* Start sshd service"
 
 echo "* Waiting for ssh service to start"
 sleep 10
-
 
 # Check if SSH is running
 # We will try for 5 times at most

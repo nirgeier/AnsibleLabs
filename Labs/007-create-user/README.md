@@ -17,36 +17,16 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
 
 ---
 
-### Task 01:
-
-- Create user named <hostname> for each machine
-- Verify that the user was created
-- Create an ansible inventory with the username in the configuration
-  ```sh
-  <hostname>    ansible_host=<hostname> ansible_ssh_user=<user>
-  ```
-
----
-
-### Task 02:
-
-- Clone a git repository from you github account
-- Commit changes to the repository
-- Push the changes to the repository
-  
-
----
-
-Good luck
 
 ---
 <!--- Labs Navigation Start -->  
 <p style="text-align: center;">  
-  <a href="/Labs/007-create-user">:arrow_backward: /Labs/007-create-user</a>
+  <a href="/Labs/006-git">:arrow_backward: /Labs/006-git</a>
   &emsp;<a href="/Labs">Back to labs list</a>
-  &emsp;<a href="/Labs/009-roles">/Labs/009-roles :arrow_forward:</a>
+  &emsp;<a href="/Labs/008-challanges">/Labs/008-challanges :arrow_forward:</a>
 </p>
 <p style="text-align: center; font-size: 12px;">  
 <span style="color: #F04F32;">&copy;</span><span style="color: #2AA9E1;">Code</span><span style="color: #F9B233;">Wizard</span> 2025
 </p>  
 <!--- Labs Navigation End -->
+

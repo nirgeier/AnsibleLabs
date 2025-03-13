@@ -1,10 +1,22 @@
-![](../../resources/ansible_logo.png)
+<div align="center">
+    <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
+  
+  ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
+  [![Linkedin Badge](https://img.shields.io/badge/-nirgeier-blue?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/nirgeier/)](https://www.linkedin.com/in/nirgeier/) 
+  [![Gmail Badge](https://img.shields.io/badge/-nirgeier@gmail.com-fcc624?style=flat&logo=Gmail&logoColor=red&link=mailto:nirgeier@gmail.com)](mailto:nirgeier@gmail.com) [![Outlook Badge](https://img.shields.io/badge/-nirg@codewizard.co.il-fcc624?style=flat&logo=microsoftoutlook&logoColor=blue&link=mailto:nirg@codewizard.co.il)](mailto:nirg@codewizard.co.il) 
+  <a href=""><img src="https://img.shields.io/github/stars/nirgeier/AnsibleLabs"></a> 
+  <img src="https://img.shields.io/github/forks/nirgeier/AnsibleLabs">  
+  <a href="https://discord.gg/U6xW23Ss"><img src="https://img.shields.io/badge/discord-7289da.svg?style=plastic&logo=discord" alt="discord" style="height: 20px;"></a>
+  <img src="https://img.shields.io/github/contributors-anon/nirgeier/AnsibleLabs?color=yellow&style=plastic" alt="contributors" style="height: 20px;"></a>
+  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/apache%202.0-blue.svg?style=plastic&label=license" alt="license" style="height: 20px;"></a>
+  <a href="https://github.com/nirgeier/AnsibleLabs/pulls"><img src="https://img.shields.io/github/issues-pr/nirgeier/AnsibleLabs?style=plastic&logo=pr" alt="Pull Requests" style="height: 20px;"></a> 
 
-<a href="https://stackoverflow.com/users/1755598"><img src="https://stackexchange.com/users/flair/1951642.png" width="208" height="58" alt="profile for CodeWizard on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for CodeWizard on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a>
+If you appreciate the effort, Please <img src="https://raw.githubusercontent.com/nirgeier/labs-assets/main/assets/images/star.png" height="20px"> this project
 
-<a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/004-playbooks.yaml"><img src="https://img.shields.io/github/actions/workflow/status/nirgeier/AnsibleLabs/004-playbooks.yaml?branch=main&style=flat" style="height: 20px;"></a> ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier) [![Linkedin Badge](https://img.shields.io/badge/-nirgeier-blue?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/nirgeier/)](https://www.linkedin.com/in/nirgeier/) [![Gmail Badge](https://img.shields.io/badge/-nirgeier@gmail.com-fcc624?style=plastic&logo=Gmail&logoColor=red&link=mailto:nirgeier@gmail.com)](mailto:nirgeier@gmail.com) [![Outlook Badge](https://img.shields.io/badge/-nirg@codewizard.co.il-fcc624?style=plastic&logo=microsoftoutlook&logoColor=blue&link=mailto:nirg@codewizard.co.il)](mailto:nirg@codewizard.co.il)
+</div>
 
 ---
+
 
 # Lab 004 - Playbooks
 
@@ -17,7 +29,7 @@
 
 - [Lab 004 - Playbooks](#lab-004---playbooks)
   - [What are Playbook](#what-are-playbook)
-    - [Ansible Playbooks KeyPoints:](#ansible-playbooks-keypoints)
+    - [Ansible Playbooks Key Points:](#ansible-playbooks-key-points)
   - [01. Playbook Basics](#01-playbook-basics)
     - [01.01. YAML](#0101-yaml)
     - [01.02. Our first playbook](#0102-our-first-playbook)
@@ -39,10 +51,10 @@
 - This is where `Ansible Playbook` is jumping in.
 - `Ansible Playbooks` are essentially **blueprints of automation tasks**. 
 - They are written in `YAML`, and are used to **automate tasks on remote hosts**. 
-- In summary, `Ansible Playbook`s offer a repeatable, reusable, simple configuration management and multi-machine deployment system, well suited to deploying complex applications. 
-- They are a **powerful** tool for automating infrastructure management4.
+- In summary, `Ansible Playbooks` offer a repeatable, reusable, simple configuration management and multi-machine deployment system, well suited to deploying complex applications. 
+- They are a **powerful** tool for automating infrastructure management.
 
-### Ansible Playbooks KeyPoints:
+### Ansible Playbooks Key Points:
 
 - **Structure** 
   A playbook is composed of one or more `plays` in an **ordered list** (Sequence). 
@@ -349,18 +361,19 @@ localhost                  : ok=3    changed=1    unreachable=0    failed=0    s
 - Lets write some playbooks tasks
 - Lab: Install and start apache2 server
 
----
+> [!TIP]
+> It's considered best practice to use the FQDN name of all modules used in your playbook.
+> It is done to prevent naming collision between builtin modules and community/self made ones.
 
-<p style="text-align: center;">
-    <a href="/Labs/003-modules/">
-    :arrow_backward: 003-modules
-    </a>
-    &emsp;
-    <a href="/Labs">
-    Back to labs list
-    </a>    
-    &emsp;
-    <a href="/Labs/005-facts/">
-    005-facts :arrow_forward:
-    </a>
+---
+<!--- Labs Navigation Start -->  
+<p style="text-align: center;">  
+  <a href="/Labs/003-modules">:arrow_backward: /Labs/003-modules</a>
+  &emsp;<a href="/Labs">Back to labs list</a>
+  &emsp;<a href="/Labs/005-facts">/Labs/005-facts :arrow_forward:</a>
 </p>
+<p style="text-align: center; font-size: 12px;">  
+<span style="color: #F04F32;">&copy;</span><span style="color: #2AA9E1;">Code</span><span style="color: #F9B233;">Wizard</span> 2025
+</p>  
+<!--- Labs Navigation End -->
+

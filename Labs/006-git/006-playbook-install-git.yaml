@@ -3,9 +3,8 @@
   hosts: all
   gather_facts: false
   vars:
-    - packages:
-        - git
-  
+  - packages:
+      - git
   tasks:
     - name: Installing Package(s)
       apt:

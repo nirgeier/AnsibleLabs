@@ -1,3 +1,4 @@
+
 <div align="center">
     <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
   
@@ -17,36 +18,15 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
 
 ---
 
-### Task 01:
-
-- Create user named <hostname> for each machine
-- Verify that the user was created
-- Create an ansible inventory with the username in the configuration
-  ```sh
-  <hostname>    ansible_host=<hostname> ansible_ssh_user=<user>
-  ```
-
----
-
-### Task 02:
-
-- Clone a git repository from you github account
-- Commit changes to the repository
-- Push the changes to the repository
-  
-
----
-
-Good luck
-
 ---
 <!--- Labs Navigation Start -->  
 <p style="text-align: center;">  
-  <a href="/Labs/007-create-user">:arrow_backward: /Labs/007-create-user</a>
+  <a href="/Labs/005-facts">:arrow_backward: /Labs/005-facts</a>
   &emsp;<a href="/Labs">Back to labs list</a>
-  &emsp;<a href="/Labs/009-roles">/Labs/009-roles :arrow_forward:</a>
+  &emsp;<a href="/Labs/007-create-user">/Labs/007-create-user :arrow_forward:</a>
 </p>
 <p style="text-align: center; font-size: 12px;">  
 <span style="color: #F04F32;">&copy;</span><span style="color: #2AA9E1;">Code</span><span style="color: #F9B233;">Wizard</span> 2025
 </p>  
 <!--- Labs Navigation End -->
+
