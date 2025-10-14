@@ -161,3 +161,11 @@ img.height-16px {
   @extend .center;
   width: 150px;
 }
+
+// Utility classes for rounded corners
+// Generate classes for border-radius values from 5px to 25px
+@for $i from 5 through 25 {
+  .border-radius-#{$i} {
+    border-radius: #{$i}px;
+  }
+}

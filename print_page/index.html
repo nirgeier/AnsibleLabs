@@ -642,8 +642,11 @@
 </div>
 <div class="tabbed-block">
 <p>The easiest way to get started with the labs:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#index-__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>Labs/000-setup
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#index-__codelineno-1-2"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#index-__codelineno-1-1"></a><span class="c1"># Change to the Labs directory</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#index-__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>Labs/000-setup
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#index-__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#index-__codelineno-1-4"></a><span class="c1"># Run the setup lab using Docker Compose</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#index-__codelineno-1-5"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
 </span></code></pre></div>
 <p><strong>Prerequisites:</strong></p>
 <ul>
@@ -678,7 +681,6 @@
 <li>Enjoy, and don&rsquo;t forget to star the project on GitHub!</li>
 </ul>
 </div>
-<hr />
 <h2 id="index-preface">Preface</h2>
 <h3 id="index-what-is-ansible">What is Ansible?</h3>
 <ul>
@@ -687,7 +689,7 @@
 <li>The most powerful feature of Ansible is the ability to manage huge scale of servers regardless of their infrastructure (on prem, cloud, vm etc)</li>
 </ul>
 <h3 id="index-how-ansible-works">How Ansible Works</h3>
-<p><img alt="" src="../assets/images/ansible-architecture-diagram.png" /></p>
+<p><img src="../assets/images/ansible-architecture-diagram.png" class="border-radius-20" alt="Ansible Architecture Diagram"/></p>
 <ul>
 <li>Ansible is an <code>agentless tool</code>.</li>
 <li>Ansible uses <code>ssh</code> for <code>pulling modules</code> and for managing the nodes</li>

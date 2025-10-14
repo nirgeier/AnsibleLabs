@@ -163,6 +163,90 @@ img.height-16px {
   width: 150px;
 }
 
+.border-radius-5 {
+  border-radius: 5px;
+}
+
+.border-radius-6 {
+  border-radius: 6px;
+}
+
+.border-radius-7 {
+  border-radius: 7px;
+}
+
+.border-radius-8 {
+  border-radius: 8px;
+}
+
+.border-radius-9 {
+  border-radius: 9px;
+}
+
+.border-radius-10 {
+  border-radius: 10px;
+}
+
+.border-radius-11 {
+  border-radius: 11px;
+}
+
+.border-radius-12 {
+  border-radius: 12px;
+}
+
+.border-radius-13 {
+  border-radius: 13px;
+}
+
+.border-radius-14 {
+  border-radius: 14px;
+}
+
+.border-radius-15 {
+  border-radius: 15px;
+}
+
+.border-radius-16 {
+  border-radius: 16px;
+}
+
+.border-radius-17 {
+  border-radius: 17px;
+}
+
+.border-radius-18 {
+  border-radius: 18px;
+}
+
+.border-radius-19 {
+  border-radius: 19px;
+}
+
+.border-radius-20 {
+  border-radius: 20px;
+}
+
+.border-radius-21 {
+  border-radius: 21px;
+}
+
+.border-radius-22 {
+  border-radius: 22px;
+}
+
+.border-radius-23 {
+  border-radius: 23px;
+}
+
+.border-radius-24 {
+  border-radius: 24px;
+}
+
+.border-radius-25 {
+  border-radius: 25px;
+}
+
 .md-typeset .admonition.note,
 .md-typeset details.note {
   border: 1px solid rgba(0, 0, 0, 0.1); /* Change color and style as needed */
