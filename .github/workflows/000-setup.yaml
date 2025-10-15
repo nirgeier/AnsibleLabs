@@ -1,14 +1,20 @@
-name: 000-setup
+name: Lab-000.yaml
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/000-setup/**"
+      - "Labs/000-setup/**"
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/000-setup/**"
+      - "Labs/000-setup/**"
 
 jobs:
   build:

@@ -1,14 +1,20 @@
-name: 006-git
+name: Lab-006.yaml
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/006-git/**"
+      - "Labs/006-git/**"
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/006-git/**"
+      - "Labs/006-git/**"
 
 jobs:
   build:

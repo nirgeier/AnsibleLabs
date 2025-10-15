@@ -1,14 +1,20 @@
-name: 005-facts
+name: Lab-005.yaml
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/005-facts/**"
+      - "Labs/005-facts/**"
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/005-facts/**"
+      - "Labs/005-facts/**"
 
 jobs:
   build:

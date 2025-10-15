@@ -1,14 +1,20 @@
-name: 009-roles
+name: Lab-009.yaml
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/009-roles/**"
+      - "Labs/009-roles/**"
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/009-roles/**"
+      - "Labs/009-roles/**"
 
 jobs:
   build:

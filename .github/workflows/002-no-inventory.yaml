@@ -1,14 +1,20 @@
-name: 002-no-inventory
+name: Lab-002.yaml
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/002-no-inventory/**"
+      - "Labs/002-no-inventory/**"
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/002-no-inventory/**"
+      - "Labs/002-no-inventory/**"
 
 jobs:
   build:

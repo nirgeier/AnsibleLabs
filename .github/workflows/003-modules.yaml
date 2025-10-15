@@ -1,14 +1,20 @@
-name: 003-modules
+name: Lab-003.yaml
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/003-modules/**"
+      - "Labs/003-modules/**"
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/003-modules/**"
+      - "Labs/003-modules/**"
 
 jobs:
   build:

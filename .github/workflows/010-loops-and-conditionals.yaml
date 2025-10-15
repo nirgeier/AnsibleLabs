@@ -1,14 +1,20 @@
-name: 010-loops-and-conditionals
+name: Lab-010.yaml
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/010-loops-and-conditionals/**"
+      - "Labs/010-loops-and-conditionals/**"
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/010-loops-and-conditionals/**"
+      - "Labs/010-loops-and-conditionals/**"
 
 jobs:
   build:

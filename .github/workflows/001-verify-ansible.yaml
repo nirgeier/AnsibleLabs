@@ -1,14 +1,20 @@
-name: 001-verify-ansible
+name: Lab-001.yaml
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/001-verify-ansible/**"
+      - "Labs/001-verify-ansible/**"
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/001-verify-ansible/**"
+      - "Labs/001-verify-ansible/**"
 
 jobs:
   build:

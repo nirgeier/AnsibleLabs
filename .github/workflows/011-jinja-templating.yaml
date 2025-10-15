@@ -1,14 +1,20 @@
-name: 011-jinja-templating
+name: Lab-011.yaml
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/011-jinja-templating/**"
+      - "Labs/011-jinja-templating/**"
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/011-jinja-templating/**"
+      - "Labs/011-jinja-templating/**"
 
 jobs:
   build:

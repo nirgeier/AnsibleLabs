@@ -2,3 +2,4 @@
 .ssh
 **/runtime/**
 **/*demo*/**
+mkdocs-site/**

@@ -1,14 +1,20 @@
-name: 007-create-user
+name: Lab-007.yaml
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/007-create-user/**"
+      - "Labs/007-create-user/**"
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
     paths:
-      - "**/Labs/007-create-user/**"
+      - "Labs/007-create-user/**"
 
 jobs:
   build:
