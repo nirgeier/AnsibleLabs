@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#index" class="md-skip">
+        <a href="#section-2" class="md-skip">
           Skip to content
         </a>
       
@@ -363,7 +363,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../README.md" class="md-tabs__link">
         
   
   
@@ -384,7 +384,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../000-setup/" class="md-tabs__link">
+        <a href=".." class="md-tabs__link">
           
   
   
@@ -463,7 +463,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../README.md" class="md-nav__link">
         
   
   
@@ -513,6 +513,8 @@
       
         
       
+        
+      
     
     
     
@@ -533,7 +535,7 @@
   
   
   
-    <a href="../000-setup/" class="md-nav__link">
+    <a href=".." class="md-nav__link">
       
   
   
@@ -578,192 +580,82 @@
                 </nav>
             </div>
         </section>
-        <section class="print-page" id="index" heading-number="1"><!-- header start -->
-<div class="center">
-<h1 id="index-ansible-labs">Ansible Labs</h1>
-<p><img src="../assets/images/ansible.png" style="width:150px;"></p>
-</div>
-<hr />
-<p><img src="../assets/images/tldr.png" style="width:100px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"></p>
-<div class="admonition success">
-<p class="admonition-title">Getting Started Tip</p>
-<p>Choose the preferred way to run the labs. If you encounter any issues, please contact your instructor.</p>
-</div>
-<div class="grid cards" style="text-align: center;border-radius: 20px;">
-<ul>
-<li>
-<p><img alt="" src="../assets/images/docker.png" />
-  <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#index-__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span><span class="m">000</span>-setup<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
-</span></code></pre></div></p>
-</li>
-<li>
-<p><img alt="" class="height-64px" src="../assets/images/killercoda.png" /><br/><br/>
-  <a target="_blank" href="https://killercoda.com/codewizard/scenario/Ansible">Launch on KillerCoda</a></p>
-</li>
-</ul>
-</div>
-<h2 id="index-intro">Intro</h2>
-<ul>
-<li>This tutorial is for teaching Ansible through hands-on labs designed as practical exercises.</li>
-<li>Each lab is packaged in its own folder and includes the files, playbooks, and assets required to complete the lab.</li>
-<li>Every lab folder includes a <code>README</code> that describes the lab&rsquo;s objectives, tasks, and how to verify the solution.</li>
-<li>The Ansible Labs are a series of Ansible automation exercises designed to teach players Ansible skills &amp; features.</li>
-<li>The inspiration for this project is to provide practical learning experiences for Ansible.</li>
-</ul>
-<h2 id="index-pre-requirements">Pre-Requirements</h2>
-<ul>
-<li>This tutorial will test your <code>Ansible</code> and <code>Linux</code> skills.</li>
-<li>You should be familiar with the following topics:<ul>
-<li>Basic Linux commands</li>
-<li>Linux File system navigation</li>
-<li>Basic knowledge of <code>Docker</code> (if you choose to run it with Docker)</li>
-<li>Basic knowledge of YAML</li>
-</ul>
-</li>
-<li>For advanced Labs: <ul>
-<li><code>Ansible</code> basics (<code>inventory</code>, <code>playbooks</code>, <code>modules</code>)</li>
-</ul>
-</li>
-</ul>
-<h2 id="index-usage">Usage</h2>
-<p>There are several ways to run the Ansible Labs. Choose the method that works best for your environment:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="index-__tabbed_1_1" name="index-__tabbed_1" type="radio" /><input id="index-__tabbed_1_2" name="index-__tabbed_1" type="radio" /><input id="index-__tabbed_1_3" name="index-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="index-__tabbed_1_1"><img alt="" class="" height-16px="height-16px" src="../assets/images/killercoda-icon.png" /> Method 1: Killercoda  (Recommended)</label><label for="index-__tabbed_1_2">🐳 Method 2: Docker</label><label for="index-__tabbed_1_3">💻 Method 3: Local Installation</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Learn Ansible in your browser without any local installation:</p>
-<p>🌐 <strong><a href="https://killercoda.com/codewizard/scenario/Ansible">Launch on Killercoda</a></strong></p>
-<p><strong>Benefits:</strong></p>
-<ul>
-<li>No installation required</li>
-<li>Pre-configured environment</li>
-<li>Works on any device with a web browser</li>
-<li>All tools pre-installed</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<p>The easiest way to get started with the labs:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#index-__codelineno-1-1"></a><span class="c1"># Change to the Labs directory</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#index-__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>Labs/000-setup
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#index-__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#index-__codelineno-1-4"></a><span class="c1"># Run the setup lab using Docker Compose</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#index-__codelineno-1-5"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
-</span></code></pre></div>
-<p><strong>Prerequisites:</strong></p>
-<ul>
-<li>Docker and Docker Compose installed on your system</li>
-<li>No additional setup required</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<p>For those who prefer to run it directly on their machine:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#index-__codelineno-2-1"></a><span class="c1"># Clone the repository</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#index-__codelineno-2-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nirgeier/AnsibleLabs.git
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#index-__codelineno-2-3"></a><span class="c1"># Change to the Labs directory</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#index-__codelineno-2-4"></a><span class="nb">cd</span><span class="w"> </span>AnsibleLabs/Labs
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#index-__codelineno-2-5"></a><span class="c1"># Start with the setup lab</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#index-__codelineno-2-6"></a><span class="nb">cd</span><span class="w"> </span><span class="m">000</span>-setup
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#index-__codelineno-2-7"></a><span class="c1"># Follow the instructions in the README of each lab</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#index-__codelineno-2-8"></a>cat<span class="w"> </span>README.md
-</span></code></pre></div>
-<strong>Prerequisites:</strong></p>
-<ul>
-<li>Ansible installed on your system</li>
-<li>A Unix-like operating system (Linux, macOS, or Windows with WSL)</li>
-<li>Basic command-line tools</li>
-</ul>
-</div>
-</div>
-</div>
-<hr />
-<div class="admonition warning">
-<ul>
-<li>Ensure you have the necessary permissions to run Docker commands or Ansible playbooks on your system.</li>
-<li>Enjoy, and don&rsquo;t forget to star the project on GitHub!</li>
-</ul>
-</div>
-<h2 id="index-preface">Preface</h2>
-<h3 id="index-what-is-ansible">What is Ansible?</h3>
-<ul>
-<li>Ansible is <code>Configuration Management</code> tool which manage the <code>state</code> of our servers, install the required packages and tools.</li>
-<li>Other optional use cases can be  <code>deployments</code>, <code>Provisioning new servers</code></li>
-<li>The most powerful feature of Ansible is the ability to manage huge scale of servers regardless of their infrastructure (on prem, cloud, vm etc)</li>
-</ul>
-<h3 id="index-how-ansible-works">How Ansible Works</h3>
-<p><img src="../assets/images/ansible-architecture-diagram.png" class="border-radius-20" alt="Ansible Architecture Diagram"/></p>
-<ul>
-<li>Ansible is an <code>agentless tool</code>.</li>
-<li>Ansible uses <code>ssh</code> for <code>pulling modules</code> and for managing the nodes</li>
-<li>Ansible is based upon <code>YAML</code> </li>
-<li>An <code>Ansible playbook</code> is a file that contains a set of instructions that Ansible can use to automate tasks on remote hosts.</li>
-<li><code>Playbooks</code> are written in <code>YAML</code>, a human-readable markup language. A playbook typically consists of one or more <code>plays</code>, a collection of tasks run in sequence.</li>
-</ul>
-<hr />
-<h3 id="index-how-ansible-playbooks-work">How Ansible Playbooks Work</h3>
-<ul>
-<li>Here’s a brief overview of how <code>Ansible playbooks</code> work:</li>
-</ul>
-<div class="grid cards">
-<ul>
-<li>
-<h4 id="index-playbook-structure">Playbook Structure</h4>
-<ul>
-<li>
-<p>A playbook is composed of one or more &lsquo;plays&rsquo; in an ordered list. </p>
-</li>
-<li>
-<p>Each play executes part of the overall goal of the playbook, running one or more tasks. </p>
-</li>
-<li>Each task calls an Ansible module.</li>
-</ul>
-</li>
-<li>
-<h4 id="index-playbook-execution">Playbook Execution</h4>
-<ul>
-<li>
-<p>A playbook runs in order from top to bottom. </p>
-</li>
-<li>
-<p>Within each play, tasks also run in order from top to bottom. </p>
-</li>
-<li>
-<p>Playbooks with multiple &lsquo;plays&rsquo; can orchestrate multi-machine deployments.</p>
-</li>
-</ul>
-</li>
-<li>
-<h4 id="index-task-execution">Task Execution</h4>
-<ul>
-<li>
-<p>Tasks are executed by modules, each of which performs a specific task in a playbook.</p>
-</li>
-<li>
-<p>There are thousands of Ansible modules that perform all kinds of IT tasks.</p>
-</li>
-</ul>
-</li>
-<li>
-<h4 id="index-reusability">Reusability</h4>
-<ul>
-<li>
-<p>Playbooks offer a repeatable, reusable, simple configuration management and multi-machine deployment system.</p>
-</li>
-<li>
-<p>If you need to execute a task with Ansible more than once, write a playbook and put it under source control.</p>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<ul>
-<li>Playbooks are <strong>one of the core features of Ansible</strong> and tell Ansible what to execute.</li>
-<li>They are used in complex scenarios.</li>
-<li>They serve as frameworks of pre-written code that developers can use ad-hoc or as a starting template.</li>
-<li>They can be saved, shared, or reused indefinitely, making it easier for IT teams to codify operational knowledge and ensure that the same actions are performed consistently.</li>
-</ul></section>
+        
                     <section class='print-page md-section' id='section-2' heading-number='2'>
                         <h1>Labs<a class='headerlink' href='#section-2' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="000-setup" heading-number="2.1"><p><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/000-setup.yaml" target="_blank">
+                    <section class="print-page" id="index" heading-number="2.1"><h1 id="index-list-of-labs">List of Labs</h1>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th>Summary</th>
+<th>Build Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#000-setup">Lab 000 - Setup</a></td>
+<td>Setup lab environment with Ansible controller and Linux servers using Docker containers.</td>
+<td><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/000-setup.yaml"><img alt="Build Status" src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/000-setup.yaml/badge.svg" /></a></td>
+</tr>
+<tr>
+<td><a href="#001-verify-ansible">Lab 001 - Verify Ansible Configuration</a></td>
+<td>Verify Ansible configuration by creating and testing ansible.cfg, inventory, and ssh.config files.</td>
+<td><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/001-verify-ansible.yaml"><img alt="Build Status" src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/001-verify-ansible.yaml/badge.svg" /></a></td>
+</tr>
+<tr>
+<td><a href="#002-no-inventory">Lab 002 - No Inventory Example</a></td>
+<td>Demonstrate the importance of inventory by showing behavior without it and then configuring one.</td>
+<td><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/002-no-inventory.yaml"><img alt="Build Status" src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/002-no-inventory.yaml/badge.svg" /></a></td>
+</tr>
+<tr>
+<td><a href="#003-modules">Lab 003 - Commands &amp; Modules</a></td>
+<td>Learn about Ansible modules, focusing on the ping module and ad-hoc commands.</td>
+<td><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/003-modules.yaml"><img alt="Build Status" src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/003-modules.yaml/badge.svg" /></a></td>
+</tr>
+<tr>
+<td><a href="#004-playbooks">Lab 004 - Playbooks</a></td>
+<td>Introduction to Ansible playbooks, their structure, and basic usage.</td>
+<td><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/004-playbooks.yaml"><img alt="Build Status" src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/004-playbooks.yaml/badge.svg" /></a></td>
+</tr>
+<tr>
+<td><a href="#005-facts">Lab 005 - Facts</a></td>
+<td>Learn about Ansible facts, how to gather and use them in playbooks.</td>
+<td><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/005-facts.yaml"><img alt="Build Status" src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/005-facts.yaml/badge.svg" /></a></td>
+</tr>
+<tr>
+<td><a href="#006-git">Lab 006 - Git</a></td>
+<td>Hands-on lab to create a playbook for installing Git and cloning repositories.</td>
+<td><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/006-git.yaml"><img alt="Build Status" src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/006-git.yaml/badge.svg" /></a></td>
+</tr>
+<tr>
+<td><a href="#007-create-user">Lab 007 - Create User</a></td>
+<td>Hands-on lab to create a playbook for creating users on remote systems.</td>
+<td><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/007-create-user.yaml"><img alt="Build Status" src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/007-create-user.yaml/badge.svg" /></a></td>
+</tr>
+<tr>
+<td><a href="#008-challenges">Lab 008 - Challenges</a></td>
+<td>Challenge lab combining user creation and Git operations.</td>
+<td><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/008-challanges.yaml"><img alt="Build Status" src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/008-challanges.yaml/badge.svg" /></a></td>
+</tr>
+<tr>
+<td><a href="#009-roles">Lab 009 - Roles</a></td>
+<td>Learn about Ansible roles, their structure, and how to create and use them.</td>
+<td><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/009-roles.yaml"><img alt="Build Status" src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/009-roles.yaml/badge.svg" /></a></td>
+</tr>
+<tr>
+<td><a href="#010-loops-and-conditionals">Lab 010 - Loops and Conditionals</a></td>
+<td>Learn about loops and conditional statements in Ansible playbooks.</td>
+<td><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/010-loops-and-conditionals.yaml"><img alt="Build Status" src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/010-loops-and-conditionals.yaml/badge.svg" /></a></td>
+</tr>
+<tr>
+<td><a href="#011-jinja-templating">Lab 011 - Jinja2 Templating</a></td>
+<td>Learn about Jinja2 templating for dynamic configuration files in Ansible.</td>
+<td><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/011-jinja-templating.yaml"><img alt="Build Status" src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/011-jinja-templating.yaml/badge.svg?label=%20" /></a></td>
+</tr>
+</tbody>
+</table></section><section class="print-page" id="000-setup" heading-number="2.2"><p><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/000-setup.yaml" target="_blank">
   <img src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/000-setup.yaml/badge.svg" alt="Build Status">
   </a></p>
 <hr />
@@ -902,7 +794,7 @@ The setup include the following containers:</p>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#000-setup-__codelineno-1-7"></a>nirgeier/linux-server<span class="w">       </span><span class="m">0</span>.0.0.0:3001-&gt;22/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:5001-&gt;5000/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:8081-&gt;8080/tcp<span class="w">   </span>linux-server-1
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#000-setup-__codelineno-1-8"></a>nirgeier/linux-server<span class="w">       </span><span class="m">0</span>.0.0.0:3002-&gt;22/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:5002-&gt;5000/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:8082-&gt;8080/tcp<span class="w">   </span>linux-server-2
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#000-setup-__codelineno-1-9"></a>nirgeier/linux-server<span class="w">       </span><span class="m">0</span>.0.0.0:3003-&gt;22/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:5003-&gt;5000/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:8083-&gt;8080/tcp<span class="w">   </span>linux-server-3
-</span></code></pre></div></section><section class="print-page" id="001-verify-ansible" heading-number="2.2"><h1 id="001-verify-ansible-lab-001-verify-ansible-configuration">Lab 001 - Verify ansible configuration</h1>
+</span></code></pre></div></section><section class="print-page" id="001-verify-ansible" heading-number="2.3"><h1 id="001-verify-ansible-lab-001-verify-ansible-configuration">Lab 001 - Verify ansible configuration</h1>
 <ul>
 <li>In this lab we will create the ansible configuration and will verify that the configuration is correct</li>
 <li>This lab is based upon the <a href="#000-setup">previous lab</a> and its <code>docker-compose</code></li>
@@ -1267,7 +1159,7 @@ You&rsquo;re encouraged to review  the <a href="../000-setup/docker-compose.yaml
     &emsp;<a href="#labs">Back to labs list</a>
     &emsp;<a href="#labs-002-no-inventory">/Labs/002-no-inventory :arrow_forward:</a>
 </p>
-<!--- Labs Navigation End --></section><section class="print-page" id="002-no-inventory" heading-number="2.3"><div align="center">
+<!--- Labs Navigation End --></section><section class="print-page" id="002-no-inventory" heading-number="2.4"><div align="center">
     <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
 
   ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
@@ -1478,7 +1370,7 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
     &emsp;<a href="#labs">Back to labs list</a>
     &emsp;<a href="#labs-003-modules">/Labs/003-modules :arrow_forward:</a>
 </p>
-<!--- Labs Navigation End --></section><section class="print-page" id="003-modules" heading-number="2.4"><div align="center">
+<!--- Labs Navigation End --></section><section class="print-page" id="003-modules" heading-number="2.5"><div align="center">
     <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
 
   ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
@@ -1771,7 +1663,7 @@ This is a module that Execute shell commands on targets</p>
     &emsp;<a href="#labs">Back to labs list</a>
     &emsp;<a href="#labs-004-playbooks">/Labs/004-playbooks :arrow_forward:</a>
 </p>
-<!--- Labs Navigation End --></section><section class="print-page" id="004-playbooks" heading-number="2.5"><div align="center">
+<!--- Labs Navigation End --></section><section class="print-page" id="004-playbooks" heading-number="2.6"><div align="center">
     <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
 
   ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
@@ -2235,7 +2127,7 @@ It is done to prevent naming collision between builtin modules and community/sel
     &emsp;<a href="#labs">Back to labs list</a>
     &emsp;<a href="#labs-005-facts">/Labs/005-facts :arrow_forward:</a>
 </p>
-<!--- Labs Navigation End --></section><section class="print-page" id="005-facts" heading-number="2.6"><div align="center">
+<!--- Labs Navigation End --></section><section class="print-page" id="005-facts" heading-number="2.7"><div align="center">
     <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
 
   ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
@@ -2431,7 +2323,7 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
     &emsp;<a href="#labs">Back to labs list</a>
     &emsp;<a href="#labs-006-git">/Labs/006-git :arrow_forward:</a>
 </p>
-<!--- Labs Navigation End --></section><section class="print-page" id="006-git" heading-number="2.7"><div align="center">
+<!--- Labs Navigation End --></section><section class="print-page" id="006-git" heading-number="2.8"><div align="center">
     <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
 
   ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
@@ -2463,7 +2355,7 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
     &emsp;<a href="#labs">Back to labs list</a>
     &emsp;<a href="#labs-007-create-user">/Labs/007-create-user :arrow_forward:</a>
 </p>
-<!--- Labs Navigation End --></section><section class="print-page" id="007-create-user" heading-number="2.8"><div align="center">
+<!--- Labs Navigation End --></section><section class="print-page" id="007-create-user" heading-number="2.9"><div align="center">
     <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
 
   ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
@@ -2496,7 +2388,7 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
     &emsp;<a href="#labs">Back to labs list</a>
     &emsp;<a href="#labs-008-challanges">/Labs/008-challanges :arrow_forward:</a>
 </p>
-<!--- Labs Navigation End --></section><section class="print-page" id="008-challenges" heading-number="2.9"><div align="center">
+<!--- Labs Navigation End --></section><section class="print-page" id="008-challenges" heading-number="2.10"><div align="center">
     <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
 
   ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
@@ -2539,7 +2431,7 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
     &emsp;<a href="#labs">Back to labs list</a>
     &emsp;<a href="#labs-009-roles">/Labs/009-roles :arrow_forward:</a>
 </p>
-<!--- Labs Navigation End --></section><section class="print-page" id="009-roles" heading-number="2.10"><div align="center">
+<!--- Labs Navigation End --></section><section class="print-page" id="009-roles" heading-number="2.11"><div align="center">
     <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
 
   ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
@@ -2838,7 +2730,7 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
     &emsp;<a href="#labs">Back to labs list</a>
     &emsp;<a href="#labs-010-loops-and-conditionals">/Labs/010-loops-and-conditionals :arrow_forward:</a>
 </p>
-<!--- Labs Navigation End --></section><section class="print-page" id="010-loops-and-conditionals" heading-number="2.11"><div align="center">
+<!--- Labs Navigation End --></section><section class="print-page" id="010-loops-and-conditionals" heading-number="2.12"><div align="center">
     <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
 
   ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
@@ -2987,7 +2879,7 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
     &emsp;<a href="#labs">Back to labs list</a>
     &emsp;<a href="#labs-011-jinja-templating">/Labs/011-jinja-templating :arrow_forward:</a>
 </p>
-<!--- Labs Navigation End --></section><section class="print-page" id="011-jinja-templating" heading-number="2.12"><p><img alt="" src="../../resources/ansible_logo.png" /></p>
+<!--- Labs Navigation End --></section><section class="print-page" id="011-jinja-templating" heading-number="2.13"><p><img alt="" src="../../resources/ansible_logo.png" /></p>
 <p><a href="https://stackoverflow.com/users/1755598"><img src="https://stackexchange.com/users/flair/1951642.png" width="208" height="58" alt="profile for CodeWizard on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for CodeWizard on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a></p>
 <p><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/004-playbooks.yaml"><img src="https://img.shields.io/github/actions/workflow/status/nirgeier/AnsibleLabs/004-playbooks.yaml?branch=main&style=flat" style="height: 20px;"></a> <img alt="Visitor Badge" src="https://visitor-badge.laobi.icu/badge?page_id=nirgeier" /> <a href="https://www.linkedin.com/in/nirgeier/"><img alt="Linkedin Badge" src="https://img.shields.io/badge/-nirgeier-blue?style=flat&amp;logo=Linkedin&amp;logoColor=white&amp;link=https://www.linkedin.com/in/nirgeier/" /></a> <a href="mailto:nirgeier@gmail.com"><img alt="Gmail Badge" src="https://img.shields.io/badge/-nirgeier@gmail.com-fcc624?style=plastic&amp;logo=Gmail&amp;logoColor=red&amp;link=mailto:nirgeier@gmail.com" /></a> <a href="mailto:nirg@codewizard.co.il"><img alt="Outlook Badge" src="https://img.shields.io/badge/-nirg@codewizard.co.il-fcc624?style=plastic&amp;logo=microsoftoutlook&amp;logoColor=blue&amp;link=mailto:nirg@codewizard.co.il" /></a></p>
 <hr />
@@ -3104,73 +2996,70 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
     &emsp;<a href="#labs">Back to labs list</a>
     &emsp;<a href="#labs-011-jinja-templating">/Labs/011-jinja-templating :arrow_forward:</a>
 </p>
-<!--- Labs Navigation End --></section></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+<!--- Labs Navigation End --></section></section></div><style>.print-site-enumerate-headings #section-2 > h1:before { content: '2 ' }
+.print-site-enumerate-headings #index > h1:before { content: '2.1 ' }
 
-                .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
-                .print-site-enumerate-headings #index h2 {  counter-reset: counter-index-3 ;  counter-increment: counter-index-2 }
+                .print-site-enumerate-headings #index h2:before { content: '2.1.' counter(counter-index-2) ' ' }
+                .print-site-enumerate-headings #index h2 {  counter-increment: counter-index-2 }
             
-                .print-site-enumerate-headings #index h3:before { content: '1.' counter(counter-index-2) '.' counter(counter-index-3) ' ' }
-                .print-site-enumerate-headings #index h3 {  counter-increment: counter-index-3 }
-            
-.print-site-enumerate-headings #section-2 > h1:before { content: '2 ' }
-.print-site-enumerate-headings #000-setup > h1:before { content: '2.1 ' }
+.print-site-enumerate-headings #000-setup > h1:before { content: '2.2 ' }
 
-                .print-site-enumerate-headings #000-setup h2:before { content: '2.1.' counter(counter-000-setup-2) ' ' }
+                .print-site-enumerate-headings #000-setup h2:before { content: '2.2.' counter(counter-000-setup-2) ' ' }
                 .print-site-enumerate-headings #000-setup h2 {  counter-increment: counter-000-setup-2 }
             
-.print-site-enumerate-headings #001-verify-ansible > h1:before { content: '2.2 ' }
+.print-site-enumerate-headings #001-verify-ansible > h1:before { content: '2.3 ' }
 
-                .print-site-enumerate-headings #001-verify-ansible h2:before { content: '2.2.' counter(counter-001-verify-ansible-2) ' ' }
+                .print-site-enumerate-headings #001-verify-ansible h2:before { content: '2.3.' counter(counter-001-verify-ansible-2) ' ' }
                 .print-site-enumerate-headings #001-verify-ansible h2 {  counter-increment: counter-001-verify-ansible-2 }
             
-.print-site-enumerate-headings #002-no-inventory > h1:before { content: '2.3 ' }
+.print-site-enumerate-headings #002-no-inventory > h1:before { content: '2.4 ' }
 
-                .print-site-enumerate-headings #002-no-inventory h2:before { content: '2.3.' counter(counter-002-no-inventory-2) ' ' }
+                .print-site-enumerate-headings #002-no-inventory h2:before { content: '2.4.' counter(counter-002-no-inventory-2) ' ' }
                 .print-site-enumerate-headings #002-no-inventory h2 {  counter-increment: counter-002-no-inventory-2 }
             
-.print-site-enumerate-headings #003-modules > h1:before { content: '2.4 ' }
+.print-site-enumerate-headings #003-modules > h1:before { content: '2.5 ' }
 
-                .print-site-enumerate-headings #003-modules h2:before { content: '2.4.' counter(counter-003-modules-2) ' ' }
+                .print-site-enumerate-headings #003-modules h2:before { content: '2.5.' counter(counter-003-modules-2) ' ' }
                 .print-site-enumerate-headings #003-modules h2 {  counter-increment: counter-003-modules-2 }
             
-.print-site-enumerate-headings #004-playbooks > h1:before { content: '2.5 ' }
+.print-site-enumerate-headings #004-playbooks > h1:before { content: '2.6 ' }
 
-                .print-site-enumerate-headings #004-playbooks h2:before { content: '2.5.' counter(counter-004-playbooks-2) ' ' }
+                .print-site-enumerate-headings #004-playbooks h2:before { content: '2.6.' counter(counter-004-playbooks-2) ' ' }
                 .print-site-enumerate-headings #004-playbooks h2 {  counter-increment: counter-004-playbooks-2 }
             
-.print-site-enumerate-headings #005-facts > h1:before { content: '2.6 ' }
+.print-site-enumerate-headings #005-facts > h1:before { content: '2.7 ' }
 
-                .print-site-enumerate-headings #005-facts h2:before { content: '2.6.' counter(counter-005-facts-2) ' ' }
+                .print-site-enumerate-headings #005-facts h2:before { content: '2.7.' counter(counter-005-facts-2) ' ' }
                 .print-site-enumerate-headings #005-facts h2 {  counter-increment: counter-005-facts-2 }
             
-.print-site-enumerate-headings #006-git > h1:before { content: '2.7 ' }
+.print-site-enumerate-headings #006-git > h1:before { content: '2.8 ' }
 
-                .print-site-enumerate-headings #006-git h2:before { content: '2.7.' counter(counter-006-git-2) ' ' }
+                .print-site-enumerate-headings #006-git h2:before { content: '2.8.' counter(counter-006-git-2) ' ' }
                 .print-site-enumerate-headings #006-git h2 {  counter-increment: counter-006-git-2 }
             
-.print-site-enumerate-headings #007-create-user > h1:before { content: '2.8 ' }
+.print-site-enumerate-headings #007-create-user > h1:before { content: '2.9 ' }
 
-                .print-site-enumerate-headings #007-create-user h2:before { content: '2.8.' counter(counter-007-create-user-2) ' ' }
+                .print-site-enumerate-headings #007-create-user h2:before { content: '2.9.' counter(counter-007-create-user-2) ' ' }
                 .print-site-enumerate-headings #007-create-user h2 {  counter-increment: counter-007-create-user-2 }
             
-.print-site-enumerate-headings #008-challenges > h1:before { content: '2.9 ' }
+.print-site-enumerate-headings #008-challenges > h1:before { content: '2.10 ' }
 
-                .print-site-enumerate-headings #008-challenges h2:before { content: '2.9.' counter(counter-008-challenges-2) ' ' }
+                .print-site-enumerate-headings #008-challenges h2:before { content: '2.10.' counter(counter-008-challenges-2) ' ' }
                 .print-site-enumerate-headings #008-challenges h2 {  counter-increment: counter-008-challenges-2 }
             
-.print-site-enumerate-headings #009-roles > h1:before { content: '2.10 ' }
+.print-site-enumerate-headings #009-roles > h1:before { content: '2.11 ' }
 
-                .print-site-enumerate-headings #009-roles h2:before { content: '2.10.' counter(counter-009-roles-2) ' ' }
+                .print-site-enumerate-headings #009-roles h2:before { content: '2.11.' counter(counter-009-roles-2) ' ' }
                 .print-site-enumerate-headings #009-roles h2 {  counter-increment: counter-009-roles-2 }
             
-.print-site-enumerate-headings #010-loops-and-conditionals > h1:before { content: '2.11 ' }
+.print-site-enumerate-headings #010-loops-and-conditionals > h1:before { content: '2.12 ' }
 
-                .print-site-enumerate-headings #010-loops-and-conditionals h2:before { content: '2.11.' counter(counter-010-loops-and-conditionals-2) ' ' }
+                .print-site-enumerate-headings #010-loops-and-conditionals h2:before { content: '2.12.' counter(counter-010-loops-and-conditionals-2) ' ' }
                 .print-site-enumerate-headings #010-loops-and-conditionals h2 {  counter-increment: counter-010-loops-and-conditionals-2 }
             
-.print-site-enumerate-headings #011-jinja-templating > h1:before { content: '2.12 ' }
+.print-site-enumerate-headings #011-jinja-templating > h1:before { content: '2.13 ' }
 
-                .print-site-enumerate-headings #011-jinja-templating h2:before { content: '2.12.' counter(counter-011-jinja-templating-2) ' ' }
+                .print-site-enumerate-headings #011-jinja-templating h2:before { content: '2.13.' counter(counter-011-jinja-templating-2) ' ' }
                 .print-site-enumerate-headings #011-jinja-templating h2 {  counter-increment: counter-011-jinja-templating-2 }
             </style>
 <!--
