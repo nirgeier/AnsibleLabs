@@ -94,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#section-2" class="md-skip">
+        <a href="#welcome" class="md-skip">
           Skip to content
         </a>
       
@@ -363,7 +363,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../README.md" class="md-tabs__link">
+      <a href="../welcome/" class="md-tabs__link">
         
   
   
@@ -463,7 +463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../README.md" class="md-nav__link">
+      <a href="../welcome/" class="md-nav__link">
         
   
   
@@ -580,7 +580,191 @@
                 </nav>
             </div>
         </section>
-        
+        <section class="print-page" id="welcome" heading-number="1"><!-- header start -->
+<div class="center">
+<h1 id="welcome-ansible-labs">Ansible Labs</h1>
+<p><img src="../assets/images/ansible.png" style="width:150px;"></p>
+</div>
+<hr />
+<p><img src="../assets/images/tldr.png" style="width:100px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"></p>
+<div class="admonition success">
+<p class="admonition-title">Getting Started Tip</p>
+<p>Choose the preferred way to run the labs. If you encounter any issues, please contact your instructor.</p>
+</div>
+<div class="grid cards" style="text-align: center;border-radius: 20px;">
+<ul>
+<li>
+<p><img alt="" src="../assets/images/docker.png" />
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#welcome-__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span><span class="m">000</span>-setup<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</span></code></pre></div></p>
+</li>
+<li>
+<p><img alt="" class="height-64px" src="../assets/images/killercoda.png" /><br/><br/>
+  <a target="_blank" href="https://killercoda.com/codewizard/scenario/Ansible">Launch on KillerCoda</a></p>
+</li>
+</ul>
+</div>
+<h2 id="welcome-intro">Intro</h2>
+<ul>
+<li>This tutorial is for teaching Ansible through hands-on labs designed as practical exercises.</li>
+<li>Each lab is packaged in its own folder and includes the files, playbooks, and assets required to complete the lab.</li>
+<li>Every lab folder includes a <code>README</code> that describes the lab&rsquo;s objectives, tasks, and how to verify the solution.</li>
+<li>The Ansible Labs are a series of Ansible automation exercises designed to teach players Ansible skills &amp; features.</li>
+<li>The inspiration for this project is to provide practical learning experiences for Ansible.</li>
+</ul>
+<h2 id="welcome-pre-requirements">Pre-Requirements</h2>
+<ul>
+<li>This tutorial will test your <code>Ansible</code> and <code>Linux</code> skills.</li>
+<li>You should be familiar with the following topics:<ul>
+<li>Basic Linux commands</li>
+<li>Linux File system navigation</li>
+<li>Basic knowledge of <code>Docker</code> (if you choose to run it with Docker)</li>
+<li>Basic knowledge of YAML</li>
+</ul>
+</li>
+<li>For advanced Labs: <ul>
+<li><code>Ansible</code> basics (<code>inventory</code>, <code>playbooks</code>, <code>modules</code>)</li>
+</ul>
+</li>
+</ul>
+<h2 id="welcome-usage">Usage</h2>
+<p>There are several ways to run the Ansible Labs. Choose the method that works best for your environment:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="welcome-__tabbed_1_1" name="welcome-__tabbed_1" type="radio" /><input id="welcome-__tabbed_1_2" name="welcome-__tabbed_1" type="radio" /><input id="welcome-__tabbed_1_3" name="welcome-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="welcome-__tabbed_1_1"><img alt="" class="" height-16px="height-16px" src="../assets/images/killercoda-icon.png" /> Method 1: Killercoda  (Recommended)</label><label for="welcome-__tabbed_1_2">🐳 Method 2: Docker</label><label for="welcome-__tabbed_1_3">💻 Method 3: Local Installation</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Learn Ansible in your browser without any local installation:</p>
+<p>🌐 <strong><a href="https://killercoda.com/codewizard/scenario/Ansible">Launch on Killercoda</a></strong></p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>No installation required</li>
+<li>Pre-configured environment</li>
+<li>Works on any device with a web browser</li>
+<li>All tools pre-installed</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>The easiest way to get started with the labs:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#welcome-__codelineno-1-1"></a><span class="c1"># Change to the Labs directory</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#welcome-__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>Labs/000-setup
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#welcome-__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#welcome-__codelineno-1-4"></a><span class="c1"># Run the setup lab using Docker Compose</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#welcome-__codelineno-1-5"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</span></code></pre></div>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Docker and Docker Compose installed on your system</li>
+<li>No additional setup required</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>For those who prefer to run it directly on their machine:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#welcome-__codelineno-2-1"></a><span class="c1"># Clone the repository</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#welcome-__codelineno-2-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nirgeier/AnsibleLabs.git
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#welcome-__codelineno-2-3"></a><span class="c1"># Change to the Labs directory</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#welcome-__codelineno-2-4"></a><span class="nb">cd</span><span class="w"> </span>AnsibleLabs/Labs
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#welcome-__codelineno-2-5"></a><span class="c1"># Start with the setup lab</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#welcome-__codelineno-2-6"></a><span class="nb">cd</span><span class="w"> </span><span class="m">000</span>-setup
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#welcome-__codelineno-2-7"></a><span class="c1"># Follow the instructions in the README of each lab</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#welcome-__codelineno-2-8"></a>cat<span class="w"> </span>README.md
+</span></code></pre></div>
+<strong>Prerequisites:</strong></p>
+<ul>
+<li>Ansible installed on your system</li>
+<li>A Unix-like operating system (Linux, macOS, or Windows with WSL)</li>
+<li>Basic command-line tools</li>
+</ul>
+</div>
+</div>
+</div>
+<hr />
+<div class="admonition warning">
+<ul>
+<li>Ensure you have the necessary permissions to run Docker commands or Ansible playbooks on your system.</li>
+<li>Enjoy, and don&rsquo;t forget to star the project on GitHub!</li>
+</ul>
+</div>
+<h2 id="welcome-preface">Preface</h2>
+<h3 id="welcome-what-is-ansible">What is Ansible?</h3>
+<ul>
+<li><code>Ansible</code> is an open-source automation tool for IT tasks such as configuration management, application deployment, and task automation. </li>
+<li><code>Ansible</code> is <code>Configuration Management</code> tool which manage the <code>state</code> of our servers, install the required packages and tools.</li>
+<li>Other optional use cases can be  <code>deployments</code>, <code>Provisioning new servers</code></li>
+<li>The most powerful feature of <code>Ansible</code> is the ability to manage huge scale of servers regardless of their infrastructure (on prem, cloud, vm etc)</li>
+<li><code>Ansible</code> uses SSH to connect to servers and execute tasks defined in YAML playbooks, making it agentless and easy to use. </li>
+<li><code>Ansible</code> is widely used for managing infrastructure, ensuring consistency, and automating repetitive processes across various environments (on-premises, cloud, VMs, etc.).</li>
+</ul>
+<h3 id="welcome-how-ansible-works">How Ansible Works</h3>
+<p><img src="../welcome/assets/images/ansible-architecture-diagram.png" class="border-radius-20" alt="Ansible Architecture Diagram"/></p>
+<ul>
+<li>Ansible is an <code>agentless tool</code>.</li>
+<li>Ansible uses <code>ssh</code> for <code>pulling modules</code> and for managing the nodes</li>
+<li>Ansible is based upon <code>YAML</code> </li>
+<li>An <code>Ansible playbook</code> is a file that contains a set of instructions that Ansible can use to automate tasks on remote hosts.</li>
+<li><code>Playbooks</code> are written in <code>YAML</code>, a human-readable markup language. A playbook typically consists of one or more <code>plays</code>, a collection of tasks run in sequence.</li>
+</ul>
+<hr />
+<h3 id="welcome-how-ansible-playbooks-work">How Ansible Playbooks Work</h3>
+<ul>
+<li>Here’s a brief overview of how <code>Ansible playbooks</code> work:</li>
+</ul>
+<div class="grid cards">
+<ul>
+<li>
+<h4 id="welcome-playbook-structure">Playbook Structure</h4>
+<ul>
+<li>
+<p>A playbook is composed of one or more &lsquo;plays&rsquo; in an ordered list. </p>
+</li>
+<li>
+<p>Each play executes part of the overall goal of the playbook, running one or more tasks. </p>
+</li>
+<li>Each task calls an Ansible module.</li>
+</ul>
+</li>
+<li>
+<h4 id="welcome-playbook-execution">Playbook Execution</h4>
+<ul>
+<li>
+<p>A playbook runs in order from top to bottom. </p>
+</li>
+<li>
+<p>Within each play, tasks also run in order from top to bottom. </p>
+</li>
+<li>
+<p>Playbooks with multiple &lsquo;plays&rsquo; can orchestrate multi-machine deployments.</p>
+</li>
+</ul>
+</li>
+<li>
+<h4 id="welcome-task-execution">Task Execution</h4>
+<ul>
+<li>
+<p>Tasks are executed by modules, each of which performs a specific task in a playbook.</p>
+</li>
+<li>
+<p>There are thousands of Ansible modules that perform all kinds of IT tasks.</p>
+</li>
+</ul>
+</li>
+<li>
+<h4 id="welcome-reusability">Reusability</h4>
+<ul>
+<li>
+<p>Playbooks offer a repeatable, reusable, simple configuration management and multi-machine deployment system.</p>
+</li>
+<li>
+<p>If you need to execute a task with Ansible more than once, write a playbook and put it under source control.</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<ul>
+<li>Playbooks are <strong>one of the core features of Ansible</strong> and tell Ansible what to execute.</li>
+<li>They are used in complex scenarios.</li>
+<li>They serve as frameworks of pre-written code that developers can use ad-hoc or as a starting template.</li>
+<li>They can be saved, shared, or reused indefinitely, making it easier for IT teams to codify operational knowledge and ensure that the same actions are performed consistently.</li>
+</ul></section>
                     <section class='print-page md-section' id='section-2' heading-number='2'>
                         <h1>Labs<a class='headerlink' href='#section-2' title='Permanent link'></a>
                         </h1>
@@ -637,7 +821,7 @@
 <tr>
 <td><a href="#008-challenges">Lab 008 - Challenges</a></td>
 <td>Challenge lab combining user creation and Git operations.</td>
-<td><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/008-challanges.yaml"><img alt="Build Status" src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/008-challanges.yaml/badge.svg" /></a></td>
+<td>&mdash;</td>
 </tr>
 <tr>
 <td><a href="#009-roles">Lab 009 - Roles</a></td>
@@ -664,27 +848,12 @@
 <li>In this lab we will define and build our docker containers which we will be using for the next of labs.</li>
 <li>The lab is based upon ansible controller &amp; 3 linux servers all are docker containers.</li>
 </ul>
-<hr />
-<h2 id="000-setup-lab-highlights">Lab Highlights: <!-- omit in toc--></h2>
-<ul>
-<li><a href="#000-setup-lab-000---setup">Lab 000 - Setup</a></li>
-<li><a href="#000-setup-lab-highlights-">Lab Highlights: </a><ul>
-<li><a href="#000-setup-01-install-ansible">01. Install Ansible</a></li>
-</ul>
-</li>
-<li><a href="#000-setup-02-build-the-ansible-container--servers">02. Build the Ansible container \&amp; servers</a><ul>
-<li><a href="#000-setup-the-setup-scripts-in-this-folder">The setup script(s) in this folder</a></li>
-<li><a href="#000-setup-verify-to-see-if-the-container-are-running">Verify to see if the container are running</a></li>
-</ul>
-</li>
-</ul>
-<hr />
-<h3 id="000-setup-01-install-ansible">01. Install Ansible</h3>
+<h2 id="000-setup-0100-install-ansible">01.00 Install Ansible</h2>
 <ul>
 <li>You can use <code>Ansible</code> locally on your system or use the <a href="https://killercoda.com/codewizard/scenario/Ansible">demo Ansible playground</a> based upon docker container(s)</li>
 <li>This lab contains the <code>Ansible controller</code> &amp; <code>linux-servers</code> as playground environment.</li>
 </ul>
-<h2 id="000-setup-02-build-the-ansible-container-servers">02. Build the Ansible container &amp; servers</h2>
+<h2 id="000-setup-0200-build-the-ansible-container">02.00 Build the Ansible container</h2>
 <ul>
 <li>Clone the git repo: <code>git clone https://github.com/nirgeier/AnsibleLabs.git</code></li>
 <li>The lab contains the <code>docker-compose</code> file along with the Dockerfile(s)
@@ -692,10 +861,10 @@
 <li>Build the demo containers</li>
 <li>The docker-compose will create <code>ansible-controller</code> which will server as our controller to execute ansible playbooks on our demo servers defined by the names <code>linux-server-X</code></li>
 </ul>
-<blockquote>
-<p>[!NOTE]
-The setup include the following containers:</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">🐳 Setup containers</p>
+<p>The setup include the following containers:</p>
+</div>
 <table>
 <thead>
 <tr>
@@ -705,19 +874,19 @@ The setup include the following containers:</p>
 </thead>
 <tbody>
 <tr>
-<td><img alt="🎒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f392.svg" title=":school_satchel:" /> <code>ansible-controller</code></td>
+<td>🎒 <code>ansible-controller</code></td>
 <td>Linux container with ansible installed</td>
 </tr>
 <tr>
-<td><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4a5.svg" title=":collision:" /> <code>linux-server-1</code></td>
+<td>💥 <code>linux-server-1</code></td>
 <td>Linux container with ssh only (no ansible installed)</td>
 </tr>
 <tr>
-<td><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4a5.svg" title=":collision:" /> <code>linux-server-2</code></td>
+<td>💥 <code>linux-server-2</code></td>
 <td>Linux container with ssh only (no ansible installed)</td>
 </tr>
 <tr>
-<td><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4a5.svg" title=":collision:" /> <code>linux-server-3</code></td>
+<td>💥 <code>linux-server-3</code></td>
 <td>Linux container with ssh only (no ansible installed)</td>
 </tr>
 </tbody>
@@ -726,18 +895,18 @@ The setup include the following containers:</p>
 <li>For the demo we will also need a shred folder(s) where the certificates and the configuration will be stored</li>
 </ul>
 <hr />
-<blockquote>
-<p>[!TIP]</p>
+<div class="admonition tip">
+<p class="admonition-title">Ssh Connection</p>
 <ul>
 <li>The setup script will build and test the containers  </li>
 <li>The script check that the <code>ansible-container</code> can connect to the servers (SSH).</li>
 </ul>
-</blockquote>
+</div>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#000-setup-__codelineno-0-1"></a><span class="c1"># Build the Ansible container &amp; the Demo servers</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#000-setup-__codelineno-0-2"></a><span class="c1"># The `_setup.sh` will build all we will need for this lab</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#000-setup-__codelineno-0-3"></a>./_setup.sh
 </span></code></pre></div>
-<h3 id="000-setup-the-setup-scripts-in-this-folder">The setup script(s) in this folder</h3>
+<h2 id="000-setup-0201-the-setup-scripts">02.01. The setup script(s)</h2>
 <table>
 <thead>
 <tr>
@@ -747,7 +916,7 @@ The setup include the following containers:</p>
 </thead>
 <tbody>
 <tr>
-<td>:newspaper_roll: <code>00-build-containers.sh</code></td>
+<td>🗞️ <code>00-build-containers.sh</code></td>
 <td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:" /> Init the shared folders</td>
 </tr>
 <tr>
@@ -755,7 +924,7 @@ The setup include the following containers:</p>
 <td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:" /> Build the container(s)</td>
 </tr>
 <tr>
-<td>:newspaper_roll: <code>01-init-servers.sh</code></td>
+<td>🗞️ <code>01-init-servers.sh</code></td>
 <td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:" /> Initialize the containers</td>
 </tr>
 <tr>
@@ -767,7 +936,7 @@ The setup include the following containers:</p>
 <td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:" /> verify that the ssh service is running in the containers</td>
 </tr>
 <tr>
-<td>:newspaper_roll: <code>02-init-ansible.sh</code></td>
+<td>🗞️ <code>02-init-ansible.sh</code></td>
 <td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:" /> Initialize the ansible files</td>
 </tr>
 <tr>
@@ -784,7 +953,7 @@ The setup include the following containers:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="000-setup-verify-to-see-if-the-container-are-running">Verify to see if the container are running</h3>
+<h2 id="000-setup-0202-verify-containers">02.02 Verify Containers</h2>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#000-setup-__codelineno-1-1"></a>$<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>-a
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#000-setup-__codelineno-1-2"></a>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#000-setup-__codelineno-1-3"></a><span class="c1"># Output</span>
@@ -2996,7 +3165,15 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
     &emsp;<a href="#labs">Back to labs list</a>
     &emsp;<a href="#labs-011-jinja-templating">/Labs/011-jinja-templating :arrow_forward:</a>
 </p>
-<!--- Labs Navigation End --></section></section></div><style>.print-site-enumerate-headings #section-2 > h1:before { content: '2 ' }
+<!--- Labs Navigation End --></section></section></div><style>.print-site-enumerate-headings #welcome > h1:before { content: '1 ' }
+
+                .print-site-enumerate-headings #welcome h2:before { content: '1.' counter(counter-welcome-2) ' ' }
+                .print-site-enumerate-headings #welcome h2 {  counter-reset: counter-welcome-3 ;  counter-increment: counter-welcome-2 }
+            
+                .print-site-enumerate-headings #welcome h3:before { content: '1.' counter(counter-welcome-2) '.' counter(counter-welcome-3) ' ' }
+                .print-site-enumerate-headings #welcome h3 {  counter-increment: counter-welcome-3 }
+            
+.print-site-enumerate-headings #section-2 > h1:before { content: '2 ' }
 .print-site-enumerate-headings #index > h1:before { content: '2.1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '2.1.' counter(counter-index-2) ' ' }
