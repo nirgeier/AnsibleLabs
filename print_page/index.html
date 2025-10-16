@@ -844,7 +844,7 @@
 </tbody>
 </table></section><section class="print-page" id="000-setup" heading-number="2.2"><p><a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/000-setup.yaml" target="_blank">
   <img src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/000-setup.yaml/badge.svg" alt="Build Status">
-  </a></p>
+</a></p>
 <hr />
 <h1 id="000-setup-lab-000-setup">Lab 000 - Setup</h1>
 <ul>
@@ -923,7 +923,8 @@
 </ul>
 </div>
 <hr />
-<h3 id="000-setup-build-the-ansible-container">Build the Ansible container</h3>
+<h3 id="000-setup-from-source">From Source</h3>
+<p><strong>Build the Ansible container</strong></p>
 <ul>
 <li>Clone the git repo: <code>git clone https://github.com/nirgeier/AnsibleLabs.git</code></li>
 <li>Navigate to the Labs directory: <code>cd AnsibleLabs/Labs/000-setup</code></li>
@@ -969,18 +970,18 @@
 <li>The shared folder(s) will be mounted at <code>/labs-scripts</code> in the containers</li>
 </ul>
 <hr />
-<h2 id="000-setup-core-concepts">Core Concepts</h2>
+<h3 id="000-setup-core-concepts">Core Concepts</h3>
 <ul>
 <li>Create <code>Ansible Controller</code> container, which will be used to manage the other containers</li>
 <li><code>SSH Keys</code> - The SSH keys will be generated and mounted into the containers</li>
 <li>Initialize servers: Set up runtime directories, start demo containers via <code>Docker Compose</code>, verify <code>Ansible</code> installation, extract <code>SSH keys</code> from servers, configure known hosts, check SSH services, and test SSH connections to each Linux server</li>
 </ul>
-<h2 id="000-setup-the-setup-scripts">The setup script(s)</h2>
+<h3 id="000-setup-the-setup-scripts">The setup script(s)</h3>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#000-setup-__codelineno-2-1"></a><span class="c1"># Build the Ansible container &amp; the Demo servers</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#000-setup-__codelineno-2-2"></a><span class="c1"># The `_setup.sh` will build all we will need for this lab</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#000-setup-__codelineno-2-3"></a>./_setup.sh
 </span></code></pre></div>
-<h2 id="000-setup-setup-scripts-breakdown">Setup Scripts Breakdown</h2>
+<h3 id="000-setup-setup-scripts-breakdown">Setup Scripts Breakdown</h3>
 <table>
 <thead>
 <tr>
@@ -1027,7 +1028,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="000-setup-verify-containers">Verify Containers</h2>
+<h3 id="000-setup-verify-containers">Verify Containers</h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#000-setup-__codelineno-3-1"></a>$<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>-a
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#000-setup-__codelineno-3-2"></a>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#000-setup-__codelineno-3-3"></a><span class="c1"># Output</span>
