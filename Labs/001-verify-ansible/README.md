@@ -266,32 +266,33 @@ Clone the repository and start playing with it
 **`[all]`**
 - `all` is a special group, a group that points to all nodes described in the inventory.
 - The `[all:vars]` & `group variables` are defined for the group `all`.
-  - When we use **group** we can use the whole group as "hosts" for ansible 
-- A [magic variable](https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html) represented by `ansible_xxxx`, 
-  which contains special values that control Ansible's behavior and environment information that Ansible will automatically retrieve.  
-  Details are explained in the variables section.
+  - When we use a **group**, we can use the whole group as "hosts" for ansible.
+- A [magic variable](https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html), represented by `ansible_xxxx`, 
+ contains special values that control Ansible's behavior and environment information that Ansible will automatically retrieve.  
+  Details are explained in the [variables section](need to add a link to variables section).
 
 ### 01.04. Prepare the content for execution
 
-- Place the files under the shared folder os simply execute the script [/Labs/000-setup/02-init-ansible.sh](Labs/000-setup/02-init-ansible.sh)
+- Place the files under the shared folder or simply execute the script [/Labs/000-setup/02-init-ansible.sh](Labs/000-setup/02-init-ansible.sh)
 - Verify that the controller can execute ansible [/Labs/000-setup/01-init-servers.sh](Labs/000-setup/01-init-servers.sh)
 
----
 
-## 02 Test ansible configuration
 
-- Now we are ready to start play with ansible 
 
-### 02.01. Check ansible configuration
+## 02 Test Ansible configuration
 
-- The first step is to test ansible configuration
+- Now we are ready to start play with Ansible!
+
+### 02.01. Check Ansible configuration
+
+- The first step is to test Ansible configuration
     ```sh
-    # Verify that ansible is installed correctly
+    # Verify that Ansible is installed correctly
     docker exec ansible-controller ansible --version
     ```  
 
 - Sample output
-  ```text
+```text
     ansible [core 2.17.9]
     config file = /labs-scripts/ansible.cfg
     configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
@@ -301,17 +302,17 @@ Clone the repository and start playing with it
     python version = 3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0] (/usr/bin/python3)
     jinja version = 3.1.2
     libyaml = True
-    ```
+```
 
 - We are looking for the following line:
-    ```sh
+```sh
     config file = /labs-scripts/ansible.cfg
-    ```
+```
 
 ### 02.02. Basic ansible configuration
 
-- Once all is ready lets check is the controller can connect to the servers with the ansible `ping` command
-- `ping` is an `Ad-Hoc` ansible command, we will cover it later on.
+- Once all is ready, lets check if the controller can connect to the servers with the Ansible `ping` command.
+- `ping` is an `Ad-Hoc` Ansible command that we will cover later on.
     
     ```sh
     # Ping the servers and check that they are "alive"
