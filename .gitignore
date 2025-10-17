@@ -4,3 +4,4 @@
 **/*demo*/**
 .vercel
 **/mkdocs-site/** 
+!*demo.sh

@@ -34,3 +34,14 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #777;
 }
+
+@mixin image-size($height, $width: auto, $align: false, $radius: null) {
+  width: $width;
+  height: $height;
+  @if $align {
+    vertical-align: middle;
+  }
+  @if $radius {
+    border-radius: $radius;
+  }
+}

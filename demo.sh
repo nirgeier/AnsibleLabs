@@ -1,8 +1,8 @@
 #!/bin/bash
 
-rm -rf demos
-mkdir demos
-cd demos
+rm -rf  demos
+mkdir   demos
+cd      demos
 
 # Create the required folder structure
 mkdir -p {docker,config,keys}

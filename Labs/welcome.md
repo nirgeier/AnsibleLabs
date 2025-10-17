@@ -3,7 +3,7 @@
 <div markdown class="center">
 # Ansible Labs
 
-<img src="../assets/images/ansible-labs.png" style="width:150px;">
+<img src="../assets/images/ansible-labs.png" >
 </div>
 
 ---
@@ -46,58 +46,7 @@
   
 ## Usage
 
-* There are several ways to run the Ansible Labs. 
-* Choose the method that works best for you.
-
-=== "![](assets/images/killercoda-icon.png){:. height-16px} Method 1: Killercoda  (Recommended)"
-
-    Learn Ansible in your browser without any local installation:
-
-    🌐 **[Launch on Killercoda](https://killercoda.com/codewizard/scenario/Ansible)**
-
-    **Benefits:**
-
-    - No installation required
-    - Pre-configured environment
-    - Works on any device with a web browser
-    - All tools pre-installed
-     
-=== "🐳 Method 2: Docker"
-
-    The easiest way to get started with the labs:
-
-    ```bash
-    # Change to the Labs directory
-    cd Labs/000-setup
-
-    # Run the setup lab using Docker Compose
-    docker-compose up -d
-    ```
-
-    **Prerequisites:**
-
-    - Docker and Docker Compose installed on your system
-    - No additional setup required
-
-=== "📜 Method 3: From Source"
-
-    For those who prefer to run it directly on their machine:
-
-    ```bash
-    # Clone the repository
-    git clone https://github.com/nirgeier/AnsibleLabs.git
-    # Change to the Labs directory
-    cd AnsibleLabs/Labs
-    # Start with the setup lab
-    cd 000-setup
-    # Follow the instructions in the README of each lab
-    cat README.md
-    ```
-    **Prerequisites:**
-
-    - Ansible installed on your system
-    - A Unix-like operating system (Linux, macOS, or Windows with WSL)
-    - Basic command-line tools
+{% include "../Labs/000-setup/usage.md" %}
 
 ---
 
