@@ -3,7 +3,7 @@
 <div markdown class="center">
 # Ansible Labs
 
-<img src="../assets/images/ansible-labs.png" style="width:150px;">
+<img src="../assets/images/ansible-labs.png" >
 </div>
 
 ---

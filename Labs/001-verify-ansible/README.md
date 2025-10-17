@@ -1,270 +1,296 @@
-# Lab 001 - Verify ansible configuration
+# Lab 001 - Verify Ansible configuration
 
-- In this lab we will create the ansible configuration and will verify that the configuration is correct
-- This lab is based upon the [previous lab](../000-setup) and its `docker-compose`
-- In this lab we will learn to use:
+- In this lab we will create the Ansible configuration and verify that it is configured correctly.
+- This lab is based upon the [previous lab](../000-setup) and its `docker-compose`.
+- In this lab we will learn how to use:
   - `ansible.cfg`
   - `inventory`
   - `ssh.config`
 
----
+## Pre-Requirements
 
-### Pre-Requirements
+Clone the repository and start playing with it.
 
-Clone the repository and start playing with it
+<br>
+-- **Option 1:** 
+   
+   - Use a Linux machine with Docker.
 
-**Option 1:** 
-  - Linux machine with docker
+<br>
+-- **Option 2:** 
 
-**Option 2:** 
 
-  [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://console.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/nirgeier/AnsibleLabs)
   
-  - Clicking on the `Open in Google Cloud Shell` button.
-  - It will clone the repository into free Cloud instance
-  - **<kbd>CTRL</kbd> + click to open in new window** 
+  - Click on the `Open in Google Cloud Shell` button below:
 
-**Option 3:** 
-  - Open the scenario in [Killercoda](https://killercoda.com/creator/scenarios/codewizard)
-  - **<kbd>CTRL</kbd> + click to open in new window** 
+    [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://console.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/nirgeier/AnsibleLabs)
+
+  - The repository will automatically be cloned into a free Cloud instance.
+  - Use **<kbd>CTRL</kbd>** + click to open it in a new window.
+
+<br>
+
+-- **Option 3:** 
+
+  - Open the scenario in [Killercoda](https://killercoda.com/creator/scenarios/codewizard).
+  - Use **<kbd>CTRL</kbd>** + click to open it in a new window.
 
 ---
 - [Lab 001 - Verify ansible configuration](#lab-001---verify-ansible-configuration)
     - [Pre-Requirements](#pre-requirements)
-    - [01. Create the configuration file](#01-create-the-configuration-file)
-    - [01.01. `ansible.cfg` file](#0101-ansiblecfg-file)
-    - [01.02. Create the `ansible.cfg` file](#0102-create-the-ansiblecfg-file)
-      - [01.02.01 `ansible.cfg` Locations:](#010201-ansiblecfg-locations)
-      - [01.02.02 Structure of `ansible.cfg`](#010202-structure-of-ansiblecfg)
-      - [01.02.03 Auto Generate `ansible.cfg`](#010203-auto-generate-ansiblecfg)
-    - [01.02. Create the `ssh.config` file](#0102-create-the-sshconfig-file)
-    - [01.03. Create the `inventory` file](#0103-create-the-inventory-file)
-    - [01.04. Prepare the content for execution](#0104-prepare-the-content-for-execution)
-  - [02 Test ansible configuration](#02-test-ansible-configuration)
-    - [02.01. Check ansible configuration](#0201-check-ansible-configuration)
-    - [02.02. Basic ansible configuration](#0202-basic-ansible-configuration)
+        - [01.00. Create the configuration file](#01-create-the-configuration-file)
+            - [01.01. `ansible.cfg` file](#0101-ansiblecfg-file)
+            - [01.02. Create the `ansible.cfg` file](#0102-create-the-ansiblecfg-file)
+            - [01.02.01 `ansible.cfg` Locations:](#010201-ansiblecfg-locations)
+            - [01.02.02 Structure of `ansible.cfg`](#010202-structure-of-ansiblecfg)
+            - [01.02.03 Auto Generate `ansible.cfg`](#010203-auto-generate-ansiblecfg)
+            - [01.03. Create the `ssh.config` file](#0102-create-the-sshconfig-file)
+            - [01.04. Create the `inventory` file](#0103-create-the-inventory-file)
+            - [01.05. Prepare the content for execution](#0104-prepare-the-content-for-execution)
+        - [02.00. Test ansible configuration](#02-test-ansible-configuration)
+            - [02.01. Check ansible configuration](#0201-check-ansible-configuration)
+            - [02.02. Basic ansible configuration](#0202-basic-ansible-configuration)
 
 ---
 
+### 01.00. Create configuration files
 
-### 01. Create the configuration file
+!!! warning "IMPORTANT!"  
+    In this lab we will be placing the files under the `/labs-scripts` directory.  
+    The directory is **mounted** to our docker container(s) under the `<PROJECT_ROOT>/runtime` directory.  
+    You are encouraged to review  the [`docker-compose.yaml`](../000-setup/docker-compose.yaml) file throughout the lab session. 
 
-> [!IMPORTANT]  
-> In this lab we will be placing the files under the `/labs-scripts` folder.  
-> The folder is **mounted** to our docker container(s) under `<PROJECT_ROOT>/runtime` folder.  
-> You're encouraged to review  the [`docker-compose.yaml`](../000-setup/docker-compose.yaml) file throughout the lab session. 
+---
 
-
-### 01.01. `ansible.cfg` file
+### 01.01. About `ansible.cfg` file
 - What is `ansible.cfg` ?
     - The `ansible.cfg` file is an INI-like configuration file used to define various settings and parameters that influence how Ansible operates. 
   
 ### 01.02. Create the `ansible.cfg` file
 
-- `ansible.cfg` contains the configuration for our ansible project and to control Ansible’s behavior.
+- `ansible.cfg` contains the configuration for our Ansible Project and controls Ansible’s behavior.
 - `ansible.cfg` uses the `INI` format.
 
-#### 01.02.01 `ansible.cfg` Locations: 
+#### 01.02.01 `ansible.cfg` locations: 
 
-  - Docs: [Ansible Configuration Settings](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#the-configuration-file)
-  - Ansible searches `ansible.cfg` in a specific order. 
+  - See Ansible documentation: [Ansible Configuration Settings](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#the-configuration-file)
+  - Ansible searches `ansible.cfg` in a specific order. The **first file** it finds will be used while ignoring the rest.
   - Ansible will **search** for the configuration file in the following order: 
-    the **first file** it finds will be used while ignoring the rest
+    
     | Search resource            | Description                 |
     | -------------------------- | --------------------------- |
     | `ANSIBLE_CONFIG`           | environment variable if set |
     | `ansible.cfg`              | In the current directory    |
     | `~/.ansible.cfg`           | Under the home directory    |
     | `/etc/ansible/ansible.cfg` | OS common path              |
-- In this exercise the environment variable `ANSIBLE_CONFIG` is set in the docker container `/labs-scripts/.ansible.cfg` 
 
-#### 01.02.02 Structure of `ansible.cfg`
-- The `ansible.cfg` file is **divided into sections**, each containing various parameters that can be customized. 
+- In this exercise the environment variable `ANSIBLE_CONFIG` is set in the docker container path `/labs-scripts/.ansible.cfg`
+
+#### 01.02.02 `ansible.cfg` structure:
+- The `ansible.cfg` file is **divided into sections**, each containing various customizable parameters.
   
 - Main configuration settings:
-    ##### `[defaults]`
-    - The `[defaults]` section contains the general settings for Ansible, such as inventory location, verbosity, and log settings.
+#### `[defaults]`
 
-        ```ini
-        [defaults]
-            ask_pass            = false
-            host_key_checking   = false
-            inventory           = /etc/ansible/hosts
-            log_path            = /var/log/ansible.log
-            remote_user         = ansible
-            timeout             = 30
-        ```  
+- The `[defaults]` section contains the general settings for Ansible (such as inventory location, verbosity and log settings).
 
-    ##### `[privilege_escalation]`
-    - The `[privilege_escalation]` section defines settings related to privilege escalation, such as using **`sudo`** or **`become`**.
+```ini
+[defaults]
+    ask_pass            =    false
+    host_key_checking   =    false
+    inventory           =    /etc/ansible/hosts
+    log_path            =    /var/log/ansible.log
+    remote_user         =    ansible
+    timeout             =    30
+```
 
-        ```ini
-        [privilege_escalation]
-            become          = True
-            become_method   = sudo
-            become_user     = root
-            become_ask_pass = False
-        ```  
+<br>
 
-    ##### `[ssh_connection]`
-    - Settings for SSH connections, including timeout and control settings for persistent connections.
+#### `[privilege_escalation]`
 
-        ```ini
-        [ssh_connection]
-            ssh_args    = -o ControlMaster=auto -o ControlPersist=60s
-            pipelining  = True
-            scp_if_ssh  = True
-        ```  
+- The `[privilege_escalation]` section defines settings related to privilege escalation (such as **`sudo`** or **`become`**).
 
-    ##### `[inventory]`
-    - **`[inventory]`** Defines options related to inventory parsing and caching.
+```ini
+[privilege_escalation]
+    become              =    True
+    become_method       =    sudo
+    become_user         =    root
+    become_ask_pass     =    False
+```  
+<br>
+#### `[ssh_connection]`
+- Settings for SSH connections, including timeout and control settings for persistent connections.
 
-        ```ini
-        [inventory]
-            enable_plugins = host_list, ini, auto
-            cache = True
-            cache_plugin = memory
-            cache_timeout = 3600
-        ```  
+```ini
+[ssh_connection]
+    ssh_args            =    -o ControlMaster=auto -o ControlPersist=60s
+    pipelining          =    True
+    scp_if_ssh          =    True
+```  
+<br>
 
-    ##### `[diff]`
-    - Controls whether Ansible shows differences when applying configurations.
+#### `[inventory]`
+- Defines options related to inventory parsing and caching.
 
-        ```ini
-        [diff]
-            always = True
-            context = 5
-        ```
+```ini
+[inventory]
+    enable_plugins      =    host_list, ini, auto
+    cache               =    True
+    cache_plugin        =    memory
+    cache_timeout       =    3600
+```  
+<br>
+#### `[diff]`
+- Controls whether Ansible shows differences when applying configurations.
 
-    ##### `logging`
-    - Ansible does not have a dedicated `[logging]` section in ansible.cfg. 
-    - Instead, logging is typically configured under the `[defaults]` section using the log_path directive.
-    - **`log_path`** Controls where Ansible logs its output. 
-      - If log_path is set, Ansible writes logs to the specified file. 
-      - If it is not set or is empty, logging is disabled.
+```ini
+[diff]
+    always              =    True
+    context             =    5
+```
+
+<br>
+
+#### `[logging]`
+- Ansible does not have a dedicated `[logging]` section in `ansible.cfg`. 
+- Instead, logging is typically configured under the `[defaults]` section using the `log_path` directive.
+- `log_path` controls where Ansible logs its output. 
+- If `log_path` is set, Ansible will write logs to the specified file, where as if it is not set, or left empty, logging will be disabled.
         
-        ```ini
-        [defaults]
-            log_path = /var/log/ansible.log
-        ```
+```ini
+[defaults]
+    log_path            =     /var/log/ansible.log
+```
+<br>
+
 #### 01.02.03 Auto Generate `ansible.cfg` 
 
-  - You can execute `ansible-config init` will generate a sample ansible configuration file 
-  - This is the content of `ansible.cfg` which we will use in this lab
+  - You can choose to execute `ansible-config init`, which will generate a sample Ansible configuration file. 
+  - As this is the main configuration file for our demo application, it is the content of `ansible.cfg` which we will use in this lab.
   
-    ```ini
-    ### File Location: $RUNTIME_FOLDER/labs-scripts/ansible.cfg
-    ##
-    ## This is the main configuration file for our demo application
-    ##
+```ini
+# File location: $RUNTIME_FOLDER/labs-scripts/ansible.cfg.
+# This is the default location of the inventory file, script, or directory that 
+  Ansible will use to determine what hosts it has available to talk to.
 
-    # This is the default location of the inventory file, script, or directory
-    # that Ansible will use to determine what hosts it has available to talk to
-    [defaults]
+[defaults]
+---
 
-    # Define that inventory info is in the file named “inventory”
-    inventory = inventory
+# Defines that the inventory info is in a file named “inventory”.
 
-    # Specify remote hosts, so we do not need to config them in main ssh config
-    [ssh_connection]
-    transport = ssh
-    transfer_method = scp
+inventory = inventory
+---
 
-    # The location of the ssh config file
-    # We will create this file in our next step
-    ssh_args  =     -F ssh.config                   \
-                    -o ControlMaster=auto           \
-                    -o ControlPersist=60s           \
-                    -o StrictHostKeyChecking=no     \
-                    -o UserKnownHostsFile=/root/.ssh/known_hosts
-    ```
+# Specifies remote hosts, so we do not need to config them in main SSH config.
+
+[ssh_connection]
+transport = ssh
+transfer_method = scp
+---
+
+# The location of the SSH config file.
+# We will create this file in our next step.
+
+ssh_args  =     -F ssh.config                   \
+                -o ControlMaster=auto           \
+                -o ControlPersist=60s           \
+                -o StrictHostKeyChecking=no     \
+                -o UserKnownHostsFile=/root/.ssh/known_hosts
+```
 
 ### 01.02. Create the `ssh.config` file
 
-- In Linux Ansible is based upon `ssh`, in order to run Ansible playbooks.
-- By default it will use the default ssh keys unless we supply it with ssh configuration file.
+- Ansible operates in Linux environments using `SSH` protocol, in order to run Ansible playbooks.
+- By default, Ansible uses the default SSH keys, unless provided with an SSH configuration file.
 - In this demo we will use our own `ssh.config` configuration file.
     
-    ```sh
-    ### File location: $RUNTIME_FOLDER/labs-scripts/ssh.config
-    # Set up the desired hosts
-    # keep in mind that we have set up the hosts in the docker-compose
-    Host *
-        # Disable host key checking: 
-        # avoid asking for the key-print authenticity
-        StrictHostKeyChecking no
-        
-        UserKnownHostsFile    /dev/null
-        
-        # Enable hashing known_host file
-        HashKnownHosts        yes
-        
-        # IdentityFile allows to specify private keys we wish to use for authentication
-        # Authentication = the process of Authentication
-        # We will use the auto-generated ssh keys from our Docker container
+```sh
+# File location: $RUNTIME_FOLDER/labs-scripts/ssh.config
+# Set up the desired hosts
+# keep in mind that we have set up the hosts in the docker-compose
 
-    # List the desired servers. 
-    # the hosts are defined in the docker-compose which we created in the setup lab)
-    Host                linux-server-1
-        HostName        linux-server-1
-        IdentityFile    /root/.ssh/linux-server-1
-        User            root
-        Port            22
+Host *
+---
 
-    Host                linux-server-2
-        HostName        linux-server-2
-        IdentityFile    /root/.ssh/linux-server-2
-        User            root
-        Port            22
+# Disable host key checking
+# Avoid asking for the key-print authenticity
 
-    Host                linux-server-3
-        HostName        linux-server-3
-        IdentityFile    /root/.ssh/linux-server-3
-        User            root
-        Port            22
-    ```
+StrictHostKeyChecking no        
+UserKnownHostsFile    /dev/null
+---
+
+# Enable hashing known_host file
+HashKnownHosts        yes
+---
+
+# IdentityFile allows to specify private keys we wish to use for authentication
+# Authentication = the process of authentication
+# We will use the auto-generated SSH keys from our Docker container
+---
+
+# List the desired servers
+# The hosts are defined in the docker-compose which we created in the setup lab
+
+Host                  linux-server-1
+    HostName          linux-server-1
+    IdentityFile      /root/.ssh/linux-server-1
+    User              root
+    Port              22
+
+Host                  linux-server-2
+    HostName          linux-server-2
+    IdentityFile      /root/.ssh/linux-server-2
+    User              root
+    Port              22
+
+Host                  linux-server-3
+    HostName          linux-server-3
+    IdentityFile      /root/.ssh/linux-server-3
+    User              root
+    Port            22
+```
 
 ### 01.03. Create the `inventory` file
 
-- Docs: [How to build your inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html).
+- See Ansible documentation: [How to build your inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html).
 - An Ansible inventory file is a `configuration file` that **lists and categorizes** the hosts Ansible will **manage**. 
 - It provides a structured way to define `hosts` and `groups`, enabling efficient targeting and execution of tasks on specific hosts or groups of hosts.
 - The simplest inventory is a **single file** with a list of `hosts` and `groups`.
-- This inventory is written in the `ini` format.
+- The inventory is written using the `INI` format.
 - `inventory` can be written in other formats as well, such as `YAML` and `Dynamic Inventory` which dynamically configure the inventory with scripts. 
 - The default location for this file is `/etc/ansible/hosts`.
-- If `/etc/ansible/hosts` doesn't exists, ansible will look for user specific inventory file at `$HOME/.ansible/hosts`
-- You can specify a different inventory file at the command line using the `-i <path>` when executing ansible commands or by exporting the `ANSIBLE_INVENTORY` environment variable.
-- Using `-i <path>` takes precedence over environment variable.
-
+- If `/etc/ansible/hosts` doesn't exists, ansible will look for user specific inventory file, to be placed at `$HOME/.ansible/hosts`
+- You can specify a different inventory file at the command line using the `-i <path>` inventory option when executing Ansible commands or by exporting the `ANSIBLE_INVENTORY` environment variable.
+- Using `-i <path>` inventory option takes precedence over environment variable.
+##
 - The inventory configuration we will use for the labs:
-    ```ini
-    ### File location: $RUNTIME_FOLDER/labs-scripts/inventory
-    ###
-    ### List of servers which we want ansible to connect to
-    ### The names are defined in the docker-compose
-    ###
+```ini
+# File location: $RUNTIME_FOLDER/labs-scripts/inventory
 
-    [servers]
+# List of servers which we want ansible to connect to
+# The names are defined in the docker-compose
+
+[servers]
     linux-server-1 ansible_ssh_common_args='-o UserKnownHostsFile=/root/.ssh/known_hosts'
     linux-server-2 ansible_ssh_common_args='-o UserKnownHostsFile=/root/.ssh/known_hosts'
     linux-server-3 ansible_ssh_common_args='-o UserKnownHostsFile=/root/.ssh/known_hosts'
 
-    [all:vars]
-    # Extra "global" variables for the inventory
-    ```
+[all:vars]
 
-**This inventory file is written by the following rules:**
+# Extra "global" variables for the inventory
+```
+
+**This inventory file is written following these rules:**
 
 - Information is described by **one node per line**, such as `linux-server-xx`.
-  - A node line consists of `identifier of the node (ex. linux-server-X)` and `host variable(s) (ex. ansible_host=xxxx)` to be given to the node .
+  - A node line consists of an `identifier of the node (ex. linux-server-X)` and a `host variable(s) (ex. ansible_host=xxxx)`, to be given to the node .
   - You can also specify an IP address or FQDN for the `linux-server-xx` part.
 - You can create a group of hosts with `[group_name]`. In our inventory the group name is `[servers]`.
-  - You can use any group name except `all` and `localhost`.
-    - e.g. `[webservers]`, `[databases]` can be used to **group** the servers
+  - You can use any group name except `[all]` and `[localhost]` (e.g., `[webservers]` or `[databases]` can be used as **group** names for servers).
 
 **`[all]`**
-- `all` is a special group, a group that points to all nodes described in the inventory.
+
+- `all` is a special group that points to all nodes described in the inventory.
 - The `[all:vars]` & `group variables` are defined for the group `all`.
   - When we use a **group**, we can use the whole group as "hosts" for ansible.
 - A [magic variable](https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html), represented by `ansible_xxxx`, 

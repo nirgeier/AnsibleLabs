@@ -6,8 +6,8 @@
 
 # Lab 000 - Setup
 
-- In this lab we will define and build our docker containers which we will be using for the next of labs.
-- The lab is based upon ansible controller & 3 linux servers all are docker containers.
+- In this lab we will define and build docker containers which to be used in the next of labs.
+- The lab structure consists of an Ansible controller & 3 Linux servers, all set inside docker containers.
 
 ---
 
@@ -143,7 +143,9 @@
 ```bash
 $ docker ps -a
 
-# Output
+
+# Expected output
+
 IMAGE                       PORTS                                                                  NAMES
 ---------------------------------------------------------------------------------------------------------------------
 nirgeier/ansible-controller 22/tcp                                                                 ansible-controller
