@@ -583,7 +583,7 @@
         <section class="print-page" id="welcome" heading-number="1"><!-- header start -->
 <div class="center">
 <h1 id="welcome-ansible-labs">Ansible Labs</h1>
-<p><img src="../assets/images/ansible-labs.png" style="width:150px;"></p>
+<p><img src="../assets/images/ansible-labs.png" ></p>
 </div>
 <hr />
 <p><img src="../assets/images/tldr.png" style="width:100px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"></p>
@@ -848,8 +848,8 @@
 <hr />
 <h1 id="000-setup-lab-000-setup">Lab 000 - Setup</h1>
 <ul>
-<li>In this lab we will define and build our docker containers which we will be using for the next of labs.</li>
-<li>The lab is based upon ansible controller &amp; 3 linux servers all are docker containers.</li>
+<li>In this lab we will define and build docker containers which to be used in the next of labs.</li>
+<li>The lab structure consists of an Ansible controller &amp; 3 Linux servers, all set inside docker containers.</li>
 </ul>
 <hr />
 <h3 id="000-setup-usage">Usage</h3>
@@ -1031,67 +1031,84 @@
 <h3 id="000-setup-verify-containers">Verify Containers</h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#000-setup-__codelineno-3-1"></a>$<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>-a
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#000-setup-__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#000-setup-__codelineno-3-3"></a><span class="c1"># Output</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#000-setup-__codelineno-3-4"></a>IMAGE<span class="w">                       </span>PORTS<span class="w">                                                                  </span>NAMES
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#000-setup-__codelineno-3-5"></a>---------------------------------------------------------------------------------------------------------------------
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#000-setup-__codelineno-3-6"></a>nirgeier/ansible-controller<span class="w"> </span><span class="m">22</span>/tcp<span class="w">                                                                 </span>ansible-controller
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#000-setup-__codelineno-3-7"></a>nirgeier/linux-server<span class="w">       </span><span class="m">0</span>.0.0.0:3001-&gt;22/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:5001-&gt;5000/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:8081-&gt;8080/tcp<span class="w">   </span>linux-server-1
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#000-setup-__codelineno-3-8"></a>nirgeier/linux-server<span class="w">       </span><span class="m">0</span>.0.0.0:3002-&gt;22/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:5002-&gt;5000/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:8082-&gt;8080/tcp<span class="w">   </span>linux-server-2
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#000-setup-__codelineno-3-9"></a>nirgeier/linux-server<span class="w">       </span><span class="m">0</span>.0.0.0:3003-&gt;22/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:5003-&gt;5000/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:8083-&gt;8080/tcp<span class="w">   </span>linux-server-3
-</span></code></pre></div></section><section class="print-page" id="001-verify-ansible" heading-number="2.3"><h1 id="001-verify-ansible-lab-001-verify-ansible-configuration">Lab 001 - Verify ansible configuration</h1>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#000-setup-__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#000-setup-__codelineno-3-4"></a><span class="c1"># Expected output</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#000-setup-__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#000-setup-__codelineno-3-6"></a>IMAGE<span class="w">                       </span>PORTS<span class="w">                                                                  </span>NAMES
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#000-setup-__codelineno-3-7"></a>---------------------------------------------------------------------------------------------------------------------
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#000-setup-__codelineno-3-8"></a>nirgeier/ansible-controller<span class="w"> </span><span class="m">22</span>/tcp<span class="w">                                                                 </span>ansible-controller
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#000-setup-__codelineno-3-9"></a>nirgeier/linux-server<span class="w">       </span><span class="m">0</span>.0.0.0:3001-&gt;22/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:5001-&gt;5000/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:8081-&gt;8080/tcp<span class="w">   </span>linux-server-1
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#000-setup-__codelineno-3-10"></a>nirgeier/linux-server<span class="w">       </span><span class="m">0</span>.0.0.0:3002-&gt;22/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:5002-&gt;5000/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:8082-&gt;8080/tcp<span class="w">   </span>linux-server-2
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#000-setup-__codelineno-3-11"></a>nirgeier/linux-server<span class="w">       </span><span class="m">0</span>.0.0.0:3003-&gt;22/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:5003-&gt;5000/tcp,<span class="w"> </span><span class="m">0</span>.0.0.0:8083-&gt;8080/tcp<span class="w">   </span>linux-server-3
+</span></code></pre></div></section><section class="print-page" id="001-verify-ansible" heading-number="2.3"><h1 id="001-verify-ansible-lab-001-verify-ansible-configuration">Lab 001 - Verify Ansible configuration</h1>
 <ul>
-<li>In this lab we will create the ansible configuration and will verify that the configuration is correct</li>
-<li>This lab is based upon the <a href="#000-setup">previous lab</a> and its <code>docker-compose</code></li>
-<li>In this lab we will learn to use:</li>
+<li>In this lab we will create the Ansible configuration and verify that it is configured correctly.</li>
+<li>This lab is based upon the <a href="#000-setup">previous lab</a> and its <code>docker-compose</code>.</li>
+<li>In this lab we will learn how to use:</li>
 <li><code>ansible.cfg</code></li>
 <li><code>inventory</code></li>
 <li><code>ssh.config</code></li>
 </ul>
-<hr />
-<h3 id="001-verify-ansible-pre-requirements">Pre-Requirements</h3>
-<p>Clone the repository and start playing with it</p>
-<p><strong>Option 1:</strong> 
-  - Linux machine with docker</p>
-<p><strong>Option 2:</strong> </p>
-<p><a href="https://console.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/nirgeier/AnsibleLabs"><img alt="Open in Cloud Shell" src="https://gstatic.com/cloudssh/images/open-btn.svg" /></a></p>
+<h2 id="001-verify-ansible-pre-requirements">Pre-Requirements</h2>
+<p>Clone the repository and start playing with it.</p>
+<p><br>
+&ndash; <strong>Option 1:</strong> </p>
 <ul>
-<li>Clicking on the <code>Open in Google Cloud Shell</code> button.</li>
-<li>It will clone the repository into free Cloud instance</li>
-<li><strong><kbd>CTRL</kbd> + click to open in new window</strong> </li>
+<li>Use a Linux machine with Docker.</li>
 </ul>
-<p><strong>Option 3:</strong> 
-  - Open the scenario in <a href="https://killercoda.com/creator/scenarios/codewizard">Killercoda</a>
-  - <strong><kbd>CTRL</kbd> + click to open in new window</strong> </p>
+<p><br>
+&ndash; <strong>Option 2:</strong> </p>
+<ul>
+<li>
+<p>Click on the <code>Open in Google Cloud Shell</code> button below:</p>
+<p><a href="https://console.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/nirgeier/AnsibleLabs"><img alt="Open in Cloud Shell" src="https://gstatic.com/cloudssh/images/open-btn.svg" /></a></p>
+</li>
+<li>
+<p>The repository will automatically be cloned into a free Cloud instance.</p>
+</li>
+<li>Use <strong><kbd>CTRL</kbd></strong> + click to open it in a new window.</li>
+</ul>
+<p><br></p>
+<p>&ndash; <strong>Option 3:</strong> </p>
+<ul>
+<li>Open the scenario in <a href="https://killercoda.com/creator/scenarios/codewizard">Killercoda</a>.</li>
+<li>Use <strong><kbd>CTRL</kbd></strong> + click to open it in a new window.</li>
+</ul>
 <hr />
 <ul>
 <li><a href="#001-verify-ansible-lab-001---verify-ansible-configuration">Lab 001 - Verify ansible configuration</a><ul>
-<li><a href="#001-verify-ansible-pre-requirements">Pre-Requirements</a></li>
-<li><a href="#001-verify-ansible-01-create-the-configuration-file">01. Create the configuration file</a></li>
+<li><a href="#001-verify-ansible-pre-requirements">Pre-Requirements</a><ul>
+<li><a href="#001-verify-ansible-01-create-the-configuration-file">01.00. Create the configuration file</a><ul>
 <li><a href="#001-verify-ansible-0101-ansiblecfg-file">01.01. <code>ansible.cfg</code> file</a></li>
 <li><a href="#001-verify-ansible-0102-create-the-ansiblecfg-file">01.02. Create the <code>ansible.cfg</code> file</a></li>
 <li><a href="#001-verify-ansible-010201-ansiblecfg-locations">01.02.01 <code>ansible.cfg</code> Locations:</a></li>
 <li><a href="#001-verify-ansible-010202-structure-of-ansiblecfg">01.02.02 Structure of <code>ansible.cfg</code></a></li>
 <li><a href="#001-verify-ansible-010203-auto-generate-ansiblecfg">01.02.03 Auto Generate <code>ansible.cfg</code></a></li>
-<li><a href="#001-verify-ansible-0102-create-the-sshconfig-file">01.02. Create the <code>ssh.config</code> file</a></li>
-<li><a href="#001-verify-ansible-0103-create-the-inventory-file">01.03. Create the <code>inventory</code> file</a></li>
-<li><a href="#001-verify-ansible-0104-prepare-the-content-for-execution">01.04. Prepare the content for execution</a></li>
+<li><a href="#001-verify-ansible-0102-create-the-sshconfig-file">01.03. Create the <code>ssh.config</code> file</a></li>
+<li><a href="#001-verify-ansible-0103-create-the-inventory-file">01.04. Create the <code>inventory</code> file</a></li>
+<li><a href="#001-verify-ansible-0104-prepare-the-content-for-execution">01.05. Prepare the content for execution</a></li>
 </ul>
 </li>
-<li><a href="#001-verify-ansible-02-test-ansible-configuration">02 Test ansible configuration</a><ul>
+<li><a href="#001-verify-ansible-02-test-ansible-configuration">02.00. Test ansible configuration</a><ul>
 <li><a href="#001-verify-ansible-0201-check-ansible-configuration">02.01. Check ansible configuration</a></li>
 <li><a href="#001-verify-ansible-0202-basic-ansible-configuration">02.02. Basic ansible configuration</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
 <hr />
-<h3 id="001-verify-ansible-01-create-the-configuration-file">01. Create the configuration file</h3>
-<blockquote>
-<p>[!IMPORTANT]<br />
-In this lab we will be placing the files under the <code>/labs-scripts</code> folder.<br />
-The folder is <strong>mounted</strong> to our docker container(s) under <code>&lt;PROJECT_ROOT&gt;/runtime</code> folder.<br />
-You&rsquo;re encouraged to review  the <a href="../000-setup/docker-compose.yaml"><code>docker-compose.yaml</code></a> file throughout the lab session. </p>
-</blockquote>
-<h3 id="001-verify-ansible-0101-ansiblecfg-file">01.01. <code>ansible.cfg</code> file</h3>
+<h3 id="001-verify-ansible-0100-create-configuration-files">01.00. Create configuration files</h3>
+<div class="admonition warning">
+<p class="admonition-title">IMPORTANT!</p>
+<p>In this lab we will be placing the files under the <code>/labs-scripts</code> directory.<br />
+The directory is <strong>mounted</strong> to our docker container(s) under the <code>&lt;PROJECT_ROOT&gt;/runtime</code> directory.<br />
+You are encouraged to review  the <a href="../000-setup/docker-compose.yaml"><code>docker-compose.yaml</code></a> file throughout the lab session. </p>
+</div>
+<hr />
+<h3 id="001-verify-ansible-0101-about-ansiblecfg-file">01.01. About <code>ansible.cfg</code> file</h3>
 <ul>
 <li>What is <code>ansible.cfg</code> ?<ul>
 <li>The <code>ansible.cfg</code> file is an INI-like configuration file used to define various settings and parameters that influence how Ansible operates. </li>
@@ -1100,299 +1117,318 @@ You&rsquo;re encouraged to review  the <a href="../000-setup/docker-compose.yaml
 </ul>
 <h3 id="001-verify-ansible-0102-create-the-ansiblecfg-file">01.02. Create the <code>ansible.cfg</code> file</h3>
 <ul>
-<li><code>ansible.cfg</code> contains the configuration for our ansible project and to control Ansible’s behavior.</li>
+<li><code>ansible.cfg</code> contains the configuration for our Ansible Project and controls Ansible’s behavior.</li>
 <li><code>ansible.cfg</code> uses the <code>INI</code> format.</li>
 </ul>
-<h4 id="001-verify-ansible-010201-ansiblecfg-locations">01.02.01 <code>ansible.cfg</code> Locations:</h4>
+<h4 id="001-verify-ansible-010201-ansiblecfg-locations">01.02.01 <code>ansible.cfg</code> locations:</h4>
 <ul>
-<li>Docs: <a href="https://docs.ansible.com/ansible/latest/reference_appendices/config.html#the-configuration-file">Ansible Configuration Settings</a></li>
-<li>Ansible searches <code>ansible.cfg</code> in a specific order. </li>
-<li>Ansible will <strong>search</strong> for the configuration file in the following order: 
-    the <strong>first file</strong> it finds will be used while ignoring the rest
-    | Search resource            | Description                 |
-    | -------------------------- | --------------------------- |
-    | <code>ANSIBLE_CONFIG</code>           | environment variable if set |
-    | <code>ansible.cfg</code>              | In the current directory    |
-    | <code>~/.ansible.cfg</code>           | Under the home directory    |
-    | <code>/etc/ansible/ansible.cfg</code> | OS common path              |</li>
-<li>In this exercise the environment variable <code>ANSIBLE_CONFIG</code> is set in the docker container <code>/labs-scripts/.ansible.cfg</code> </li>
-</ul>
-<h4 id="001-verify-ansible-010202-structure-of-ansiblecfg">01.02.02 Structure of <code>ansible.cfg</code></h4>
-<ul>
+<li>See Ansible documentation: <a href="https://docs.ansible.com/ansible/latest/reference_appendices/config.html#the-configuration-file">Ansible Configuration Settings</a></li>
+<li>Ansible searches <code>ansible.cfg</code> in a specific order. The <strong>first file</strong> it finds will be used while ignoring the rest.</li>
 <li>
-<p>The <code>ansible.cfg</code> file is <strong>divided into sections</strong>, each containing various parameters that can be customized. </p>
+<p>Ansible will <strong>search</strong> for the configuration file in the following order: </p>
+<table>
+<thead>
+<tr>
+<th>Search resource</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ANSIBLE_CONFIG</code></td>
+<td>environment variable if set</td>
+</tr>
+<tr>
+<td><code>ansible.cfg</code></td>
+<td>In the current directory</td>
+</tr>
+<tr>
+<td><code>~/.ansible.cfg</code></td>
+<td>Under the home directory</td>
+</tr>
+<tr>
+<td><code>/etc/ansible/ansible.cfg</code></td>
+<td>OS common path</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
-<p>Main configuration settings:
-    ##### <code>[defaults]</code></p>
+<p>In this exercise the environment variable <code>ANSIBLE_CONFIG</code> is set in the docker container path <code>/labs-scripts/.ansible.cfg</code></p>
+</li>
+</ul>
+<h4 id="001-verify-ansible-010202-ansiblecfg-structure">01.02.02 <code>ansible.cfg</code> structure:</h4>
 <ul>
 <li>
-<p>The <code>[defaults]</code> section contains the general settings for Ansible, such as inventory location, verbosity, and log settings.</p>
+<p>The <code>ansible.cfg</code> file is <strong>divided into sections</strong>, each containing various customizable parameters.</p>
+</li>
+<li>
+<p>Main configuration settings:</p>
+</li>
+</ul>
+<h4 id="001-verify-ansible-defaults"><code>[defaults]</code></h4>
+<ul>
+<li>The <code>[defaults]</code> section contains the general settings for Ansible (such as inventory location, verbosity and log settings).</li>
+</ul>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#001-verify-ansible-__codelineno-0-1"></a><span class="k">[defaults]</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#001-verify-ansible-__codelineno-0-2"></a><span class="w">    </span><span class="na">ask_pass</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#001-verify-ansible-__codelineno-0-3"></a><span class="w">    </span><span class="na">host_key_checking</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#001-verify-ansible-__codelineno-0-4"></a><span class="w">    </span><span class="na">inventory</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s">/etc/ansible/hosts</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#001-verify-ansible-__codelineno-0-5"></a><span class="w">    </span><span class="na">log_path</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s">/var/log/ansible.log</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#001-verify-ansible-__codelineno-0-6"></a><span class="w">    </span><span class="na">remote_user</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">ansible</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#001-verify-ansible-__codelineno-0-7"></a><span class="w">    </span><span class="na">timeout</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s">30</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#001-verify-ansible-__codelineno-0-2"></a><span class="w">    </span><span class="na">ask_pass</span><span class="w">            </span><span class="o">=</span><span class="w">    </span><span class="s">false</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#001-verify-ansible-__codelineno-0-3"></a><span class="w">    </span><span class="na">host_key_checking</span><span class="w">   </span><span class="o">=</span><span class="w">    </span><span class="s">false</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#001-verify-ansible-__codelineno-0-4"></a><span class="w">    </span><span class="na">inventory</span><span class="w">           </span><span class="o">=</span><span class="w">    </span><span class="s">/etc/ansible/hosts</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#001-verify-ansible-__codelineno-0-5"></a><span class="w">    </span><span class="na">log_path</span><span class="w">            </span><span class="o">=</span><span class="w">    </span><span class="s">/var/log/ansible.log</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#001-verify-ansible-__codelineno-0-6"></a><span class="w">    </span><span class="na">remote_user</span><span class="w">         </span><span class="o">=</span><span class="w">    </span><span class="s">ansible</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#001-verify-ansible-__codelineno-0-7"></a><span class="w">    </span><span class="na">timeout</span><span class="w">             </span><span class="o">=</span><span class="w">    </span><span class="s">30</span>
 </span></code></pre></div>
-</li>
-</ul>
-<h5 id="001-verify-ansible-privilege_escalation"><code>[privilege_escalation]</code></h5>
+<p><br></p>
+<h4 id="001-verify-ansible-privilege_escalation"><code>[privilege_escalation]</code></h4>
 <ul>
-<li>
-<p>The <code>[privilege_escalation]</code> section defines settings related to privilege escalation, such as using <strong><code>sudo</code></strong> or <strong><code>become</code></strong>.</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#001-verify-ansible-__codelineno-1-1"></a><span class="k">[privilege_escalation]</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#001-verify-ansible-__codelineno-1-2"></a><span class="w">    </span><span class="na">become</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#001-verify-ansible-__codelineno-1-3"></a><span class="w">    </span><span class="na">become_method</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">sudo</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#001-verify-ansible-__codelineno-1-4"></a><span class="w">    </span><span class="na">become_user</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">root</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#001-verify-ansible-__codelineno-1-5"></a><span class="w">    </span><span class="na">become_ask_pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">False</span>
+<li>The <code>[privilege_escalation]</code> section defines settings related to privilege escalation (such as <strong><code>sudo</code></strong> or <strong><code>become</code></strong>).</li>
+</ul>
+<p><div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#001-verify-ansible-__codelineno-1-1"></a><span class="k">[privilege_escalation]</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#001-verify-ansible-__codelineno-1-2"></a><span class="w">    </span><span class="na">become</span><span class="w">              </span><span class="o">=</span><span class="w">    </span><span class="s">True</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#001-verify-ansible-__codelineno-1-3"></a><span class="w">    </span><span class="na">become_method</span><span class="w">       </span><span class="o">=</span><span class="w">    </span><span class="s">sudo</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#001-verify-ansible-__codelineno-1-4"></a><span class="w">    </span><span class="na">become_user</span><span class="w">         </span><span class="o">=</span><span class="w">    </span><span class="s">root</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#001-verify-ansible-__codelineno-1-5"></a><span class="w">    </span><span class="na">become_ask_pass</span><span class="w">     </span><span class="o">=</span><span class="w">    </span><span class="s">False</span>
 </span></code></pre></div>
-</li>
-</ul>
-<h5 id="001-verify-ansible-ssh_connection"><code>[ssh_connection]</code></h5>
+<br></p>
+<h4 id="001-verify-ansible-ssh_connection"><code>[ssh_connection]</code></h4>
 <ul>
-<li>
-<p>Settings for SSH connections, including timeout and control settings for persistent connections.</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#001-verify-ansible-__codelineno-2-1"></a><span class="k">[ssh_connection]</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#001-verify-ansible-__codelineno-2-2"></a><span class="w">    </span><span class="na">ssh_args</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">-o ControlMaster=auto -o ControlPersist=60s</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#001-verify-ansible-__codelineno-2-3"></a><span class="w">    </span><span class="na">pipelining</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#001-verify-ansible-__codelineno-2-4"></a><span class="w">    </span><span class="na">scp_if_ssh</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+<li>Settings for SSH connections, including timeout and control settings for persistent connections.</li>
+</ul>
+<p><div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#001-verify-ansible-__codelineno-2-1"></a><span class="k">[ssh_connection]</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#001-verify-ansible-__codelineno-2-2"></a><span class="w">    </span><span class="na">ssh_args</span><span class="w">            </span><span class="o">=</span><span class="w">    </span><span class="s">-o ControlMaster=auto -o ControlPersist=60s</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#001-verify-ansible-__codelineno-2-3"></a><span class="w">    </span><span class="na">pipelining</span><span class="w">          </span><span class="o">=</span><span class="w">    </span><span class="s">True</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#001-verify-ansible-__codelineno-2-4"></a><span class="w">    </span><span class="na">scp_if_ssh</span><span class="w">          </span><span class="o">=</span><span class="w">    </span><span class="s">True</span>
 </span></code></pre></div>
-</li>
-</ul>
-<h5 id="001-verify-ansible-inventory"><code>[inventory]</code></h5>
+<br></p>
+<h4 id="001-verify-ansible-inventory"><code>[inventory]</code></h4>
 <ul>
-<li>
-<p><strong><code>[inventory]</code></strong> Defines options related to inventory parsing and caching.</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#001-verify-ansible-__codelineno-3-1"></a><span class="k">[inventory]</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#001-verify-ansible-__codelineno-3-2"></a><span class="w">    </span><span class="na">enable_plugins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">host_list, ini, auto</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#001-verify-ansible-__codelineno-3-3"></a><span class="w">    </span><span class="na">cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#001-verify-ansible-__codelineno-3-4"></a><span class="w">    </span><span class="na">cache_plugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">memory</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#001-verify-ansible-__codelineno-3-5"></a><span class="w">    </span><span class="na">cache_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3600</span>
+<li>Defines options related to inventory parsing and caching.</li>
+</ul>
+<p><div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#001-verify-ansible-__codelineno-3-1"></a><span class="k">[inventory]</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#001-verify-ansible-__codelineno-3-2"></a><span class="w">    </span><span class="na">enable_plugins</span><span class="w">      </span><span class="o">=</span><span class="w">    </span><span class="s">host_list, ini, auto</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#001-verify-ansible-__codelineno-3-3"></a><span class="w">    </span><span class="na">cache</span><span class="w">               </span><span class="o">=</span><span class="w">    </span><span class="s">True</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#001-verify-ansible-__codelineno-3-4"></a><span class="w">    </span><span class="na">cache_plugin</span><span class="w">        </span><span class="o">=</span><span class="w">    </span><span class="s">memory</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#001-verify-ansible-__codelineno-3-5"></a><span class="w">    </span><span class="na">cache_timeout</span><span class="w">       </span><span class="o">=</span><span class="w">    </span><span class="s">3600</span>
 </span></code></pre></div>
-</li>
-</ul>
-<h5 id="001-verify-ansible-diff"><code>[diff]</code></h5>
+<br></p>
+<h4 id="001-verify-ansible-diff"><code>[diff]</code></h4>
 <ul>
-<li>
-<p>Controls whether Ansible shows differences when applying configurations.</p>
+<li>Controls whether Ansible shows differences when applying configurations.</li>
+</ul>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#001-verify-ansible-__codelineno-4-1"></a><span class="k">[diff]</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#001-verify-ansible-__codelineno-4-2"></a><span class="w">    </span><span class="na">always</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#001-verify-ansible-__codelineno-4-3"></a><span class="w">    </span><span class="na">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#001-verify-ansible-__codelineno-4-2"></a><span class="w">    </span><span class="na">always</span><span class="w">              </span><span class="o">=</span><span class="w">    </span><span class="s">True</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#001-verify-ansible-__codelineno-4-3"></a><span class="w">    </span><span class="na">context</span><span class="w">             </span><span class="o">=</span><span class="w">    </span><span class="s">5</span>
 </span></code></pre></div>
-</li>
-</ul>
-<h5 id="001-verify-ansible-logging"><code>logging</code></h5>
+<p><br></p>
+<h4 id="001-verify-ansible-logging"><code>[logging]</code></h4>
 <ul>
-<li>Ansible does not have a dedicated <code>[logging]</code> section in ansible.cfg. </li>
-<li>Instead, logging is typically configured under the <code>[defaults]</code> section using the log_path directive.</li>
-<li><strong><code>log_path</code></strong> Controls where Ansible logs its output. </li>
-<li>If log_path is set, Ansible writes logs to the specified file. </li>
-<li>
-<p>If it is not set or is empty, logging is disabled.</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#001-verify-ansible-__codelineno-5-1"></a><span class="k">[defaults]</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#001-verify-ansible-__codelineno-5-2"></a><span class="w">    </span><span class="na">log_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/log/ansible.log</span>
+<li>Ansible does not have a dedicated <code>[logging]</code> section in <code>ansible.cfg</code>. </li>
+<li>Instead, logging is typically configured under the <code>[defaults]</code> section using the <code>log_path</code> directive.</li>
+<li><code>log_path</code> controls where Ansible logs its output. </li>
+<li>If <code>log_path</code> is set, Ansible will write logs to the specified file, where as if it is not set, or left empty, logging will be disabled.</li>
+</ul>
+<p><div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#001-verify-ansible-__codelineno-5-1"></a><span class="k">[defaults]</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#001-verify-ansible-__codelineno-5-2"></a><span class="w">    </span><span class="na">log_path</span><span class="w">            </span><span class="o">=</span><span class="w">     </span><span class="s">/var/log/ansible.log</span>
 </span></code></pre></div>
+<br></p>
 <h4 id="001-verify-ansible-010203-auto-generate-ansiblecfg">01.02.03 Auto Generate <code>ansible.cfg</code></h4>
-</li>
+<ul>
+<li>You can choose to execute <code>ansible-config init</code>, which will generate a sample Ansible configuration file. </li>
+<li>As this is the main configuration file for our demo application, it is the content of <code>ansible.cfg</code> which we will use in this lab.</li>
 </ul>
-</li>
-<li>
-<p>You can execute <code>ansible-config init</code> will generate a sample ansible configuration file </p>
-</li>
-<li>
-<p>This is the content of <code>ansible.cfg</code> which we will use in this lab</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#001-verify-ansible-__codelineno-6-1"></a><span class="c1">### File Location: $RUNTIME_FOLDER/labs-scripts/ansible.cfg</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#001-verify-ansible-__codelineno-6-2"></a><span class="c1">##</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#001-verify-ansible-__codelineno-6-3"></a><span class="c1">## This is the main configuration file for our demo application</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#001-verify-ansible-__codelineno-6-4"></a><span class="c1">##</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#001-verify-ansible-__codelineno-6-5"></a>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#001-verify-ansible-__codelineno-6-6"></a><span class="c1"># This is the default location of the inventory file, script, or directory</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#001-verify-ansible-__codelineno-6-7"></a><span class="c1"># that Ansible will use to determine what hosts it has available to talk to</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#001-verify-ansible-__codelineno-6-8"></a><span class="k">[defaults]</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#001-verify-ansible-__codelineno-6-1"></a><span class="c1"># File location: $RUNTIME_FOLDER/labs-scripts/ansible.cfg.</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#001-verify-ansible-__codelineno-6-2"></a><span class="c1"># This is the default location of the inventory file, script, or directory that </span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#001-verify-ansible-__codelineno-6-3"></a><span class="w">  </span><span class="na">Ansible will use to determine what hosts it has available to talk to.</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#001-verify-ansible-__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#001-verify-ansible-__codelineno-6-5"></a><span class="k">[defaults]</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#001-verify-ansible-__codelineno-6-6"></a><span class="na">---</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#001-verify-ansible-__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#001-verify-ansible-__codelineno-6-8"></a><span class="c1"># Defines that the inventory info is in a file named “inventory”.</span>
 </span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#001-verify-ansible-__codelineno-6-9"></a>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#001-verify-ansible-__codelineno-6-10"></a><span class="c1"># Define that inventory info is in the file named “inventory”</span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#001-verify-ansible-__codelineno-6-11"></a><span class="na">inventory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">inventory</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#001-verify-ansible-__codelineno-6-10"></a><span class="na">inventory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">inventory</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#001-verify-ansible-__codelineno-6-11"></a><span class="na">---</span>
 </span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#001-verify-ansible-__codelineno-6-12"></a>
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#001-verify-ansible-__codelineno-6-13"></a><span class="c1"># Specify remote hosts, so we do not need to config them in main ssh config</span>
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#001-verify-ansible-__codelineno-6-14"></a><span class="k">[ssh_connection]</span>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#001-verify-ansible-__codelineno-6-15"></a><span class="na">transport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ssh</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#001-verify-ansible-__codelineno-6-16"></a><span class="na">transfer_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">scp</span>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#001-verify-ansible-__codelineno-6-17"></a>
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#001-verify-ansible-__codelineno-6-18"></a><span class="c1"># The location of the ssh config file</span>
-</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#001-verify-ansible-__codelineno-6-19"></a><span class="c1"># We will create this file in our next step</span>
-</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#001-verify-ansible-__codelineno-6-20"></a><span class="na">ssh_args</span><span class="w">  </span><span class="o">=</span><span class="w">     </span><span class="s">-F ssh.config                   </span>\
-</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#001-verify-ansible-__codelineno-6-21"></a><span class="w">                </span><span class="s">-o ControlMaster=auto           </span>\
-</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#001-verify-ansible-__codelineno-6-22"></a><span class="w">                </span><span class="s">-o ControlPersist=60s           </span>\
-</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#001-verify-ansible-__codelineno-6-23"></a><span class="w">                </span><span class="s">-o StrictHostKeyChecking=no     </span>\
-</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#001-verify-ansible-__codelineno-6-24"></a><span class="w">                </span><span class="s">-o UserKnownHostsFile=/root/.ssh/known_hosts</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#001-verify-ansible-__codelineno-6-13"></a><span class="c1"># Specifies remote hosts, so we do not need to config them in main SSH config.</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#001-verify-ansible-__codelineno-6-14"></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#001-verify-ansible-__codelineno-6-15"></a><span class="k">[ssh_connection]</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#001-verify-ansible-__codelineno-6-16"></a><span class="na">transport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ssh</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#001-verify-ansible-__codelineno-6-17"></a><span class="na">transfer_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">scp</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#001-verify-ansible-__codelineno-6-18"></a><span class="na">---</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#001-verify-ansible-__codelineno-6-19"></a>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#001-verify-ansible-__codelineno-6-20"></a><span class="c1"># The location of the SSH config file.</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#001-verify-ansible-__codelineno-6-21"></a><span class="c1"># We will create this file in our next step.</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#001-verify-ansible-__codelineno-6-22"></a>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#001-verify-ansible-__codelineno-6-23"></a><span class="na">ssh_args</span><span class="w">  </span><span class="o">=</span><span class="w">     </span><span class="s">-F ssh.config                   </span>\
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#001-verify-ansible-__codelineno-6-24"></a><span class="w">                </span><span class="s">-o ControlMaster=auto           </span>\
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#001-verify-ansible-__codelineno-6-25"></a><span class="w">                </span><span class="s">-o ControlPersist=60s           </span>\
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#001-verify-ansible-__codelineno-6-26"></a><span class="w">                </span><span class="s">-o StrictHostKeyChecking=no     </span>\
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#001-verify-ansible-__codelineno-6-27"></a><span class="w">                </span><span class="s">-o UserKnownHostsFile=/root/.ssh/known_hosts</span>
 </span></code></pre></div>
-</li>
-</ul>
 <h3 id="001-verify-ansible-0102-create-the-sshconfig-file">01.02. Create the <code>ssh.config</code> file</h3>
 <ul>
-<li>In Linux Ansible is based upon <code>ssh</code>, in order to run Ansible playbooks.</li>
-<li>By default it will use the default ssh keys unless we supply it with ssh configuration file.</li>
-<li>
-<p>In this demo we will use our own <code>ssh.config</code> configuration file.</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#001-verify-ansible-__codelineno-7-1"></a><span class="c1">### File location: $RUNTIME_FOLDER/labs-scripts/ssh.config</span>
+<li>Ansible operates in Linux environments using <code>SSH</code> protocol, in order to run Ansible playbooks.</li>
+<li>By default, Ansible uses the default SSH keys, unless provided with an SSH configuration file.</li>
+<li>In this demo we will use our own <code>ssh.config</code> configuration file.</li>
+</ul>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#001-verify-ansible-__codelineno-7-1"></a><span class="c1"># File location: $RUNTIME_FOLDER/labs-scripts/ssh.config</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#001-verify-ansible-__codelineno-7-2"></a><span class="c1"># Set up the desired hosts</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#001-verify-ansible-__codelineno-7-3"></a><span class="c1"># keep in mind that we have set up the hosts in the docker-compose</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#001-verify-ansible-__codelineno-7-4"></a>Host<span class="w"> </span>*
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#001-verify-ansible-__codelineno-7-5"></a><span class="w">    </span><span class="c1"># Disable host key checking: </span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#001-verify-ansible-__codelineno-7-6"></a><span class="w">    </span><span class="c1"># avoid asking for the key-print authenticity</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#001-verify-ansible-__codelineno-7-7"></a><span class="w">    </span>StrictHostKeyChecking<span class="w"> </span>no
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#001-verify-ansible-__codelineno-7-8"></a>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#001-verify-ansible-__codelineno-7-9"></a><span class="w">    </span>UserKnownHostsFile<span class="w">    </span>/dev/null
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#001-verify-ansible-__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#001-verify-ansible-__codelineno-7-5"></a>Host<span class="w"> </span>*
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#001-verify-ansible-__codelineno-7-6"></a>---
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#001-verify-ansible-__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#001-verify-ansible-__codelineno-7-8"></a><span class="c1"># Disable host key checking</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#001-verify-ansible-__codelineno-7-9"></a><span class="c1"># Avoid asking for the key-print authenticity</span>
 </span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#001-verify-ansible-__codelineno-7-10"></a>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#001-verify-ansible-__codelineno-7-11"></a><span class="w">    </span><span class="c1"># Enable hashing known_host file</span>
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#001-verify-ansible-__codelineno-7-12"></a><span class="w">    </span>HashKnownHosts<span class="w">        </span>yes
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#001-verify-ansible-__codelineno-7-13"></a>
-</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#001-verify-ansible-__codelineno-7-14"></a><span class="w">    </span><span class="c1"># IdentityFile allows to specify private keys we wish to use for authentication</span>
-</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#001-verify-ansible-__codelineno-7-15"></a><span class="w">    </span><span class="c1"># Authentication = the process of Authentication</span>
-</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#001-verify-ansible-__codelineno-7-16"></a><span class="w">    </span><span class="c1"># We will use the auto-generated ssh keys from our Docker container</span>
-</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#001-verify-ansible-__codelineno-7-17"></a>
-</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#001-verify-ansible-__codelineno-7-18"></a><span class="c1"># List the desired servers. </span>
-</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#001-verify-ansible-__codelineno-7-19"></a><span class="c1"># the hosts are defined in the docker-compose which we created in the setup lab)</span>
-</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#001-verify-ansible-__codelineno-7-20"></a>Host<span class="w">                </span>linux-server-1
-</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#001-verify-ansible-__codelineno-7-21"></a><span class="w">    </span>HostName<span class="w">        </span>linux-server-1
-</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#001-verify-ansible-__codelineno-7-22"></a><span class="w">    </span>IdentityFile<span class="w">    </span>/root/.ssh/linux-server-1
-</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#001-verify-ansible-__codelineno-7-23"></a><span class="w">    </span>User<span class="w">            </span>root
-</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#001-verify-ansible-__codelineno-7-24"></a><span class="w">    </span>Port<span class="w">            </span><span class="m">22</span>
-</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#001-verify-ansible-__codelineno-7-25"></a>
-</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#001-verify-ansible-__codelineno-7-26"></a>Host<span class="w">                </span>linux-server-2
-</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#001-verify-ansible-__codelineno-7-27"></a><span class="w">    </span>HostName<span class="w">        </span>linux-server-2
-</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#001-verify-ansible-__codelineno-7-28"></a><span class="w">    </span>IdentityFile<span class="w">    </span>/root/.ssh/linux-server-2
-</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#001-verify-ansible-__codelineno-7-29"></a><span class="w">    </span>User<span class="w">            </span>root
-</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#001-verify-ansible-__codelineno-7-30"></a><span class="w">    </span>Port<span class="w">            </span><span class="m">22</span>
-</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#001-verify-ansible-__codelineno-7-31"></a>
-</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#001-verify-ansible-__codelineno-7-32"></a>Host<span class="w">                </span>linux-server-3
-</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#001-verify-ansible-__codelineno-7-33"></a><span class="w">    </span>HostName<span class="w">        </span>linux-server-3
-</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34" href="#001-verify-ansible-__codelineno-7-34"></a><span class="w">    </span>IdentityFile<span class="w">    </span>/root/.ssh/linux-server-3
-</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35" href="#001-verify-ansible-__codelineno-7-35"></a><span class="w">    </span>User<span class="w">            </span>root
-</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36" href="#001-verify-ansible-__codelineno-7-36"></a><span class="w">    </span>Port<span class="w">            </span><span class="m">22</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#001-verify-ansible-__codelineno-7-11"></a>StrictHostKeyChecking<span class="w"> </span>no<span class="w">        </span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#001-verify-ansible-__codelineno-7-12"></a>UserKnownHostsFile<span class="w">    </span>/dev/null
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#001-verify-ansible-__codelineno-7-13"></a>---
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#001-verify-ansible-__codelineno-7-14"></a>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#001-verify-ansible-__codelineno-7-15"></a><span class="c1"># Enable hashing known_host file</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#001-verify-ansible-__codelineno-7-16"></a>HashKnownHosts<span class="w">        </span>yes
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#001-verify-ansible-__codelineno-7-17"></a>---
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#001-verify-ansible-__codelineno-7-18"></a>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#001-verify-ansible-__codelineno-7-19"></a><span class="c1"># IdentityFile allows to specify private keys we wish to use for authentication</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#001-verify-ansible-__codelineno-7-20"></a><span class="c1"># Authentication = the process of authentication</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#001-verify-ansible-__codelineno-7-21"></a><span class="c1"># We will use the auto-generated SSH keys from our Docker container</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#001-verify-ansible-__codelineno-7-22"></a>---
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#001-verify-ansible-__codelineno-7-23"></a>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#001-verify-ansible-__codelineno-7-24"></a><span class="c1"># List the desired servers</span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#001-verify-ansible-__codelineno-7-25"></a><span class="c1"># The hosts are defined in the docker-compose which we created in the setup lab</span>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#001-verify-ansible-__codelineno-7-26"></a>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#001-verify-ansible-__codelineno-7-27"></a>Host<span class="w">                  </span>linux-server-1
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#001-verify-ansible-__codelineno-7-28"></a><span class="w">    </span>HostName<span class="w">          </span>linux-server-1
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#001-verify-ansible-__codelineno-7-29"></a><span class="w">    </span>IdentityFile<span class="w">      </span>/root/.ssh/linux-server-1
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#001-verify-ansible-__codelineno-7-30"></a><span class="w">    </span>User<span class="w">              </span>root
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#001-verify-ansible-__codelineno-7-31"></a><span class="w">    </span>Port<span class="w">              </span><span class="m">22</span>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#001-verify-ansible-__codelineno-7-32"></a>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#001-verify-ansible-__codelineno-7-33"></a>Host<span class="w">                  </span>linux-server-2
+</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34" href="#001-verify-ansible-__codelineno-7-34"></a><span class="w">    </span>HostName<span class="w">          </span>linux-server-2
+</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35" href="#001-verify-ansible-__codelineno-7-35"></a><span class="w">    </span>IdentityFile<span class="w">      </span>/root/.ssh/linux-server-2
+</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36" href="#001-verify-ansible-__codelineno-7-36"></a><span class="w">    </span>User<span class="w">              </span>root
+</span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37" href="#001-verify-ansible-__codelineno-7-37"></a><span class="w">    </span>Port<span class="w">              </span><span class="m">22</span>
+</span><span id="__span-7-38"><a id="__codelineno-7-38" name="__codelineno-7-38" href="#001-verify-ansible-__codelineno-7-38"></a>
+</span><span id="__span-7-39"><a id="__codelineno-7-39" name="__codelineno-7-39" href="#001-verify-ansible-__codelineno-7-39"></a>Host<span class="w">                  </span>linux-server-3
+</span><span id="__span-7-40"><a id="__codelineno-7-40" name="__codelineno-7-40" href="#001-verify-ansible-__codelineno-7-40"></a><span class="w">    </span>HostName<span class="w">          </span>linux-server-3
+</span><span id="__span-7-41"><a id="__codelineno-7-41" name="__codelineno-7-41" href="#001-verify-ansible-__codelineno-7-41"></a><span class="w">    </span>IdentityFile<span class="w">      </span>/root/.ssh/linux-server-3
+</span><span id="__span-7-42"><a id="__codelineno-7-42" name="__codelineno-7-42" href="#001-verify-ansible-__codelineno-7-42"></a><span class="w">    </span>User<span class="w">              </span>root
+</span><span id="__span-7-43"><a id="__codelineno-7-43" name="__codelineno-7-43" href="#001-verify-ansible-__codelineno-7-43"></a><span class="w">    </span>Port<span class="w">            </span><span class="m">22</span>
 </span></code></pre></div>
-</li>
-</ul>
 <h3 id="001-verify-ansible-0103-create-the-inventory-file">01.03. Create the <code>inventory</code> file</h3>
 <ul>
-<li>Docs: <a href="https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html">How to build your inventory</a>.</li>
+<li>See Ansible documentation: <a href="https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html">How to build your inventory</a>.</li>
 <li>An Ansible inventory file is a <code>configuration file</code> that <strong>lists and categorizes</strong> the hosts Ansible will <strong>manage</strong>. </li>
 <li>It provides a structured way to define <code>hosts</code> and <code>groups</code>, enabling efficient targeting and execution of tasks on specific hosts or groups of hosts.</li>
 <li>The simplest inventory is a <strong>single file</strong> with a list of <code>hosts</code> and <code>groups</code>.</li>
-<li>This inventory is written in the <code>ini</code> format.</li>
+<li>The inventory is written using the <code>INI</code> format.</li>
 <li><code>inventory</code> can be written in other formats as well, such as <code>YAML</code> and <code>Dynamic Inventory</code> which dynamically configure the inventory with scripts. </li>
 <li>The default location for this file is <code>/etc/ansible/hosts</code>.</li>
-<li>If <code>/etc/ansible/hosts</code> doesn&rsquo;t exists, ansible will look for user specific inventory file at <code>$HOME/.ansible/hosts</code></li>
-<li>You can specify a different inventory file at the command line using the <code>-i &lt;path&gt;</code> when executing ansible commands or by exporting the <code>ANSIBLE_INVENTORY</code> environment variable.</li>
-<li>
-<p>Using <code>-i &lt;path&gt;</code> takes precedence over environment variable.</p>
-</li>
-<li>
-<p>The inventory configuration we will use for the labs:
-    <div class="language-ini highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#001-verify-ansible-__codelineno-8-1"></a><span class="c1">### File location: $RUNTIME_FOLDER/labs-scripts/inventory</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#001-verify-ansible-__codelineno-8-2"></a><span class="c1">###</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#001-verify-ansible-__codelineno-8-3"></a><span class="c1">### List of servers which we want ansible to connect to</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#001-verify-ansible-__codelineno-8-4"></a><span class="c1">### The names are defined in the docker-compose</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#001-verify-ansible-__codelineno-8-5"></a><span class="c1">###</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#001-verify-ansible-__codelineno-8-6"></a>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#001-verify-ansible-__codelineno-8-7"></a><span class="k">[servers]</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#001-verify-ansible-__codelineno-8-8"></a><span class="na">linux-server-1 ansible_ssh_common_args</span><span class="o">=</span><span class="s">&#39;-o UserKnownHostsFile=/root/.ssh/known_hosts&#39;</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#001-verify-ansible-__codelineno-8-9"></a><span class="na">linux-server-2 ansible_ssh_common_args</span><span class="o">=</span><span class="s">&#39;-o UserKnownHostsFile=/root/.ssh/known_hosts&#39;</span>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#001-verify-ansible-__codelineno-8-10"></a><span class="na">linux-server-3 ansible_ssh_common_args</span><span class="o">=</span><span class="s">&#39;-o UserKnownHostsFile=/root/.ssh/known_hosts&#39;</span>
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#001-verify-ansible-__codelineno-8-11"></a>
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#001-verify-ansible-__codelineno-8-12"></a><span class="k">[all:vars]</span>
-</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#001-verify-ansible-__codelineno-8-13"></a><span class="c1"># Extra &quot;global&quot; variables for the inventory</span>
-</span></code></pre></div></p>
-</li>
+<li>If <code>/etc/ansible/hosts</code> doesn&rsquo;t exists, ansible will look for user specific inventory file, to be placed at <code>$HOME/.ansible/hosts</code></li>
+<li>You can specify a different inventory file at the command line using the <code>-i &lt;path&gt;</code> inventory option when executing Ansible commands or by exporting the <code>ANSIBLE_INVENTORY</code> environment variable.</li>
+<li>Using <code>-i &lt;path&gt;</code> inventory option takes precedence over environment variable.</li>
 </ul>
-<p><strong>This inventory file is written by the following rules:</strong></p>
+<h2 id="001-verify-ansible-_1"></h2>
+<ul>
+<li>The inventory configuration we will use for the labs:
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#001-verify-ansible-__codelineno-8-1"></a><span class="c1"># File location: $RUNTIME_FOLDER/labs-scripts/inventory</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#001-verify-ansible-__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#001-verify-ansible-__codelineno-8-3"></a><span class="c1"># List of servers which we want ansible to connect to</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#001-verify-ansible-__codelineno-8-4"></a><span class="c1"># The names are defined in the docker-compose</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#001-verify-ansible-__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#001-verify-ansible-__codelineno-8-6"></a><span class="k">[servers]</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#001-verify-ansible-__codelineno-8-7"></a><span class="w">    </span><span class="na">linux-server-1 ansible_ssh_common_args</span><span class="o">=</span><span class="s">&#39;-o UserKnownHostsFile=/root/.ssh/known_hosts&#39;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#001-verify-ansible-__codelineno-8-8"></a><span class="w">    </span><span class="na">linux-server-2 ansible_ssh_common_args</span><span class="o">=</span><span class="s">&#39;-o UserKnownHostsFile=/root/.ssh/known_hosts&#39;</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#001-verify-ansible-__codelineno-8-9"></a><span class="w">    </span><span class="na">linux-server-3 ansible_ssh_common_args</span><span class="o">=</span><span class="s">&#39;-o UserKnownHostsFile=/root/.ssh/known_hosts&#39;</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#001-verify-ansible-__codelineno-8-10"></a>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#001-verify-ansible-__codelineno-8-11"></a><span class="k">[all:vars]</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#001-verify-ansible-__codelineno-8-12"></a>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#001-verify-ansible-__codelineno-8-13"></a><span class="c1"># Extra &quot;global&quot; variables for the inventory</span>
+</span></code></pre></div></li>
+</ul>
+<p><strong>This inventory file is written following these rules:</strong></p>
 <ul>
 <li>Information is described by <strong>one node per line</strong>, such as <code>linux-server-xx</code>.</li>
-<li>A node line consists of <code>identifier of the node (ex. linux-server-X)</code> and <code>host variable(s) (ex. ansible_host=xxxx)</code> to be given to the node .</li>
+<li>A node line consists of an <code>identifier of the node (ex. linux-server-X)</code> and a <code>host variable(s) (ex. ansible_host=xxxx)</code>, to be given to the node .</li>
 <li>You can also specify an IP address or FQDN for the <code>linux-server-xx</code> part.</li>
 <li>You can create a group of hosts with <code>[group_name]</code>. In our inventory the group name is <code>[servers]</code>.</li>
-<li>You can use any group name except <code>all</code> and <code>localhost</code>.<ul>
-<li>e.g. <code>[webservers]</code>, <code>[databases]</code> can be used to <strong>group</strong> the servers</li>
+<li>You can use any group name except <code>[all]</code> and <code>[localhost]</code> (e.g., <code>[webservers]</code> or <code>[databases]</code> can be used as <strong>group</strong> names for servers).</li>
 </ul>
-</li>
+<p><strong><code>[all]</code></strong></p>
+<ul>
+<li><code>all</code> is a special group that points to all nodes described in the inventory.</li>
+<li>The <code>[all:vars]</code> &amp; <code>group variables</code> are defined for the group <code>all</code>.</li>
+<li>When we use a <strong>group</strong>, we can use the whole group as &ldquo;hosts&rdquo; for ansible.</li>
+<li>A <a href="https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html">magic variable</a>, represented by <code>ansible_xxxx</code>, 
+ contains special values that control Ansible&rsquo;s behavior and environment information that Ansible will automatically retrieve.<br />
+  Details are explained in the <a href="#001-verify-ansible-need to add a link to variables section">variables section</a>.</li>
 </ul>
-<p><strong><code>[all]</code></strong>
-- <code>all</code> is a special group, a group that points to all nodes described in the inventory.
-- The <code>[all:vars]</code> &amp; <code>group variables</code> are defined for the group <code>all</code>.
-  - When we use <strong>group</strong> we can use the whole group as &ldquo;hosts&rdquo; for ansible 
-- A <a href="https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html">magic variable</a> represented by <code>ansible_xxxx</code>, 
-  which contains special values that control Ansible&rsquo;s behavior and environment information that Ansible will automatically retrieve.<br />
-  Details are explained in the variables section.</p>
 <h3 id="001-verify-ansible-0104-prepare-the-content-for-execution">01.04. Prepare the content for execution</h3>
 <ul>
-<li>Place the files under the shared folder os simply execute the script <a href="../001-verify-ansible/Labs/000-setup/02-init-ansible.sh">/Labs/000-setup/02-init-ansible.sh</a></li>
+<li>Place the files under the shared folder or simply execute the script <a href="../001-verify-ansible/Labs/000-setup/02-init-ansible.sh">/Labs/000-setup/02-init-ansible.sh</a></li>
 <li>Verify that the controller can execute ansible <a href="../001-verify-ansible/Labs/000-setup/01-init-servers.sh">/Labs/000-setup/01-init-servers.sh</a></li>
 </ul>
-<hr />
-<h2 id="001-verify-ansible-02-test-ansible-configuration">02 Test ansible configuration</h2>
+<h2 id="001-verify-ansible-02-test-ansible-configuration">02 Test Ansible configuration</h2>
 <ul>
-<li>Now we are ready to start play with ansible </li>
+<li>Now we are ready to start play with Ansible!</li>
 </ul>
-<h3 id="001-verify-ansible-0201-check-ansible-configuration">02.01. Check ansible configuration</h3>
+<h3 id="001-verify-ansible-0201-check-ansible-configuration">02.01. Check Ansible configuration</h3>
 <ul>
 <li>
-<p>The first step is to test ansible configuration
-    <div class="language-sh highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#001-verify-ansible-__codelineno-9-1"></a><span class="c1"># Verify that ansible is installed correctly</span>
+<p>The first step is to test Ansible configuration
+    <div class="language-sh highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#001-verify-ansible-__codelineno-9-1"></a><span class="c1"># Verify that Ansible is installed correctly</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#001-verify-ansible-__codelineno-9-2"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>ansible-controller<span class="w"> </span>ansible<span class="w"> </span>--version
 </span></code></pre></div></p>
 </li>
 <li>
 <p>Sample output
-  <code>text
-    ansible [core 2.17.9]
-    config file = /labs-scripts/ansible.cfg
-    configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
-    ansible python module location = /usr/lib/python3/dist-packages/ansible
-    ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
-    executable location = /usr/bin/ansible
-    python version = 3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0] (/usr/bin/python3)
-    jinja version = 3.1.2
-    libyaml = True</code></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#001-verify-ansible-__codelineno-10-1"></a>    ansible [core 2.17.9]
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#001-verify-ansible-__codelineno-10-2"></a>    config file = /labs-scripts/ansible.cfg
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#001-verify-ansible-__codelineno-10-3"></a>    configured module search path = [&#39;/root/.ansible/plugins/modules&#39;, &#39;/usr/share/ansible/plugins/modules&#39;]
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#001-verify-ansible-__codelineno-10-4"></a>    ansible python module location = /usr/lib/python3/dist-packages/ansible
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#001-verify-ansible-__codelineno-10-5"></a>    ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#001-verify-ansible-__codelineno-10-6"></a>    executable location = /usr/bin/ansible
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#001-verify-ansible-__codelineno-10-7"></a>    python version = 3.12.3 (main, Feb  4 2025, 14:48:35) [GCC 13.3.0] (/usr/bin/python3)
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#001-verify-ansible-__codelineno-10-8"></a>    jinja version = 3.1.2
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#001-verify-ansible-__codelineno-10-9"></a>    libyaml = True
+</span></code></pre></div></p>
 </li>
 <li>
 <p>We are looking for the following line:
-    <div class="language-sh highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#001-verify-ansible-__codelineno-10-1"></a>config<span class="w"> </span><span class="nv">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/labs-scripts/ansible.cfg
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#001-verify-ansible-__codelineno-11-1"></a><span class="w">    </span>config<span class="w"> </span><span class="nv">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/labs-scripts/ansible.cfg
 </span></code></pre></div></p>
 </li>
 </ul>
 <h3 id="001-verify-ansible-0202-basic-ansible-configuration">02.02. Basic ansible configuration</h3>
 <ul>
-<li>Once all is ready lets check is the controller can connect to the servers with the ansible <code>ping</code> command</li>
+<li>Once all is ready, lets check if the controller can connect to the servers with the Ansible <code>ping</code> command.</li>
 <li>
-<p><code>ping</code> is an <code>Ad-Hoc</code> ansible command, we will cover it later on.</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#001-verify-ansible-__codelineno-11-1"></a><span class="c1"># Ping the servers and check that they are &quot;alive&quot;</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#001-verify-ansible-__codelineno-11-2"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>ansible-controller<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;cd /labs-scripts &amp;&amp; ansible all -m ping&quot;</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#001-verify-ansible-__codelineno-11-3"></a>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#001-verify-ansible-__codelineno-11-4"></a><span class="c1">### Output</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#001-verify-ansible-__codelineno-11-5"></a>*<span class="w"> </span>Executing:<span class="w"> </span>ansible<span class="w"> </span>all<span class="w"> </span>-m<span class="w"> </span>ping
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#001-verify-ansible-__codelineno-11-6"></a>linux-server-2<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">SUCCESS</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">{</span>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#001-verify-ansible-__codelineno-11-7"></a><span class="w">    </span><span class="s2">&quot;ansible_facts&quot;</span>:<span class="w"> </span><span class="o">{</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#001-verify-ansible-__codelineno-11-8"></a><span class="w">        </span><span class="s2">&quot;discovered_interpreter_python&quot;</span>:<span class="w"> </span><span class="s2">&quot;/usr/bin/python3&quot;</span>
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#001-verify-ansible-__codelineno-11-9"></a><span class="w">    </span><span class="o">}</span>,
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#001-verify-ansible-__codelineno-11-10"></a><span class="w">    </span><span class="s2">&quot;changed&quot;</span>:<span class="w"> </span>false,
-</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#001-verify-ansible-__codelineno-11-11"></a><span class="w">    </span><span class="s2">&quot;ping&quot;</span>:<span class="w"> </span><span class="s2">&quot;pong&quot;</span>
-</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#001-verify-ansible-__codelineno-11-12"></a><span class="o">}</span>
-</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#001-verify-ansible-__codelineno-11-13"></a>linux-server-1<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">SUCCESS</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">{</span>
-</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#001-verify-ansible-__codelineno-11-14"></a><span class="w">    </span><span class="s2">&quot;ansible_facts&quot;</span>:<span class="w"> </span><span class="o">{</span>
-</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#001-verify-ansible-__codelineno-11-15"></a><span class="w">        </span><span class="s2">&quot;discovered_interpreter_python&quot;</span>:<span class="w"> </span><span class="s2">&quot;/usr/bin/python3&quot;</span>
-</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#001-verify-ansible-__codelineno-11-16"></a><span class="w">    </span><span class="o">}</span>,
-</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#001-verify-ansible-__codelineno-11-17"></a><span class="w">    </span><span class="s2">&quot;changed&quot;</span>:<span class="w"> </span>false,
-</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#001-verify-ansible-__codelineno-11-18"></a><span class="w">    </span><span class="s2">&quot;ping&quot;</span>:<span class="w"> </span><span class="s2">&quot;pong&quot;</span>
-</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#001-verify-ansible-__codelineno-11-19"></a><span class="o">}</span>
-</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#001-verify-ansible-__codelineno-11-20"></a>linux-server-3<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">SUCCESS</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">{</span>
-</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#001-verify-ansible-__codelineno-11-21"></a><span class="w">    </span><span class="s2">&quot;ansible_facts&quot;</span>:<span class="w"> </span><span class="o">{</span>
-</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#001-verify-ansible-__codelineno-11-22"></a><span class="w">        </span><span class="s2">&quot;discovered_interpreter_python&quot;</span>:<span class="w"> </span><span class="s2">&quot;/usr/bin/python3&quot;</span>
-</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#001-verify-ansible-__codelineno-11-23"></a><span class="w">    </span><span class="o">}</span>,
-</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#001-verify-ansible-__codelineno-11-24"></a><span class="w">    </span><span class="s2">&quot;changed&quot;</span>:<span class="w"> </span>false,
-</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#001-verify-ansible-__codelineno-11-25"></a><span class="w">    </span><span class="s2">&quot;ping&quot;</span>:<span class="w"> </span><span class="s2">&quot;pong&quot;</span>
-</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#001-verify-ansible-__codelineno-11-26"></a><span class="o">}</span>
+<p><code>ping</code> is an <code>Ad-Hoc</code> Ansible command that we will cover later on.</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#001-verify-ansible-__codelineno-12-1"></a><span class="c1"># Ping the servers and check that they are &quot;alive&quot;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#001-verify-ansible-__codelineno-12-2"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>ansible-controller<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;cd /labs-scripts &amp;&amp; ansible all -m ping&quot;</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#001-verify-ansible-__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#001-verify-ansible-__codelineno-12-4"></a><span class="c1">### Output</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#001-verify-ansible-__codelineno-12-5"></a>*<span class="w"> </span>Executing:<span class="w"> </span>ansible<span class="w"> </span>all<span class="w"> </span>-m<span class="w"> </span>ping
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#001-verify-ansible-__codelineno-12-6"></a>linux-server-2<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">SUCCESS</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#001-verify-ansible-__codelineno-12-7"></a><span class="w">    </span><span class="s2">&quot;ansible_facts&quot;</span>:<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#001-verify-ansible-__codelineno-12-8"></a><span class="w">        </span><span class="s2">&quot;discovered_interpreter_python&quot;</span>:<span class="w"> </span><span class="s2">&quot;/usr/bin/python3&quot;</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#001-verify-ansible-__codelineno-12-9"></a><span class="w">    </span><span class="o">}</span>,
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#001-verify-ansible-__codelineno-12-10"></a><span class="w">    </span><span class="s2">&quot;changed&quot;</span>:<span class="w"> </span>false,
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#001-verify-ansible-__codelineno-12-11"></a><span class="w">    </span><span class="s2">&quot;ping&quot;</span>:<span class="w"> </span><span class="s2">&quot;pong&quot;</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#001-verify-ansible-__codelineno-12-12"></a><span class="o">}</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#001-verify-ansible-__codelineno-12-13"></a>linux-server-1<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">SUCCESS</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#001-verify-ansible-__codelineno-12-14"></a><span class="w">    </span><span class="s2">&quot;ansible_facts&quot;</span>:<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#001-verify-ansible-__codelineno-12-15"></a><span class="w">        </span><span class="s2">&quot;discovered_interpreter_python&quot;</span>:<span class="w"> </span><span class="s2">&quot;/usr/bin/python3&quot;</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#001-verify-ansible-__codelineno-12-16"></a><span class="w">    </span><span class="o">}</span>,
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#001-verify-ansible-__codelineno-12-17"></a><span class="w">    </span><span class="s2">&quot;changed&quot;</span>:<span class="w"> </span>false,
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#001-verify-ansible-__codelineno-12-18"></a><span class="w">    </span><span class="s2">&quot;ping&quot;</span>:<span class="w"> </span><span class="s2">&quot;pong&quot;</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#001-verify-ansible-__codelineno-12-19"></a><span class="o">}</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#001-verify-ansible-__codelineno-12-20"></a>linux-server-3<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">SUCCESS</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#001-verify-ansible-__codelineno-12-21"></a><span class="w">    </span><span class="s2">&quot;ansible_facts&quot;</span>:<span class="w"> </span><span class="o">{</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#001-verify-ansible-__codelineno-12-22"></a><span class="w">        </span><span class="s2">&quot;discovered_interpreter_python&quot;</span>:<span class="w"> </span><span class="s2">&quot;/usr/bin/python3&quot;</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#001-verify-ansible-__codelineno-12-23"></a><span class="w">    </span><span class="o">}</span>,
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#001-verify-ansible-__codelineno-12-24"></a><span class="w">    </span><span class="s2">&quot;changed&quot;</span>:<span class="w"> </span>false,
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#001-verify-ansible-__codelineno-12-25"></a><span class="w">    </span><span class="s2">&quot;ping&quot;</span>:<span class="w"> </span><span class="s2">&quot;pong&quot;</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#001-verify-ansible-__codelineno-12-26"></a><span class="o">}</span>
 </span></code></pre></div>
 </li>
 </ul>
