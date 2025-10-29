@@ -1,50 +1,27 @@
-<div align="center">
-    <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
-  
-  ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
-  [![Linkedin Badge](https://img.shields.io/badge/-nirgeier-blue?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/nirgeier/)](https://www.linkedin.com/in/nirgeier/) 
-  [![Gmail Badge](https://img.shields.io/badge/-nirgeier@gmail.com-fcc624?style=flat&logo=Gmail&logoColor=red&link=mailto:nirgeier@gmail.com)](mailto:nirgeier@gmail.com) [![Outlook Badge](https://img.shields.io/badge/-nirg@codewizard.co.il-fcc624?style=flat&logo=microsoftoutlook&logoColor=blue&link=mailto:nirg@codewizard.co.il)](mailto:nirg@codewizard.co.il) 
-  <a href=""><img src="https://img.shields.io/github/stars/nirgeier/AnsibleLabs"></a> 
-  <img src="https://img.shields.io/github/forks/nirgeier/AnsibleLabs">  
-  <a href="https://discord.gg/U6xW23Ss"><img src="https://img.shields.io/badge/discord-7289da.svg?style=plastic&logo=discord" alt="discord" style="height: 20px;"></a>
-  <img src="https://img.shields.io/github/contributors-anon/nirgeier/AnsibleLabs?color=yellow&style=plastic" alt="contributors" style="height: 20px;"></a>
-  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/apache%202.0-blue.svg?style=plastic&label=license" alt="license" style="height: 20px;"></a>
-  <a href="https://github.com/nirgeier/AnsibleLabs/pulls"><img src="https://img.shields.io/github/issues-pr/nirgeier/AnsibleLabs?style=plastic&logo=pr" alt="Pull Requests" style="height: 20px;"></a> 
-
-If you appreciate the effort, Please <img src="https://raw.githubusercontent.com/nirgeier/labs-assets/main/assets/images/star.png" height="20px"> this project
-
-</div>
+<a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/Lab-010.yaml" target="_blank">
+  <img src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/Lab-010.yaml/badge.svg" alt="Build Status">
+</a>
 
 ---
 
 
-# Lab 010 - Loops and Conditions in Ansible
+# Lab 010 - Loops and Conditionals in Ansible
 
-- In this section, we will cover **Loops and Conditions in Ansible**.
-- Loops help in performing repetitive tasks efficiently.
+- In this section, we will cover **Loops and Conditionals in Ansible**.
+- Loops assist in efficiently performing repetitive tasks.
 - Conditions allow tasks to be executed based on specific criteria.
+- See documentation about [Loops](https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html) and [Conditionals](https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html) in Ansible.
 
-<img src="../../resources/ansible-loops-conditions.png" height="500px">
-
----
-
-- [Lab 010 - Loops and Conditions in Ansible](#lab-010---loops-and-conditions-in-ansible)
-  - [01. Ansible Loops](#01-ansible-loops)
-    - [01.01. Basic Loop](#0101-basic-loop)
-    - [01.02. Loop with Dictionaries](#0102-loop-with-dictionaries)
-    - [01.03. Nested Loops](#0103-nested-loops)
-  - [02. Conditions in Ansible](#02-conditions-in-ansible)
-    - [02.01. Using `when`](#0201-using-when)
-    - [02.02. Complex Conditions](#0202-complex-conditions)
-    - [02.03. Combining Loops and Conditions](#0203-combining-loops-and-conditions)
+<img src="../assets/images/ansible-Loop-With-items.webp" height="800px">
 
 ---
+
 
 ## 01. Ansible Loops
 
-### 01.01. Basic Loop
+#### Basic loop
 
-- Ansible provides a `loop` keyword to execute tasks multiple times with different inputs.
+- Ansible provides a `loop` keyword to execute tasks multiple times with different inputs:
 
 ```yaml
 ---
@@ -59,10 +36,11 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
         - curl
         - vim
 ```
+<br/>
 
-### 01.02. Loop with Dictionaries
+#### Loop with dictionaries
 
-- Loops can be used with dictionaries to process structured data.
+- Loops can be used with dictionaries to process structured data:
 
 ```yaml
 ---
@@ -76,10 +54,11 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
         - { name: "alice", shell: "/bin/bash" }
         - { name: "bob", shell: "/bin/zsh" }
 ```
+<br/>
 
-### 01.03. Nested Loops
+#### Nested loops
 
-- Nested loops allow iterating over multiple lists.
+- Nested loops allow iterating over multiple lists:
 
 ```yaml
 ---
@@ -97,11 +76,13 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
         loop_var: item
 ```
 
-## 02. Conditions in Ansible
+---
 
-### 02.01. Using `when`
+## 02. Ansible Conditionals
 
-- Conditions are defined using the `when` clause.
+#### Using the `when` clause
+
+- Conditionals can be defined using the `when` clause:
 
 ```yaml
 ---
@@ -113,10 +94,11 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
         state: present
       when: ansible_os_family == "Debian"
 ```
+<br/>
 
-### 02.02. Complex Conditions
+#### Complex conditionals
 
-- Multiple conditions can be combined with `and`, `or`, and `not`.
+- Multiple conditionals can be combined with `and`, `or`, and `not` clauses:
 
 ```yaml
 ---
@@ -129,9 +111,11 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
       when: ansible_os_family == "RedHat" and ansible_distribution_major_version | int >= 7
 ```
 
-### 02.03. Combining Loops and Conditions
+---
 
-- Loops and conditions can be used together.
+## 03. Combining loops and conditionals
+
+- Loops and conditionals can be used together:
 
 ```yaml
 ---
@@ -149,18 +133,11 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
 
 ---
 
-<img src="../../resources/practice.png" width="250px">
+<img src="../assets/images/practice.png" alt="Practice" width="800"/>
 <br/>
 
+
+## 04. Hands-on
+
 - Try writing a playbook that installs different packages based on the OS family.
-- Try to use as many parts as you can (external vars, vars, loops, conditions etc)
-
----
-<!--- Labs Navigation Start -->  
-<p style="text-align: center;">  
-    <a href="/Labs/009-roles">:arrow_backward: /Labs/009-roles</a>
-    &emsp;<a href="/Labs">Back to labs list</a>
-    &emsp;<a href="/Labs/011-jinja-templating">/Labs/011-jinja-templating :arrow_forward:</a>
-</p>
-<!--- Labs Navigation End -->
-
+- Try to use as many parts as you can (external vars, vars, loops, conditions etc) while doing so.

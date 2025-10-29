@@ -1,32 +1,22 @@
-![](../../resources/ansible_logo.png)
-
-<a href="https://stackoverflow.com/users/1755598"><img src="https://stackexchange.com/users/flair/1951642.png" width="208" height="58" alt="profile for CodeWizard on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for CodeWizard on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a>
-
-<a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/004-playbooks.yaml"><img src="https://img.shields.io/github/actions/workflow/status/nirgeier/AnsibleLabs/004-playbooks.yaml?branch=main&style=flat" style="height: 20px;"></a> ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier) [![Linkedin Badge](https://img.shields.io/badge/-nirgeier-blue?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/nirgeier/)](https://www.linkedin.com/in/nirgeier/) [![Gmail Badge](https://img.shields.io/badge/-nirgeier@gmail.com-fcc624?style=plastic&logo=Gmail&logoColor=red&link=mailto:nirgeier@gmail.com)](mailto:nirgeier@gmail.com) [![Outlook Badge](https://img.shields.io/badge/-nirg@codewizard.co.il-fcc624?style=plastic&logo=microsoftoutlook&logoColor=blue&link=mailto:nirg@codewizard.co.il)](mailto:nirg@codewizard.co.il)
+<a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/Lab-011.yaml" target="_blank">
+  <img src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/Lab-011.yaml/badge.svg" alt="Build Status">
+</a>
 
 ---
-- [Lab 011 - `Jinja2` Templating](#lab-011---jinja2-templating)
-  - [01. Creating Jinja2 Templates](#01-creating-jinja2-templates)
-  - [02. Using Templates in Playbooks](#02-using-templates-in-playbooks)
-  - [03. Using Conditional Statements](#03-using-conditional-statements)
-  - [04. Looping with `Jinja2`](#04-looping-with-jinja2)
-  - [05. Filters and Functions](#05-filters-and-functions)
-  - [**Summary**](#summary)
 
----
 
 # Lab 011 - `Jinja2` Templating
 
-- In our day to day job we come across dozens of **configuration files** in many different formats.
-- What happens if we need to configure different environments, each with his own values? Should we duplicate the same file for each?
-- Here comes `Jinja2` templates for the rescue! It helps us template our configuration files to be used with different values and reduce duplication.
+- During our day to day job, we come across dozens of **configuration files**, set in many different formats.
+- What happens if we need to configure different environments, each with its own values? Should we duplicate the same file for each one?
+- This is where `Jinja2` templates come to the rescue! `Jinja2` helps us template our configuration files to be used with different values and reduce duplications.
 - `Jinja2` is a powerful templating engine integrated into Ansible, used commonly in python projects.
-- Templates allow dynamic configuration file generation based on variables and facts.
+- Templates allow dynamic configuration file generation, based on variables and facts.
 - `Jinja2` can be used with conditionals and loops and can even perform filters and functions on our values!
 
-## 01. Creating Jinja2 Templates
+## 01. Creating Jinja2 templates
 
-- Create a Jinja2 template file by appending `.j2` to our base config file, for example, `nginx.conf.j2`:
+- Create a `Jinja2` template file by appending a `.j2` suffix to our base config filename. For example, `nginx.conf.j2`:
 
   ```jinja2
   # Example
@@ -44,9 +34,11 @@
   }
   ```
 
-## 02. Using Templates in Playbooks
+---
 
-- Integrate Jinja2 templates using the `ansible.builtin.template` module:
+## 02. Using templates in playbooks
+
+- Integrate `Jinja2` templates using the `ansible.builtin.template` module:
 
   ```yaml
   ---
@@ -70,9 +62,11 @@
           state: restarted
   ```
 
-## 03. Using Conditional Statements
+---
 
-- Jinja2 supports conditional logic to dynamically alter configurations:
+## 03. Using conditional statements
+
+- `jinja2` supports conditional logic to dynamically alter configurations:
 
   ```jinja2
   {% if ansible_distribution == 'Ubuntu' %}
@@ -84,9 +78,11 @@
   {% endif %}
   ```
 
+---
+
 ## 04. Looping with `Jinja2`
 
-- Iterate over lists or dictionaries easily:
+- `Jinja2` makes it easy to iterate over lists or dictionaries:
 
   ```jinja2
   # hosts file
@@ -95,7 +91,9 @@
   {% endfor %}
   ```
 
-## 05. Filters and Functions
+---
+
+## 05. Filters and functions
 
 - `Jinja2` includes built-in filters to transform data:
 
@@ -109,28 +107,21 @@
 
 ---
 
-## **Summary**
+## 06. **Summary**
 
-🔹 **Jinja2** enables dynamic template generation with **variables and facts**.  
-🔹 Templates help manage **complex configurations** simply and efficiently.  
+🔹 `Jinja2` enables dynamic template generation with **variables and facts**.  
+🔹 Templates help manage **complex configurations** in a more simple and efficient manner.  
 🔹 Use **conditional statements and loops** for highly dynamic setups.  
 🔹 Built-in filters enhance the **manipulation of data** directly within templates.
 
 ---
-
-<img src="../../resources/practice.png" width="250px">
+<img src="../assets/images/practice.png" alt="Practice" width="800"/>
 <br/>
 
-- Create a Jinja2 template for generating a dynamic `/etc/motd` (Message of the Day) file with a personal message (ensure is enabled first).
-- The code can be found in lab 009
-- **Bonus:** Use facts to display useful information about OS distribution, IP address, and current hostname dynamically when logging in.
 
----
+## 07. Hands-on
 
-<!--- Labs Navigation Start -->  
-<p style="text-align: center;">  
-    <a href="/Labs/010-loops-and-conditionals">:arrow_backward: /Labs/010-loops-and-conditionals</a>
-    &emsp;<a href="/Labs">Back to labs list</a>
-    &emsp;<a href="/Labs/011-jinja-templating">/Labs/011-jinja-templating :arrow_forward:</a>
-</p>
-<!--- Labs Navigation End -->
+
+- Create a `Jinja2` template for generating a dynamic `/etc/motd` (**"Message of the Day"**) file, containing a personal message (ensure first that it is enabled).
+- The relevant code can be found in lab 009.
+- **Bonus:** Use facts to display useful information about OS distribution, IP address and current hostname dynamically when logging in.

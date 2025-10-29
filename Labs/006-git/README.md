@@ -1,36 +1,62 @@
-
-<div align="center">
-    <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
-  
-  ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
-  [![Linkedin Badge](https://img.shields.io/badge/-nirgeier-blue?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/nirgeier/)](https://www.linkedin.com/in/nirgeier/) 
-  [![Gmail Badge](https://img.shields.io/badge/-nirgeier@gmail.com-fcc624?style=flat&logo=Gmail&logoColor=red&link=mailto:nirgeier@gmail.com)](mailto:nirgeier@gmail.com) [![Outlook Badge](https://img.shields.io/badge/-nirg@codewizard.co.il-fcc624?style=flat&logo=microsoftoutlook&logoColor=blue&link=mailto:nirg@codewizard.co.il)](mailto:nirg@codewizard.co.il) 
-  <a href=""><img src="https://img.shields.io/github/stars/nirgeier/AnsibleLabs"></a> 
-  <img src="https://img.shields.io/github/forks/nirgeier/AnsibleLabs">  
-  <a href="https://discord.gg/U6xW23Ss"><img src="https://img.shields.io/badge/discord-7289da.svg?style=plastic&logo=discord" alt="discord" style="height: 20px;"></a>
-  <img src="https://img.shields.io/github/contributors-anon/nirgeier/AnsibleLabs?color=yellow&style=plastic" alt="contributors" style="height: 20px;"></a>
-  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/apache%202.0-blue.svg?style=plastic&label=license" alt="license" style="height: 20px;"></a>
-  <a href="https://github.com/nirgeier/AnsibleLabs/pulls"><img src="https://img.shields.io/github/issues-pr/nirgeier/AnsibleLabs?style=plastic&logo=pr" alt="Pull Requests" style="height: 20px;"></a> 
-
-If you appreciate the effort, Please <img src="https://raw.githubusercontent.com/nirgeier/labs-assets/main/assets/images/star.png" height="20px"> this project
-
-</div>
+<a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/Lab-006.yaml" target="_blank">
+  <img src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/Lab-006.yaml/badge.svg" alt="Build Status">
+</a>
 
 ---
 
-# Hands On Lab
+# Lab 006 - Git Integration with Ansible
 
-- Understand the Git Playbook (006-playbook-install-git)
-- Try to write it yourself using the sample playbook
-  - Review the playbook `vars` section which is new to us
-- In Lab 008 we will also ad task to clone git
+- In this section, we will cover **`Git` integration with `Ansible`**.
+- We will learn how to automate `Git` operations on remote servers using `Ansible` playbooks.
+- This is useful for deploying code, managing repositories and keeping your infrastructure up to date.
+
+
+  <img src="../assets/images/Ansible-Git.png" width="800px">
+  <br/>
+
+
+
+## 01. **Objectives**
+- Understand how to use `Ansible` modules to interact with `Git`.
+- Automate cloning, updating and managing `Git` repositories.
+- Practice using playbooks to deploy code from version control.
+
+## 02. **Key Concepts**
+- **ansible.builtin.git**: Ansible’s built-in module for managing `Git` repositories.
+- **Idempotency**: Ensuring thatrepeated playbook runs do not cause unwanted changes.
+- **Authentication**: Using `SSH` keys or `HTTPS` for secure repository access.
+
+## 03. **Example Tasks**
+- Clone a repository to a target server.
+- Update the repository to the latest commit.
+- Set up SSH keys for secure `Git` access.
+
+#### **Example: Cloning a `Git` Repository**
+
+```yaml
+---
+- hosts: all
+  tasks:
+    - name: Clone a Git repository
+      ansible.builtin.git:
+        repo: 'https://github.com/example/repo.git'
+        dest: /opt/myapp
+        version: main
+        force: yes
+```
 
 ---
-<!--- Labs Navigation Start -->  
-<p style="text-align: center;">  
-    <a href="/Labs/005-facts">:arrow_backward: /Labs/005-facts</a>
-    &emsp;<a href="/Labs">Back to labs list</a>
-    &emsp;<a href="/Labs/007-create-user">/Labs/007-create-user :arrow_forward:</a>
-</p>
-<!--- Labs Navigation End -->
 
+## 04. **Hands-on**
+
+
+  <img src="../assets/images/practice.png" width="800px">
+  <br/>
+
+- Understand the `Git` Playbook.
+- Try cloning a public repository to your server.
+- Update the playbook to pull the latest changes.
+- Experiment with deploying different branches or tags.
+- Try to write it yourself using the sample playbook.
+- Review the playbook `vars` section which is new to us.
+- In Lab 008 we will also add a task to clone `Git`.

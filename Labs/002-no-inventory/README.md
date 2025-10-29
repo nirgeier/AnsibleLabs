@@ -1,55 +1,42 @@
-<div align="center">
-    <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
-  
-  ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
-  [![Linkedin Badge](https://img.shields.io/badge/-nirgeier-blue?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/nirgeier/)](https://www.linkedin.com/in/nirgeier/) 
-  [![Gmail Badge](https://img.shields.io/badge/-nirgeier@gmail.com-fcc624?style=flat&logo=Gmail&logoColor=red&link=mailto:nirgeier@gmail.com)](mailto:nirgeier@gmail.com) [![Outlook Badge](https://img.shields.io/badge/-nirg@codewizard.co.il-fcc624?style=flat&logo=microsoftoutlook&logoColor=blue&link=mailto:nirg@codewizard.co.il)](mailto:nirg@codewizard.co.il) 
-  <a href=""><img src="https://img.shields.io/github/stars/nirgeier/AnsibleLabs"></a> 
-  <img src="https://img.shields.io/github/forks/nirgeier/AnsibleLabs">  
-  <a href="https://discord.gg/U6xW23Ss"><img src="https://img.shields.io/badge/discord-7289da.svg?style=plastic&logo=discord" alt="discord" style="height: 20px;"></a>
-  <img src="https://img.shields.io/github/contributors-anon/nirgeier/AnsibleLabs?color=yellow&style=plastic" alt="contributors" style="height: 20px;"></a>
-  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/apache%202.0-blue.svg?style=plastic&label=license" alt="license" style="height: 20px;"></a>
-  <a href="https://github.com/nirgeier/AnsibleLabs/pulls"><img src="https://img.shields.io/github/issues-pr/nirgeier/AnsibleLabs?style=plastic&logo=pr" alt="Pull Requests" style="height: 20px;"></a> 
-
-If you appreciate the effort, Please <img src="https://raw.githubusercontent.com/nirgeier/labs-assets/main/assets/images/star.png" height="20px"> this project
-
-</div>
+<a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/Lab-002.yaml" target="_blank">
+  <img src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/Lab-002.yaml/badge.svg" alt="Build Status">
+</a>
 
 ---
 
+# Lab 002 - No Inventory
+- In this lab we will learn about Ansible inventory and how it affects automation tasks.
+- We will start with an empty inventory and observe Ansible’s behavior with no hosts defined. Later, we will create and test the inventory file.
+- This lab is based upon the previous lab and its docker-compose setup.
 
-# Lab 002 - No inventory example
 
-- [Lab 002 - No inventory example](#lab-002---no-inventory-example)
-    - [01. "Clear" the inventory](#01-clear-the-inventory)
-    - [01.01. Create the `inventory` file](#0101-create-the-inventory-file)
-      - [Ansible Inventory](#ansible-inventory)
-      - [Key features of Ansible inventory](#key-features-of-ansible-inventory)
-      - [inventory types in Ansible](#inventory-types-in-ansible)
-  - [Lab](#lab)
-    - [01. No inventory invocation](#01-no-inventory-invocation)
-    - [02. `inventory` invocation](#02-inventory-invocation)
+### Pre-Requirements
+
+- Complete the [previous lab](../001-verify-ansible#usage) in order to have `Ansible` configured.
+
+---
 
 ### 01. "Clear" the inventory
   
-  - Lets clear the inventory from previous steps and walk thorough what is `inventory`
+  - Let's clear the inventory from previous labs and walk through what is `inventory`.
   
-### 01.01. Create the `inventory` file
+### 02. Create the `inventory` file
 
 #### Ansible Inventory
-- An Ansible inventory is a file or **collection of files** that defines the **`[hosts]`** and **`[groups]`** of hosts upon which Ansible will operates. 
-- It's simply a list of servers that Ansible can connect to and manage.
+- An `Ansible` `inventory` can either be a single file or a **collection of files** 
+- The `inventory` defines the **`[hosts]`** and **`[groups]`** of hosts upon which `Ansible` will operate. 
+- It's simply a list of servers that `Ansible` can connect with and manage.
 
 #### Key features of Ansible inventory
 
-- Can be in various formats, with `INI`, `JSON`, `YAML` and more.
-- `YAML`  is the most common format
-- `inventory` defines the target hosts for `playbook` execution
-- `inventory` organizes hosts into **logical groups** for easier management
-- `inventory` can store **host-specific** variables and **group** variables
-- `inventory` supports nested groups (groups of groups)
+- Can be in various formats, such as `INI`, `JSON`, `YAML` and more.
+- `YAML`  being the most common format.
+- `inventory` defines the target hosts for `playbook` execution.
+- `inventory` organizes hosts into **logical groups** for easier management.
+- `inventory` can store **host-specific** variables and **group** variables.
+- `inventory` supports nested groups (groups of groups).
 
-    #### `inventory` samples
+### 03. `inventory` samples
     
     - `INI` format
         ```ini
@@ -60,6 +47,7 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
         [database]
         db1.example.com
         ```
+
     - `YAML` format
         ```yaml
         all:
@@ -71,6 +59,7 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
                 hosts:
                     db1.example.com:
         ```
+        
     - `JSON` format
         ```json
         {
@@ -96,16 +85,16 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
         }
         ```
 
-#### inventory types in Ansible
+#### Inventory types in Ansible
   
   1. **Static Inventory**
-       - This is generally a simple text file (usually in INI or YAML format) that lists your hosts and their corresponding groups.
+       - This is generally a simple text file (usually in INI or YAML format) that lists the hosts and their corresponding groups.
   
   2. **Dynamic Inventory**
-       - This is generated by a script or a program that retrieves host information from an external source, such as cloud providers (like `AWS`, `Azure`, etc.), `LDAP`, or a `database`. 
+       - This is generated by a script or a program that retrieves host information from an external source (such as cloud providers like `AWS`, `Azure`, etc.), `LDAP` or from a `database`. 
        - This allows for real-time updates and adaptability as environments change.
 
-         - Example of generating `Dynamic inventory` using python code fetching data form datable
+      See an example of generating a `dynamic inventory` using `Python` code for fetching data from a database:
             ```python
             #!/usr/bin/env python
             import sqlite3
@@ -139,14 +128,14 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
 
 ---
 
-## Lab 
+### 04. Lab exercise 
 
-- Lets create the inventory configuration we will use for the labs:
+- Let's create the inventory configuration that we will use for the labs:
   
     ```ini
-    ### File Location: $RUNTIME_FOLDER/labs-scripts/inventory
+    ### File location: $RUNTIME_FOLDER/labs-scripts/inventory
     ###
-    ### List of servers which we want ansible to connect to
+    ### List of servers which we want Ansible to connect to
     ### The names are defined in the docker-compose
     ###
 
@@ -154,9 +143,9 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
     # No server will be defined at this step
     ```
 
-### 01. No inventory invocation
+### 05. No inventory invocation
 
-- Once all is ready lets check is the controller can connect to the servers with the using `ping`
+- Once all is ready, let's check if the controller can connect to the servers using `ping`
     
     ```sh
     # Ping the servers and check that they are "alive"
@@ -168,8 +157,8 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
     the implicit localhost does not match 'all'
     ```
 
-### 02. `inventory` invocation
-  - Fill in the inventory based upon the prevoius labs configuration and test it.
+### 06. `inventory` invocation
+  - Fill in the inventory based upon the previous labs' configuration and test it.
   - Verify that the inventory is defined correctly with: 
     ```sh
     ansible-inventory -i <inventory_file> --graph
@@ -195,12 +184,5 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
       ```
     </details>
 
----
-<!--- Labs Navigation Start -->  
-<p style="text-align: center;">  
-    <a href="/Labs/001-verify-ansible">:arrow_backward: /Labs/001-verify-ansible</a>
-    &emsp;<a href="/Labs">Back to labs list</a>
-    &emsp;<a href="/Labs/003-modules">/Labs/003-modules :arrow_forward:</a>
-</p>
-<!--- Labs Navigation End -->
+
 
