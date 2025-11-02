@@ -19,7 +19,9 @@
 ### 01. "Clear" the inventory
   
   - Let's clear the inventory from previous labs and walk through what is `inventory`.
-  
+
+---
+
 ### 02. Create the `inventory` file
 
 #### Ansible Inventory
@@ -35,6 +37,8 @@
 - `inventory` organizes hosts into **logical groups** for easier management.
 - `inventory` can store **host-specific** variables and **group** variables.
 - `inventory` supports nested groups (groups of groups).
+
+---
 
 ### 03. `inventory` samples
     
@@ -84,6 +88,8 @@
           }
         }
         ```
+
+<br>
 
 #### Inventory types in Ansible
   
@@ -143,6 +149,8 @@
     # No server will be defined at this step
     ```
 
+---
+
 ### 05. No inventory invocation
 
 - Once all is ready, let's check if the controller can connect to the servers using `ping`
@@ -156,6 +164,8 @@
     [WARNING]: provided hosts list is empty, only localhost is available. Note that
     the implicit localhost does not match 'all'
     ```
+
+---
 
 ### 06. `inventory` invocation
   - Fill in the inventory based upon the previous labs' configuration and test it.

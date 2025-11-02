@@ -23,14 +23,14 @@
 
 ### Pre-Requirements
 
-- Complete the [previous lab](../003-modules#usage) in order to have the `Ansible` modules set up.
+- Complete the [lab 002](../002-no-inventory#usage) in order to have `Ansible` set up.
 
 ---
 
 ## 01. What are playbooks?
 
 - In the previous labs, we have executed an `Ansible ad-hoc command` which invoked modules.
-- In real life we need more that just `modules`...
+- In real life we need more than just `modules`...
 - This is where `Ansible playbook` jumps in for the rescue.
 - `Ansible playbooks` are essentially **blueprints of automation tasks**. 
 - They are written in `YAML` format, and are used to **automate tasks on remote hosts**. 
@@ -61,7 +61,7 @@
 
 - The `playbook` is usually written in [YAML](https://ja.wikipedia.org/wiki/YAML) format.
 - Nevertheless, `playbooks` can be written in [JSON](https://en.wikipedia.org/wiki/JSON) format as well.
-- In this lab we will only be using YAML format for `playbooks`.
+- In this lab we will be using only YAML format for `playbooks`.
 - YAML is a text file that uses "Python-style" indentation to indicate nesting, which **does not require quotes** around most string values.
 - Files should start with `---`.
 - As **indentations have meanings**, they are extremely important!!!

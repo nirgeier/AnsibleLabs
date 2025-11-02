@@ -20,7 +20,7 @@
 
 ## 02. Ansible roles file structure
 
-| <u>Files</u>         | <u>Description</u>                                                                                                                                                                                                                             |
+| Files         | <u>Description</u>                                                                                                                                                                                                                             |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **tasks**     | the main list of tasks that the role executes                                                                                                                                                                                         |
 | **handlers**  | handlers, which may be used within or outside this role                                                                                                                                                                               |

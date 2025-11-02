@@ -359,6 +359,8 @@
         Port              22
     ```
 
+---
+
 ## 07. Create the `inventory` file
 
 - See Ansible documentation: [How to build your inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html).
@@ -414,13 +416,14 @@
 
 ---
 
-<h3>Test Ansible configuration</h3>
 
-- Now we are ready to start play with Ansible!
 
-## 09. Check Ansible configuration
 
-- The first step is to test Ansible configuration
+## 09. Test Ansible configuration
+
+- Now we are ready to start play with `Ansible`!
+
+- The first step is to test `Ansible` configuration
     ```sh
     # Verify that Ansible is installed correctly
     docker exec ansible-controller ansible --version
@@ -444,6 +447,8 @@
     ```sh
     config file = /labs-scripts/ansible.cfg
     ```
+
+---
 
 ## 10. Basic ansible configuration
 

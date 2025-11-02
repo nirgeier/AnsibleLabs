@@ -97,17 +97,17 @@ extra:
   generator: false
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/nirgeier/AnsibleLabs
+      link: https://github.com/Linuman/AnsibleLabs
       name: View on GitHub
       class: social-class__github
     
     - icon: octicons/repo-forked-16
-      link: https://github.com/nirgeier/AnsibleLabs/network/members
+      link: https://github.com/Linuman/AnsibleLabs/network/members
       name: Fork this repo
       class: social-class__fork
     
     - icon: octicons/star-16
-      link: https://github.com/nirgeier/AnsibleLabs/stargazers
+      link: https://github.com/Linuman/AnsibleLabs/stargazers
       name: Star this repo
       class: social-class__star
 
@@ -201,7 +201,7 @@ plugins:
       branch: main
       docs_path: Labs # set if your docs folder is not root
       enabled: true
-      repository: nirgeier/AnsibleLabs
+      repository: Linuman/AnsibleLabs
   - git-revision-date-localized:
       enable_creation_date: true
       enable_git_follow: false

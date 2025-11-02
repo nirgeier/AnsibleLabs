@@ -3,6 +3,7 @@
 services:
 
   ansible-controller:
+    platform: linux/amd64
     image: nirgeier/ansible-controller
     container_name: ansible-controller
     environment:
@@ -13,6 +14,7 @@ services:
       - ${ROOT_FOLDER}/runtime/labs-scripts:/labs-scripts
 
   linux-server-1:
+    platform: linux/amd64
     image: nirgeier/linux-server-1
     container_name: linux-server-1
     hostname: linux-server-1
@@ -26,6 +28,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   linux-server-2:
+    platform: linux/amd64
     image: nirgeier/linux-server-2
     container_name: linux-server-2
     hostname: linux-server-2
@@ -39,6 +42,7 @@ services:
       hostname: linux-server
 
   linux-server-3:
+    platform: linux/amd64
     image: nirgeier/linux-server-3
     container_name: linux-server-3
     hostname: linux-server-3

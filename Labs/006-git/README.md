@@ -14,17 +14,21 @@
   <img src="../assets/images/Ansible-Git.png" width="800px">
   <br/>
 
-
+---
 
 ## 01. **Objectives**
 - Understand how to use `Ansible` modules to interact with `Git`.
 - Automate cloning, updating and managing `Git` repositories.
 - Practice using playbooks to deploy code from version control.
 
+---
+
 ## 02. **Key Concepts**
 - **ansible.builtin.git**: Ansible’s built-in module for managing `Git` repositories.
 - **Idempotency**: Ensuring thatrepeated playbook runs do not cause unwanted changes.
 - **Authentication**: Using `SSH` keys or `HTTPS` for secure repository access.
+
+---
 
 ## 03. **Example Tasks**
 - Clone a repository to a target server.

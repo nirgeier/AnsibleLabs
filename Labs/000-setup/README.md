@@ -6,7 +6,7 @@
 
 # Lab 000 - Setup
 
-- In this lab we will define and build docker containers which to be used in the next of labs.
+- In this lab we will define and build docker containers which will be used in the next labs.
 - The lab structure consists of an Ansible controller & 3 Linux servers, all set inside docker containers.
 
 ---
@@ -15,35 +15,17 @@
 
 {% include "./usage.md" %}
 
-## 03. Core Concepts
+
+
+## 03. Core concepts
 
 - Create `Ansible Controller` container, which will be used to manage the other containers
 - `SSH Keys` - The SSH keys will be generated and mounted into the containers
 - Initialize servers: Set up runtime directories, start demo containers via `Docker Compose`, verify `Ansible` installation, extract `SSH keys` from servers, configure known hosts, check SSH services, and test SSH connections to each Linux server
 
-## 04. The setup script(s)
+---
 
-  ```sh
-  # Build the Ansible container & the Demo servers
-  # The `_setup.sh` will build all we will need for this lab
-  ./_setup.sh
-  ```
-
-## 05. Setup Scripts Breakdown
-
-| Script                                    | Content                                                                     |
-| ----------------------------------------- | --------------------------------------------------------------------------- |
-| 🗞️ `00-build-containers.sh` | 📒 Init the shared folders                                  |
-|                                           | 🐳 Build the container(s)                                   |  |
-| 🗞️ `01-init-servers.sh`     | ⏯ Initialize the containers                                |
-|                                           | 🔐 Extract the ssh certificates                             |
-|                                           | ✓ verify that the ssh service is running in the containers |
-| 🗞️ `02-init-ansible.sh`     | 🚀 Initialize the ansible files                             |
-|                                           | 📚 `ansible.cfg`                                              |
-|                                           | 📚 `ssh.config`                                               |
-|                                           | 📚 `inventory`                                                |
-
-## 06. Verify Containers
+## 04. Verify containers
 
 ```bash
 $ docker ps -a
@@ -59,8 +41,8 @@ nirgeier/linux-server       0.0.0.0:3002->22/tcp, 0.0.0.0:5002->5000/tcp, 0.0.0.
 nirgeier/linux-server       0.0.0.0:3003->22/tcp, 0.0.0.0:5003->5000/tcp, 0.0.0.0:8083->8080/tcp   linux-server-3
 ```
 
-
-## 07. Next Steps
+---
+## 05. Next steps
 
 - Proceed to [Lab 001 - Verify Ansible configuration](../001-verify-ansible/README.md) to start using Ansible with the configured environment.
 - Don't forget to check the logs for any errors or issues during the setup process.

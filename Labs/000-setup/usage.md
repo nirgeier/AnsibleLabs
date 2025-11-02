@@ -86,13 +86,40 @@
 
 ---
 
-## 02. Build From Source
+## 02. Build from source
 
-- Clone the git repo: `git clone https://github.com/nirgeier/AnsibleLabs.git`
-- Navigate to the Labs directory: `cd AnsibleLabs/Labs/000-setup`
-- The lab contains the `docker-compose` file along with the Dockerfile(s)
-  The containers are based upon ubuntu and are published to DockerHub as well.
-- Build the demo containers
+- Clone the git repo:
+```bash
+git clone https://github.com/nirgeier/AnsibleLabs.git
+```
+- Navigate to the Labs directory:
+```bash
+cd AnsibleLabs/Labs/000-setup
+```
+- Run the setup script:
+```bash
+./_setup.sh
+```
+    Setup scripts breakdown:
+
+    | Script                                    | Content                                                                     |
+    | ----------------------------------------- | --------------------------------------------------------------------------- |
+    | 🗞️ `00-build-containers.sh` | 📒 Init the shared folders                                  |
+    |                                           | 🐳 Build the container(s)                                   |  |
+    | 🗞️ `01-init-servers.sh`     | ⏯ Initialize the containers                                |
+    |                                           | 🔐 Extract the ssh certificates                             |
+    |                                           | ✓ verify that the ssh service is running in the containers |
+    | 🗞️ `02-init-ansible.sh`     | 🚀 Initialize the ansible files                             |
+    |                                           | 📚 `ansible.cfg`                                              |
+    |                                           | 📚 `ssh.config`                                               |
+    |                                           | 📚 `inventory`                                                |
+
+- The lab contains a `docker-compose` file alongside a Dockerfile.
+- The containers are based on Ubuntu OS and are published on `DockerHub` as well.
+- Build the demo containers by running:
+```bash
+docker-compose up -d
+```
 - The docker-compose will create `ansible-controller` which will server as our controller to execute ansible playbooks on our demo servers defined by the names `linux-server-X`
 
 !!! warning "Labs containers"

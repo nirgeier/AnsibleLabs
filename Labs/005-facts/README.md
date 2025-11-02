@@ -8,7 +8,7 @@
 
 # Lab 005 - Facts
 
-- In this section, we will cover **Ansible Facts**.
+- In this section, we will cover [**Ansible Facts**](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html#ansible-facts).
 - **Ansible facts** are essentially "Ansible Scripts" and constitute one of the building blocks of Ansible.
 - **Ansible facts** are data corresponding to your **remote systems**, which includes operating systems, IP addresses, attached filesystems, and more.
 - **Ansible facts** are gathered, and relate to target nodes (host nodes to be configured). They are returned back to the controller node.
@@ -16,13 +16,11 @@
 ## 01. **How to View Facts?**
 - Ansible gathers facts about remote systems using the `setup` module.
 - You can view facts of a remote machine by running the following command:
-
 ```bash
 ansible all -m setup
 ```
 
-🔹 Example Output (Truncated for brevity):
-
+- Example Output (Truncated for brevity):
 ```json
 {
     "ansible_facts": {

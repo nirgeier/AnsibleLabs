@@ -161,7 +161,7 @@ if __name__ == '__main__':
    
     | CLI option                 | Description                 |
     | -------------------------- | --------------------------- |
-    | `<servers>`                | Any server (singel, group or all) as defined in the inventory file |
+    | `<servers>`                | Any server (single, group or all) as defined in the inventory file |
     | `-m <module_name>`         | Specifies the module name  |
     | `-a <parameters>`          | Specifies the parameters to be passed to the module. Optional in most cases    |
     
