@@ -1,26 +1,26 @@
----
-- hosts: all
+# ---
+# - hosts: all
 
-  # Here we define our tasks
-  tasks:
-    # This is the first task
-    - name: List files in a directory
-      # As learned before this is the command module
-      # This command will list files in the home directory
-      command: ls ~
+#   # Here we define our tasks
+#   tasks:
+#     # This is the first task
+#     - name: List files in a directory
+#       # As learned before this is the command module
+#       # This command will list files in the home directory
+#       command: ls ~
 
-      # register is used whenever we wish to save the output
-      # In this case it will be saved to a variable called 'files'
-      register: files
+#       # register is used whenever we wish to save the output
+#       # In this case it will be saved to a variable called 'files'
+#       register: files
 
-    # This is the second tasks
-    # In this case the tasks will run in the declared sequence
-    - name: Print the list of files
-      # Using the builtin debug module
-      # The debug will print out our files list
-      # ** We need to use `stdout_lines` for that
-      debug:
-        msg: "{{ files.files }}"
+#     # This is the second tasks
+#     # In this case the tasks will run in the declared sequence
+#     - name: Print the list of files
+#       # Using the builtin debug module
+#       # The debug will print out our files list
+#       # ** We need to use `stdout_lines` for that
+#       debug:
+#         msg: "{{ files.files }}"
 
 ---
 - name: List files in a directory
