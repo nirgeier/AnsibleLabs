@@ -1,114 +1,88 @@
-<div align="center">
-    <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
-  
-  ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
-  [![Linkedin Badge](https://img.shields.io/badge/-nirgeier-blue?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/nirgeier/)](https://www.linkedin.com/in/nirgeier/) 
-  [![Gmail Badge](https://img.shields.io/badge/-nirgeier@gmail.com-fcc624?style=flat&logo=Gmail&logoColor=red&link=mailto:nirgeier@gmail.com)](mailto:nirgeier@gmail.com) [![Outlook Badge](https://img.shields.io/badge/-nirg@codewizard.co.il-fcc624?style=flat&logo=microsoftoutlook&logoColor=blue&link=mailto:nirg@codewizard.co.il)](mailto:nirg@codewizard.co.il) 
-  <a href=""><img src="https://img.shields.io/github/stars/nirgeier/AnsibleLabs"></a> 
-  <img src="https://img.shields.io/github/forks/nirgeier/AnsibleLabs">  
-  <a href="https://discord.gg/U6xW23Ss"><img src="https://img.shields.io/badge/discord-7289da.svg?style=plastic&logo=discord" alt="discord" style="height: 20px;"></a>
-  <img src="https://img.shields.io/github/contributors-anon/nirgeier/AnsibleLabs?color=yellow&style=plastic" alt="contributors" style="height: 20px;"></a>
-  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/apache%202.0-blue.svg?style=plastic&label=license" alt="license" style="height: 20px;"></a>
-  <a href="https://github.com/nirgeier/AnsibleLabs/pulls"><img src="https://img.shields.io/github/issues-pr/nirgeier/AnsibleLabs?style=plastic&logo=pr" alt="Pull Requests" style="height: 20px;"></a> 
 
-If you appreciate the effort, Please <img src="https://raw.githubusercontent.com/nirgeier/labs-assets/main/assets/images/star.png" height="20px"> this project
+<a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/Lab-004.yaml" target="_blank">
+  <img src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/Lab-004.yaml/badge.svg" alt="Build Status">
+</a>
 
+---
+
+
+# Lab 004 - Playbooks
+
+<br/>
+<div style="display: flex; align-items: flex-start;">
+  <img src="../assets/images/Ansible-Playbook.jpeg" alt="Ansible Playbook" width="200" style="border: 2px solid #ccc; border-radius: 10px; box-shadow: 2px 2px 8px #aaa; margin-right: 32px;"/>
+  <div>
+    <ul>
+      <li>In this section, we will cover the <strong>Ansible Playbooks</strong>.</li>
+      <li><strong>Playbooks</strong> are essentially "Ansible scripts" serving as one of <code>Ansible's</code> building blocks.</li>
+    </ul>
+  </div>
 </div>
 
 ---
 
-# Lab 004 - Playbooks
+### Pre-Requirements
 
-- In this section, we will cover **Ansible Playbooks** 
-- **Playbook** are "Ansible Scripts" and are one of the building blocks of Ansible.
-
-<img src="../../resources/ansible-playbook-yaml.png" style="background-color: white; border-radius: 15px" height="500px">
+- Complete the [lab 002](../002-no-inventory#usage) in order to have `Ansible` set up.
 
 ---
 
-- [Lab 004 - Playbooks](#lab-004---playbooks)
-  - [What are Playbook](#what-are-playbook)
-    - [Ansible Playbooks Key Points:](#ansible-playbooks-key-points)
-  - [01. Playbook Basics](#01-playbook-basics)
-    - [01.01. YAML](#0101-yaml)
-    - [01.02. Our first playbook](#0102-our-first-playbook)
-    - [01.02. Writing Playbook](#0102-writing-playbook)
-      - [Playbook content:](#playbook-content)
-    - [01.03. Hands-on - Our first playbook](#0103-hands-on---our-first-playbook)
-    - [02. Playbook syntax (Playbook Keywords)](#02-playbook-syntax-playbook-keywords)
-    - [02.01. `Play`](#0201-play)
-      - [02.02. Quiz:](#0202-quiz)
-    - [02.03. Playbook demo](#0203-playbook-demo)
-    - [02.03.01. Setting the env variable in the ansible controller](#020301-setting-the-env-variable-in-the-ansible-controller)
-    - [02.03.02. Passing the variable to the playbook](#020302-passing-the-variable-to-the-playbook)
-    - [02.03.03. Using the environment](#020303-using-the-environment)
-    - [02.03.04. Permanently Set Environment Variables on Remote Hosts](#020304-permanently-set-environment-variables-on-remote-hosts)
-    - [02.03.05. Using `var_files` to include variables](#020305-using-var_files-to-include-variables)
-    - [03. Tasks](#03-tasks)
-    - [03.01 Additional Tasks](#0301-additional-tasks)
+## 01. What are playbooks?
+
+- In the previous labs, we have executed an `Ansible ad-hoc command` which invoked modules.
+- In real life we need more than just `modules`...
+- This is where `Ansible playbook` jumps in for the rescue.
+- `Ansible playbooks` are essentially **blueprints of automation tasks**. 
+- They are written in `YAML` format, and are used to **automate tasks on remote hosts**. 
+- In summary, `Ansible playbooks` offer a repeatable, reusable and simple configuration management & multi-machine deployment system, well suited to deploying complex applications. 
+- `Ansible playbooks` are a **powerful** tool for automating infrastructure management.
 
 ---
 
-## What are Playbook
+## 02. Key points
 
-- In the previous labs, we executed ansible Ad-Hoc command which invoked modules.
-- In real life we need more that just Modules...
-- This is where `Ansible Playbook` is jumping in.
-- `Ansible Playbooks` are essentially **blueprints of automation tasks**. 
-- They are written in `YAML`, and are used to **automate tasks on remote hosts**. 
-- In summary, `Ansible Playbooks` offer a repeatable, reusable, simple configuration management and multi-machine deployment system, well suited to deploying complex applications. 
-- They are a **powerful** tool for automating infrastructure management.
-
-### Ansible Playbooks Key Points:
-
-- **Structure** 
-  A playbook is composed of one or more `plays` in an **ordered list** (Sequence). 
-  Each play executes **part** of the overall goal of the playbook, running one or more tasks
-  Each task calls an `Ansible module`.
-- **Execution**
-  - A playbook runs in order from top to bottom.
-  - Within each play, tasks also run in order from top to bottom. 
-  - Playbooks with multiple `plays` can orchestrate **multi-machine deployments**.
-- **Functionality** 
-  - Playbooks can declare **configurations**, **orchestrate steps** of any manual ordered process, on **multiple** sets of machines, in a defined order, and launch tasks synchronously or asynchronously.
-- **Use Cases**
-  - They are regularly used to automate IT infrastructure, networks, security systems, and code repositories like GitHub. 
-  - IT staff can use playbooks to program applications, services, server nodes, and other devices.
-- **Reusability**
-  - The conditions, variables, and tasks within playbooks can be saved, shared, or reused indefinitely. 
-  - This makes it easier for IT teams to codify operational knowledge and ensure that the same actions are performed consistently.
+- **Structure** - A playbook is composed of one or more `plays`, in an **ordered list** (Sequence). 
+  Each play executes **part** of the overall goal of the playbook, running one or more tasks, whereas each task calls an `Ansible module`.
 
 
+- **Execution** - A playbook runs in sequential order, from top to bottom. Within each play, tasks also run in a sequential order, from top to bottom. Playbooks containing multiple `plays` can orchestrate **multi-machine deployments**.
 
-## 01. Playbook Basics
+- **Functionality** - Playbooks can declare **configurations** and **orchestrate steps** of any manual ordered process, on **multiple** sets of machines, in a pre-defined order, while launching tasks, either synchronously or asynchronously.
 
-### 01.01. YAML
+- **Use Cases** - Playbooks are regularly used to automate IT infrastructure, networks, security systems and code repositories (like GitHub). IT staff can also use playbooks to program applications, services, server nodes and other devices.
 
-- The `playbook` is written in [YAML](https://ja.wikipedia.org/wiki/YAML) format.
-- **Playbooks can also be written in JSON format**
-  - In this course we will only use YAML format.
-- YAML is a text file .
-- YAML uses Python-style indentation to indicate nesting and does not **require quotes** around most string values
+- **Reusability** - The conditions, variables and tasks within playbooks can be saved, shared or reused indefinitely. This makes it easier for IT teams to codify operational knowledge and ensure that the same actions are performed consistently across different environments.
+
+---
+
+## 03. Playbook basics
+
+#### YAML
+
+- The `playbook` is usually written in [YAML](https://ja.wikipedia.org/wiki/YAML) format.
+- Nevertheless, `playbooks` can be written in [JSON](https://en.wikipedia.org/wiki/JSON) format as well.
+- In this lab we will be using only YAML format for `playbooks`.
+- YAML is a text file that uses "Python-style" indentation to indicate nesting, which **does not require quotes** around most string values.
 - Files should start with `---`.
-- **Indentation has meanings** and is extremely import !!! 
-  - Indentation should be written in `space`. `tab` will result in an error.
-  - The level of indentation (using spaces, not tabs) is used to denote structure
-- `key`: `value` makes it a dictionary format.
-- **Key-Value Pairs**: A dictionary in YAML is represented in a simple `key`: `value` form. 
-  - The colon **must** be followed by a space
-- **Lists**: All members of a list are lines beginning at the **same indentation level** starting with a `-` (a dash and a space).
-- **Multi-Line Strings**: Values can span multiple lines using `|` or `>`. 
-  - Using a `Literal Block Scalar`  [`|`] will include the newlines and any trailing spaces. 
-  - Using a `Folded Block Scalar`   [`>`] will fold newlines to spaces.
-- **Boolean Values**: You can specify a boolean value (true/false) in several forms. 
-  - Use lowercase `true` or `false` for boolean values in dictionaries if you want to be compatible with default yamllint options.
+- As **indentations have meanings**, they are extremely important!!!
+- Indentation should be written using `space`, as using `tab` will result in an error.
+- The level of indentation (using spaces, not tabs) is used to **denote structure**.
+- Building the playbook using **Key-Value Pairs**, making them as dictionary in YAML that is represented in a simple `key`: `value` form.
+- The `:` (colon) **must** be followed by a space.
+- All members of a `list` are lines beginning at the **same indentation level** starting with a `-` (a dash and a space).
+- As values can span multiple lines, using `|` or `>`, `playbooks` support **Multi-Line Strings**. 
+- Using a `Literal Block Scalar`  [`|`] will include the newlines and any trailing spaces. 
+- Using a `Folded Block Scalar`   [`>`] will fold new lines into spaces.
+- **Boolean Values** (true/false) can be specified in several forms. For example, use a lowercase `true` or `false` boolean value in dictionaries in order to be compatible with default yamllint options.
+- YAML is **case sensitive**, so be careful with your capitalization.
 
-**YAML is case sensitive, so be careful with your capitalization.**
+<img src="../assets/images//ansible-playbook-yaml.png" style="background-color: white; border-radius: 15px" height="400px" width="900px">
 
-### 01.02. Our first playbook
+---
 
-- Here is our first playbook example
-- This example will list files in a given directory
+## 04. Our first playbook
+
+- Here is our first playbook example that will list files in a given directory.
 
   ```yaml
   ---
@@ -122,12 +96,12 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
         # As learned before this is the command module
         # This command will list files in the home directory
         command: ls ~  
-        
+
         # register is used whenever we wish to save the output 
-        # In this case it will be saved to a variable called 'files'
+        # In this case it will be saved to a variable named 'files'
         register: files  
 
-      # This is the second tasks
+      # This is the second task
       # In this case the tasks will run in the declared sequence 
       - name: Print the list of files  
         # Using the builtin debug module 
@@ -135,24 +109,27 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
         # ** We need to use `stdout_lines` for that
         debug:  
           msg: "{{ files.stdout_lines }}"  
+  
   ```
 
-### 01.02. Writing Playbook
 
-- Playbook are `YAML` files
-- Lets open editor and write the first playbook
+#### Writing a playbook
+
+- Let's open the editor and write the first playbook in `YAML` format.
 
 #### Playbook content:
 
 - `YAML` should start with the `---`
-- Define the hosts we wish to run on. In this sample we will use `localhost`  
-- Define the playbook tasks
+- Define the hosts we wish to run on. In this sample we will use our `localhost`.  
+- Define the playbook tasks.
 
-**Its as simple as that**
+##### **It's as simple as that!**
 
-### 01.03. Hands-on - Our first playbook
+---
 
-- Use this skeleton for our first playbook
+#### Hands-on 
+
+- Use the following code skeleton for our first playbook:
   ```YAML
   # List of hosts
   - hosts: 
@@ -168,21 +145,20 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
       - name: Print 'id' output
   ```
 
-- Now lets fill in with content
-- First lets define localhost as the host for this playbook
+- Now let's fill it in with content.
+- First lets define localhost as the host for this playbook:
   ```YAML
   ---
   - hosts: localhost
   ```
-- Next steps is to define the tasks
+- Next steps is to define the tasks:
 
-> [!TIP]
->
-> Like in every other programming/scripting language there is no "right"
-> solution and the bellow solution will work like any solution that will work
-> for you, so feel free to write it any way which works for you.
+!!! warning "TIP"
+    Like in every other programming / scripting language, there is no one "right" or "wrong"
+    solution. The bellow solution will work like any other solution that will work
+    for you, so feel free to write it any way which works best for you.
 
-  ```YAML
+```YAML
   # List of hosts
   - hosts: localhost
     
@@ -205,11 +181,10 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
       - name: Print 'uname -a' output
         debug: 
           msg: "{{ task_output.stdout}}"    
-  ```
 
-- Output:
-  ```sh
-  * Executing ansible Ad-Hoc commands
+### Output:
+
+  * Executing Ansible ad-hoc commands
 
   $ ansible localhost -m shell -a 'uname -a'
   localhost | CHANGED | rc=0 >>
@@ -242,9 +217,17 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
         - name: Print 'uname -a' output
           debug:
             msg: "{{ task_output.stdout}}"   
-  ```
+```
 
-  ```sh
+---
+
+
+<img src="../assets/images/practice.png" alt="Practice" width="1000"/>
+  <br/>
+
+  - Complete the playbook, this time use `command` instead of shell:
+
+```sh
   $ ansible-playbook 004-install-nginx.yaml
   
   PLAY [localhost] ***************************************************************
@@ -263,25 +246,23 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
 
   PLAY RECAP *********************************************************************
   localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-  ```
+```
+
+
+
+
 
 ---
 
-  <img src="../../resources/practice.png" width="250px">
-  <br/>
 
-- Complete the playbook, this time use `command` instead of shell
----
+## 05. Playbook syntax
 
+- In this section, we will learn further about playbook's syntax.
 
-### 02. Playbook syntax (Playbook Keywords)
-
-- In this section, we will more about playbooks syntax
-
-### 02.01. `Play`
-- [Official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/playbooks_keywords.html#play)
+#### `Play`
+- [See official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/playbooks_keywords.html#play).
 - The **top** part of the playbook is called `Play` and it **defines** the **global behavior** of for the **entire** playbook.
-- Here are some definitions which defined in the `Play`  
+- Here are some definitions which are set in the `Play` section:
 
   ```yaml
   ---
@@ -312,16 +293,18 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
     vars: 
   ```
 
-#### 02.02. Quiz:
+---
+
+## 06. Quiz
 
   - Review the example below and try to answer the following questions:
     - On which hosts the playbook should be executed?
-    - How we define the play?
-    - Which directives are defined in this playbook?
+    - How do we define the play?
+    - Which directives are defined in the below playbook?
     - How do we define variables?
     - How do we use variables?
-    - How do we set up root user?
-    -   
+    - How do we set up a root user?
+      
       ```yaml
       #
       # Install nginx
@@ -364,18 +347,19 @@ If you appreciate the effort, Please <img src="https://raw.githubusercontent.com
           become: yes
       ```
 
-### 02.03. Playbook demo
+---
 
-- Execute the playbook by adding the required parameters to teh playbook
-- This can be done by setting up the parameter prior to executing the playbook
-Or by adding the parameters to the playbook itself.
+## 07. Playbook demo
 
-### 02.03.01. Setting the env variable in the ansible controller
+- Execute the playbook by adding the required parameters.
+- This can be done by setting up the parameters prior to executing the playbook, or by adding the parameters to the playbook itself.
+
+#### Setting the env variable in the Ansible controller
   
   ```yaml
   # Example: 
-  
-  # 01. Setting the env variable in the ansible controller
+
+  # 01. Setting the env variable in the Ansible controller
   export PORT=8080
   
   # Use the -e/--extra-vars to inject environment variables into the playbook
@@ -385,7 +369,7 @@ Or by adding the parameters to the playbook itself.
   PORT: "{{ lookup('env','PORT') }}"
   ```
 
-### 02.03.02. Passing the variable to the playbook
+#### Passing the variable to the playbook
   
   ```yaml
   # Example:
@@ -394,12 +378,13 @@ Or by adding the parameters to the playbook itself.
   PORT="8080" ansible-playbook playbook.yaml
   ```
 
-### 02.03.03. Using the environment
+#### Using the environment
   
-  - Using the environment keyword in a **task** to set variables for that task:
   
   ```yaml
   # Example:
+
+  # 0.3 Using the environment keyword in a **task** to set variables for that task
   - name: Open the port in firewall
     environment:
       PORT: "8080"
@@ -409,10 +394,12 @@ Or by adding the parameters to the playbook itself.
       proto: tcp
   ```
 
-  - Passing the environment to all the tasks in Playbook:
+#### Passing the environment
   
   ```yaml
   # Example:
+
+  # 0.4 Passing the environment to all the tasks in Playbook
   - hosts: all
     environment:
       PORT: "8080"
@@ -421,12 +408,12 @@ Or by adding the parameters to the playbook itself.
       ...
   ```
 
-### 02.03.04. Permanently Set Environment Variables on Remote Hosts
-
-  - To persist variables (e.g., in .bashrc or /etc/environment):
-  
+#### Set environment
   ```yaml
   # Example:
+
+  # 05. Permanently set environment variables on remote hosts to persist variables 
+  #     (e.g., in .bashrc or /etc/environment)
   - name: Set permanent environment variable
     lineinfile:
       path: /etc/environment
@@ -435,14 +422,14 @@ Or by adding the parameters to the playbook itself.
     become: yes
   ```
 
-### 02.03.05. Using `var_files` to include variables
+#### Using `var_files` to include variables
 
-  - We can use a variable file to pass variables in a playbook
   
   ```yaml
     # Example
+
+    # 06. We can use a variable file to pass variables in a playbook
     # Check the vars.yaml file in the same directory
-    
     - hosts: all
       vars_files:
         - vars.yaml  # Include variables from vars.yaml
@@ -452,42 +439,35 @@ Or by adding the parameters to the playbook itself.
             msg: "{{ http_port }}"
   ```
 
-### 03. Tasks
+---
 
-  - https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html#running-playbooks-in-check-mode
+## 08. Tasks
+
+  - See documentation on [running playbooks in check mode](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html#running-playbooks-in-check-mode).
   
     ```sh
     # To run a playbook in check mode, 
     # you can pass the -C or --check flag to 
     # the ansible-playbook command:
+
     ansible-playbook --check playbook.yaml
     ```
 
-- Lets write some playbooks tasks with parameters
-- Take a look on `004-list-files.yaml` and follow the instructions in the comments
-- Answer the questions in the comments about the `with_items` the output of the playbook
-  
-### 03.01 Additional Tasks  
+- Let's write some playbook tasks with parameters.
+- Take a look on `004-list-files.yaml` and follow the instructions in the comments.
+- Answer the questions in the comments about the `with_items` output of the playbook.
 
-- Run the playbook and see the output
-- Run the playbook in `check` mode and see the output
-- Run the playbook with `--diff` flag and see the output
-- Run the playbook with `--verbose` flag and see the output
-- Run the playbook with `--verbose`, `--diff` flags and see the output
-- Run the playbook with `--verbose`, `--diff`, `--check` flags and see the output
+## 09. Additional tasks
+
+- Run the playbook and watch the output.
+- Run the playbook in `check mode` and watch the output.
+- Run the playbook with `--diff` flag and watch the output.
+- Run the playbook with `--verbose` flag and watch the output.
+- Run the playbook with `--verbose` and `--diff` flags and watch the output.
+- Run the playbook with `--verbose`, `--diff` and `--check` flags and watch the output.
  
 ---
 
-> [!TIP]
-> It's considered best practice to use the FQDN name of all modules used in your playbook.
-> It is done to prevent naming collision between builtin modules and community/self made ones.
-
----
-<!--- Labs Navigation Start -->  
-<p style="text-align: center;">  
-    <a href="/Labs/003-modules">:arrow_backward: /Labs/003-modules</a>
-    &emsp;<a href="/Labs">Back to labs list</a>
-    &emsp;<a href="/Labs/005-facts">/Labs/005-facts :arrow_forward:</a>
-</p>
-<!--- Labs Navigation End -->
-
+!!! warning "TIP"
+    It's considered best practice to use the FQDN name of all modules used in your playbook.
+    It is done to prevent naming collision between builtin modules and community modules or self made ones.

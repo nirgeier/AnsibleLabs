@@ -1,88 +1,74 @@
-<div align="center">
-    <a href="https://stackoverflow.com/users/1755598/codewizard"><img src="https://stackoverflow.com/users/flair/1755598.png" height="50" alt="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for CodeWizard at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>
-  
-  ![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=nirgeier)
-  [![Linkedin Badge](https://img.shields.io/badge/-nirgeier-blue?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/nirgeier/)](https://www.linkedin.com/in/nirgeier/) 
-  [![Gmail Badge](https://img.shields.io/badge/-nirgeier@gmail.com-fcc624?style=flat&logo=Gmail&logoColor=red&link=mailto:nirgeier@gmail.com)](mailto:nirgeier@gmail.com) [![Outlook Badge](https://img.shields.io/badge/-nirg@codewizard.co.il-fcc624?style=flat&logo=microsoftoutlook&logoColor=blue&link=mailto:nirg@codewizard.co.il)](mailto:nirg@codewizard.co.il) 
-  <a href=""><img src="https://img.shields.io/github/stars/nirgeier/AnsibleLabs"></a> 
-  <img src="https://img.shields.io/github/forks/nirgeier/AnsibleLabs">  
-  <a href="https://discord.gg/U6xW23Ss"><img src="https://img.shields.io/badge/discord-7289da.svg?style=plastic&logo=discord" alt="discord" style="height: 20px;"></a>
-  <img src="https://img.shields.io/github/contributors-anon/nirgeier/AnsibleLabs?color=yellow&style=plastic" alt="contributors" style="height: 20px;"></a>
-  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/apache%202.0-blue.svg?style=plastic&label=license" alt="license" style="height: 20px;"></a>
-  <a href="https://github.com/nirgeier/AnsibleLabs/pulls"><img src="https://img.shields.io/github/issues-pr/nirgeier/AnsibleLabs?style=plastic&logo=pr" alt="Pull Requests" style="height: 20px;"></a> 
-
-If you appreciate the effort, Please <img src="https://raw.githubusercontent.com/nirgeier/labs-assets/main/assets/images/star.png" height="20px"> this project
-
-</div>
+<a href="https://github.com/nirgeier/AnsibleLabs/actions/workflows/Lab-009.yaml" target="_blank">
+  <img src="https://github.com/nirgeier/AnsibleLabs/actions/workflows/Lab-009.yaml/badge.svg" alt="Build Status">
+</a>
 
 ---
 
-- [Roles](#roles)
-    - [What are Ansible roles?](#what-are-ansible-roles)
-    - [Ansible roles file structure](#ansible-roles-file-structure)
-    - [Building Ansible role](#building-ansible-role)
-    - [01. Initialize file structure](#01-initialize-file-structure)
-    - [02. Create the role content](#02-create-the-role-content)
-      - [02.01. Create the `defaults/main.yml`](#0201-create-the-defaultsmainyml)
-      - [02.02. Create the templates](#0202-create-the-templates)
-      - [02.03. Create the tasks for the role](#0203-create-the-tasks-for-the-role)
+# Lab 009 - Roles
 
----
-<!-- header end -->
-# Roles
+## 01. What are Ansible roles?
 
-### What are Ansible roles?
-
-- Roles let you **automatically load** related vars, files, tasks, handlers, and other Ansible artifacts based on a **known file structure**. 
+- Roles let you **automatically load** related `vars`, `files`, `tasks`, `handlers`, and other Ansible artifacts based on a **known file structure**. 
 - After you group your content into roles, you can easily reuse them and share them with other users.
-- By default, Ansible will look in **each directory** within a role for file names `main`/`main.yml`/`main.yaml`.
+- By default, Ansible will look in **each directory** within a role for the file names `main`/`main.yml`/`main.yaml`.
 
-### Ansible roles file structure
 
-| Files         | Description                                                                                                                                                                                                                            |
+ <img src="../assets/images/ansible-roles.jpg" width="700px">
+  <br/>
+
+---
+
+## 02. Ansible roles file structure
+
+| Files         | <u>Description</u>                                                                                                                                                                                                                             |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **tasks**     | the main list of tasks that the role executes.                                                                                                                                                                                         |
-| **handlers**  | handlers, which may be used within or outside this role.                                                                                                                                                                               |
-| **library**   | modules, which may be used within this role (see Embedding modules and plugins in roles for more information).                                                                                                                         |
-| **defaults**  | default variables for the role (see Using Variables for more information). <br/>These variables have the lowest priority of any variables available and can be easily overridden by any other variable, including inventory variables. |
-| **vars**      | other variables for the role (see Using Variables for more information).                                                                                                                                                               |
-| **files**     | files that the role deploys.                                                                                                                                                                                                           |
-| **templates** | templates that the role deploys.                                                                                                                                                                                                       |
-| **meta**      | metadata for the role, including role dependencies and optional Galaxy metadata such as platforms supported.                                                                                                                           |
+| **tasks**     | the main list of tasks that the role executes                                                                                                                                                                                         |
+| **handlers**  | handlers, which may be used within or outside this role                                                                                                                                                                               |
+| **library**   | modules, which may be used within this role (see [Embedding modules and plugins in roles](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#embedding-modules-and-plugins-in-roles) for more information)                                                                                                                         |
+| **defaults**  | default variables for the role (see [Using Variables](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html) for more information) <br/>these variables have the lowest priority of any variables available and can be easily overridden by any other variable, including `inventory variables` |
+| **vars**      | other variables for the role (see [Using Variables](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html) for more information)                                                                                                                                                               |
+| **files**     | files that the role deploys                                                                                                                                                                                                           |
+| **templates** | templates that the role deploys                                                                                                                                                                                                       |
+| **meta**      | metadata for the role, including role dependencies and optional Galaxy metadata, such as supported platforms     |
 
-### Building Ansible role
+---
 
-- In this demo we will create a role for deploying a nodeJS app
+## 03. Building an Ansible role
+
+- In this demo we will create a role for deploying a `nodeJS` app.
 - The app will be deployed from a pre-defined code.
-- Each server will be deployed with its own configuration (values)
-- We will also deploy some other files for learning purposes
+- Each server will be deployed with its own configuration (values).
+- We will also deploy some other files for learning purposes.
 
-### 01. Initialize file structure
+---
+
+## 04. Initialize file structure
 
 ```sh
 # Lets create the roles file structure
 ansible-galaxy init codewizard_lab_role
-
-# The file system of the role will look like
 ```
+ <br/>
+- The file system of the role will look like:
 
-![](../../resources/ansible-role-structure.png)
+<img src="../assets/images/ansible-role-structure.png" width="700px">
+ <br/>
 
-### 02. Create the role content
+## 05. Create the role content
 
-#### 02.01. Create the `defaults/main.yml`
+- #### Create the `defaults/main.yml`
   
   ```yaml
   ---
   ### defaults/main.yml
   ###
-  ### This file contain the variables for the Demo lab
+  ### This file contains the variables for the Demo lab
   ###
 
   # Defaults file for codewizard_lab_role
   motd_message: "Welcome to Ansible Roles Lab"
 
-  ### The package we wish to install on the servers
+  ### The packages we wish to install on the servers
   apt_packages:
     - python3
     - nodejs
@@ -96,8 +82,10 @@ ansible-galaxy init codewizard_lab_role
   package_state: latest
   ```
 
-#### 02.02. Create the templates
 
+- #### Create the templates
+
+-- templates/motd.j2
   ```yaml
   ### templates/motd.j2
 
@@ -119,6 +107,9 @@ ansible-galaxy init codewizard_lab_role
   {{ custom_message | default('') }}
   ```
 
+ <br/>
+
+-- templates/node-server.j2
   ```yaml
   ### templates/node-server.j2
   const
@@ -142,12 +133,13 @@ ansible-galaxy init codewizard_lab_role
       });
   ```
 
-#### 02.03. Create the tasks for the role
+- #### Create the tasks for the role
 
-- In this example we will have multiple tasks for learning purposes
-- We will need to create the tasks for each role
-- Once the task are ready we can define them in the main task file
+- In this example we will have multiple tasks for learning purposes.
+- We will need to create the tasks for each role.
+- Once the tasks are ready, we can define them in the main task file.
 
+--- tasks/pre-requirements.yaml
   ```yaml 
   ### tasks/pre-requirements.yaml
   ---
@@ -169,7 +161,9 @@ ansible-galaxy init codewizard_lab_role
     with_items: "{{ packages_version.results }}"
   ```
 
-  ```yaml 
+--- tasks/node-server.yaml
+
+```yaml 
   ### tasks/node-server.yaml
   ---
   - name: Copy Node server
@@ -229,9 +223,10 @@ ansible-galaxy init codewizard_lab_role
   - name: Print server status
     ansible.builtin.debug:
       msg: "{{ server_status.status }} - {{ server_status.msg }}"
-    ```
+```
 
-    ```yaml
+--- tasks/motd.yaml
+  ```yaml
     ### tasks/motd.j2
     ---
     - name: Copy template
@@ -241,9 +236,11 @@ ansible-galaxy init codewizard_lab_role
         mode: preserve
       become: true
       become_method: ansible.builtin.su
-    ```
+  ```
 
-    ```yaml
+--- tasks/main.yml
+
+  ```yaml
     ### tasks/main.yml
     ---
     - name: Include Pre-Requirements task
@@ -257,9 +254,12 @@ ansible-galaxy init codewizard_lab_role
     - name: Deploy node server
       ansible.builtin.include_tasks:
         file: node-server.yaml
-    ```        
+  ```        
 
-  #### 02.04. Create the playbook for the role
+ <br/>
+
+- #### Create the playbook for the role
+
 
   ```yaml
   ### 009-role-playbook.yml
@@ -276,12 +276,3 @@ ansible-galaxy init codewizard_lab_role
       - codewizard_lab_role  
   ```
 
-
----
-<!--- Labs Navigation Start -->  
-<p style="text-align: center;">  
-    <a href="/Labs/008-challenges">:arrow_backward: /Labs/008-challenges</a>
-    &emsp;<a href="/Labs">Back to labs list</a>
-    &emsp;<a href="/Labs/010-loops-and-conditionals">/Labs/010-loops-and-conditionals :arrow_forward:</a>
-</p>
-<!--- Labs Navigation End -->
