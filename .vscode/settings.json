@@ -1,11 +1,4 @@
 {
-    "ansible.python.interpreterPath": "/usr/local/bin/python3.12",
-    "cSpell.words": [
-        "Geier"
-    ],
-    "yaml.schemas": {
-        "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks": "file:///Users/nirg/repositories/AnsibleLabs/Labs/009-roles/codewizard_lab_role/tasks/pre-requirements.yaml"
-    },
     "liveSassCompile.settings.autoprefix": "defaults",
     "liveSassCompile.settings.formats": [
         {

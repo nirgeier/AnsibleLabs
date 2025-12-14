@@ -100,12 +100,12 @@ extra:
       link: https://github.com/nirgeier/AnsibleLabs
       name: View on GitHub
       class: social-class__github
-    
+
     - icon: octicons/repo-forked-16
       link: https://github.com/nirgeier/AnsibleLabs/network/members
       name: Fork this repo
       class: social-class__fork
-    
+
     - icon: octicons/star-16
       link: https://github.com/nirgeier/AnsibleLabs/stargazers
       name: Star this repo
@@ -120,26 +120,27 @@ extra:
       link: https://discord.gg/U6xW23Ss
       name: Follow me on Discord
       class: social-class__discord
-    
+
     - icon: fontawesome/brands/stack-overflow
       link: https://stackoverflow.com/users/1755598/codewizard
       name: Follow me on Stack Overflow
       class: social-class__stackoverflow
-    
+
     - icon: fontawesome/brands/whatsapp
       link: https://wa.me/972548122310
       name: Follow me on WhatsApp
       class: social-class__whatsapp
-    
+
     - icon: fontawesome/solid/envelope
       link: mailto:nirg@codewizard.co.il
       name: Email me
       class: social-class__email
 
 extra_css:
-  - ./assets/stylesheets/theme.css
+  - ./assets/stylesheets/codewizard.css?v=1765716767
 extra_javascript:
-  - https://buttons.github.io/buttons.js
+  - https://buttons.github.io/buttons.js?v=1765716767
+  - assets/javascripts/truncate_nav.js?v=1765716767
 ###
 ### mkdocs-extensions.yml
 ###
