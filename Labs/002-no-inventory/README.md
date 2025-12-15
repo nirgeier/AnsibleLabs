@@ -42,54 +42,54 @@
 
 ### 03. `inventory` samples
     
-    - `INI` format
-        ```ini
-        [webservers]
-        web1.example.com
-        web2.example.com
+  - `INI` format
+    ```ini
+    [webservers]
+    web1.example.com
+    web2.example.com
 
-        [database]
-        db1.example.com
-        ```
+    [database]
+    db1.example.com
+    ```
 
-    - `YAML` format
-        ```yaml
-        all:
+  - `YAML` format
+    ```yaml
+    all:
+        hosts:
+            web1.example.com:
+            web2.example.com:
+        children:
+            database:
             hosts:
-                web1.example.com:
-                web2.example.com:
-            children:
-                database:
-                hosts:
-                    db1.example.com:
-        ```
-        
-    - `JSON` format
-        ```json
-        {
-        "all": {
-            "hosts": {
-            "web1.example.com": {
-                "ansible_port": 2222,
-                "http_port": 80
-            },
-            "web2.example.com": {
-                "ansible_port": 2223,
-                "http_port": 8080
-            }
-            },
-            "children": {
-            "database": {
-                "hosts": [
-                "db1.example.com"
-                ]
-              }
-            }
+                db1.example.com:
+    ```
+      
+  - `JSON` format
+    ```json
+    {
+    "all": {
+        "hosts": {
+        "web1.example.com": {
+            "ansible_port": 2222,
+            "http_port": 80
+        },
+        "web2.example.com": {
+            "ansible_port": 2223,
+            "http_port": 8080
+        }
+        },
+        "children": {
+        "database": {
+            "hosts": [
+            "db1.example.com"
+            ]
           }
         }
-        ```
+      }
+    }
+    ```
 
-<br>
+---
 
 #### Inventory types in Ansible
   
@@ -101,36 +101,37 @@
        - This allows for real-time updates and adaptability as environments change.
 
       See an example of generating a `dynamic inventory` using `Python` code for fetching data from a database:
-            ```python
-            #!/usr/bin/env python
-            import sqlite3
-            import json
+          
+        ```python
+        #!/usr/bin/env python
+        import sqlite3
+        import json
 
-            def get_inventory():
-                conn = sqlite3.connect('servers.db')
-                cursor = conn.cursor()
+        def get_inventory():
+            conn = sqlite3.connect('servers.db')
+            cursor = conn.cursor()
+            
+            cursor.execute('SELECT hostname, group_name, ansible_user FROM servers')
+            rows = cursor.fetchall()
+            
+            inventory = {'all': {'hosts': [], 'vars': {}}}
+            
+            for row in rows:
+                hostname, group_name, ansible_user = row
                 
-                cursor.execute('SELECT hostname, group_name, ansible_user FROM servers')
-                rows = cursor.fetchall()
+                if group_name not in inventory:
+                    inventory[group_name] = {'hosts': [], 'vars': {}}
                 
-                inventory = {'all': {'hosts': [], 'vars': {}}}
+                inventory['all']['hosts'].append(hostname)
+                inventory[group_name]['hosts'].append(hostname)
+                inventory[group_name]['vars']['ansible_user'] = ansible_user
                 
-                for row in rows:
-                    hostname, group_name, ansible_user = row
-                    
-                    if group_name not in inventory:
-                        inventory[group_name] = {'hosts': [], 'vars': {}}
-                    
-                    inventory['all']['hosts'].append(hostname)
-                    inventory[group_name]['hosts'].append(hostname)
-                    inventory[group_name]['vars']['ansible_user'] = ansible_user
-                    
-                conn.close()
-                return inventory
+            conn.close()
+            return inventory
 
-            if __name__ == "__main__":
-                print(json.dumps(get_inventory()))
-            ```
+        if __name__ == "__main__":
+            print(json.dumps(get_inventory()))
+        ```
 
 ---
 
@@ -168,6 +169,7 @@
 ---
 
 ### 06. `inventory` invocation
+
   - Fill in the inventory based upon the previous labs' configuration and test it.
   - Verify that the inventory is defined correctly with: 
     ```sh

@@ -5,7 +5,6 @@
 
 ---
 
-
 # Lab 004 - Playbooks
 
 <br/>
@@ -158,16 +157,53 @@
     solution. The bellow solution will work like any other solution that will work
     for you, so feel free to write it any way which works best for you.
 
-```YAML
+
+```yaml
+# List of hosts
+- hosts: localhost
+  
+  ###
+  ### In this sample we display several solutions
+  ### 
+  ### We combine few commands like: `shell`, `debug`, `command` and more
+  ###
+  
+  # List of tasks
+  tasks:
+    # Using shell it will work, but no out put will be displayed out
+    # We will need to use register to display output
+    - name: Execute 'uname -a'
+      shell: uname -a
+      register: task_output
+    
+    # Using register we can now display the output contents
+    # We must use `.stdout` to display the output itself
+    - name: Print 'uname -a' output
+      debug: 
+        msg: "{{ task_output.stdout}}"    
+
+### Output:
+
+* Executing Ansible ad-hoc commands
+
+$ ansible localhost -m shell -a 'uname -a'
+localhost | CHANGED | rc=0 >>
+Linux 1fa29998d58c 5.15.0-105-generic 115-Ubuntu SMP Mon Apr 15 09:52:04 
+UTC 2024 aarch64 aarch64 aarch64 GNU/Linux
+-----------------------------------
+
+* Executing ansible playbook
+
+$ cat 004-playbook.yaml
   # List of hosts
   - hosts: localhost
-    
+
     ###
     ### In this sample we display several solutions
-    ### 
+    ###
     ### We combine few commands like: `shell`, `debug`, `command` and more
     ###
-    
+
     # List of tasks
     tasks:
       # Using shell it will work, but no out put will be displayed out
@@ -175,59 +211,22 @@
       - name: Execute 'uname -a'
         shell: uname -a
         register: task_output
-      
+
       # Using register we can now display the output contents
       # We must use `.stdout` to display the output itself
       - name: Print 'uname -a' output
-        debug: 
-          msg: "{{ task_output.stdout}}"    
-
-### Output:
-
-  * Executing Ansible ad-hoc commands
-
-  $ ansible localhost -m shell -a 'uname -a'
-  localhost | CHANGED | rc=0 >>
-  Linux 1fa29998d58c 5.15.0-105-generic #115-Ubuntu SMP Mon Apr 15 09:52:04 
-  UTC 2024 aarch64 aarch64 aarch64 GNU/Linux
-  -----------------------------------
-
-  * Executing ansible playbook
-
-  $ cat 004-playbook.yaml
-    # List of hosts
-    - hosts: localhost
-
-      ###
-      ### In this sample we display several solutions
-      ###
-      ### We combine few commands like: `shell`, `debug`, `command` and more
-      ###
-
-      # List of tasks
-      tasks:
-        # Using shell it will work, but no out put will be displayed out
-        # We will need to use register to display output
-        - name: Execute 'uname -a'
-          shell: uname -a
-          register: task_output
-
-        # Using register we can now display the output contents
-        # We must use `.stdout` to display the output itself
-        - name: Print 'uname -a' output
-          debug:
-            msg: "{{ task_output.stdout}}"   
+        debug:
+          msg: "{{ task_output.stdout}}"   
 ```
 
 ---
-
 
 <img src="../assets/images/practice.png" alt="Practice" width="1000"/>
   <br/>
 
   - Complete the playbook, this time use `command` instead of shell:
 
-```sh
+  ```sh
   $ ansible-playbook 004-install-nginx.yaml
   
   PLAY [localhost] ***************************************************************
@@ -246,20 +245,16 @@
 
   PLAY RECAP *********************************************************************
   localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-```
-
-
-
-
+  ```
 
 ---
-
 
 ## 05. Playbook syntax
 
 - In this section, we will learn further about playbook's syntax.
 
 #### `Play`
+
 - [See official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/playbooks_keywords.html#play).
 - The **top** part of the playbook is called `Play` and it **defines** the **global behavior** of for the **entire** playbook.
 - Here are some definitions which are set in the `Play` section:
@@ -298,22 +293,23 @@
 ## 06. Quiz
 
   - Review the example below and try to answer the following questions:
-    - On which hosts the playbook should be executed?
-    - How do we define the play?
-    - Which directives are defined in the below playbook?
-    - How do we define variables?
-    - How do we use variables?
-    - How do we set up a root user?
-      
+    
+      - On which hosts the playbook should be executed?
+      - How do we define the play?
+      - Which directives are defined in the below playbook?
+      - How do we define variables?
+      - How do we use variables?
+      - How do we set up a root user?
+
       ```yaml
       #
       # Install nginx
       #
       name: Install and start nginx
-      
+
       # We should have this group in our inventory
       hosts: webservers
-      
+
       # Variables
       # The `lookup` function is used to fetch the value of the environment variables 
       vars:
@@ -379,8 +375,7 @@
   ```
 
 #### Using the environment
-  
-  
+    
   ```yaml
   # Example:
 
@@ -409,6 +404,7 @@
   ```
 
 #### Set environment
+  
   ```yaml
   # Example:
 
@@ -426,17 +422,17 @@
 
   
   ```yaml
-    # Example
+  # Example
 
-    # 06. We can use a variable file to pass variables in a playbook
-    # Check the vars.yaml file in the same directory
-    - hosts: all
-      vars_files:
-        - vars.yaml  # Include variables from vars.yaml
-      tasks:
-        - name: Print a variable
-          debug:
-            msg: "{{ http_port }}"
+  # 06. We can use a variable file to pass variables in a playbook
+  # Check the vars.yaml file in the same directory
+  - hosts: all
+    vars_files:
+      - vars.yaml  # Include variables from vars.yaml
+    tasks:
+      - name: Print a variable
+        debug:
+          msg: "{{ http_port }}"
   ```
 
 ---
@@ -444,7 +440,6 @@
 ## 08. Tasks
 
   - See documentation on [running playbooks in check mode](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html#running-playbooks-in-check-mode).
-  
     ```sh
     # To run a playbook in check mode, 
     # you can pass the -C or --check flag to 
@@ -453,9 +448,11 @@
     ansible-playbook --check playbook.yaml
     ```
 
-- Let's write some playbook tasks with parameters.
-- Take a look on `004-list-files.yaml` and follow the instructions in the comments.
-- Answer the questions in the comments about the `with_items` output of the playbook.
+  - Let's write some playbook tasks with parameters.
+  - Take a look on `004-list-files.yaml` and follow the instructions in the comments.
+  - Answer the questions in the comments about the `with_items` output of the playbook.
+
+---
 
 ## 09. Additional tasks
 
@@ -469,5 +466,6 @@
 ---
 
 !!! warning "TIP"
+    
     It's considered best practice to use the FQDN name of all modules used in your playbook.
     It is done to prevent naming collision between builtin modules and community modules or self made ones.

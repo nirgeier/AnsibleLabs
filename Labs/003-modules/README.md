@@ -180,7 +180,7 @@ if __name__ == '__main__':
 
 - Usage:
  
-```sh
+  ```sh
   # Ping all server in the inventory
   ansible all -m ping
 
@@ -210,7 +210,7 @@ if __name__ == '__main__':
       "changed": false,
       "ping": "pong"
   }
-```
+  ```
 
 ---
 
