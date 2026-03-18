@@ -5684,39 +5684,129 @@ It is done to prevent naming collision between builtin modules and community mod
 <li><code>become: true</code> is required for user management - Ansible escalates to root via <code>sudo</code></li>
 <li>SSH authorized keys are managed with the <code>ansible.posix.authorized_key</code> module, separate from user creation</li>
 <li>Running the same playbook twice produces <code>changed=0</code> on the second run - demonstrating idempotency</li>
-</ul></section><section class="print-page" id="008-challenges" heading-number="2.10"><h1 id="008-challenges-challenges">Challenges<a class="headerlink" href="#008-challenges-challenges" title="Permanent link">&para;</a></h1>
-<hr />
+</ul></section><section class="print-page" id="008-challenges" heading-number="2.10"><h1 id="008-challenges-lab-008-challenges">Lab 008 - Challenges<a class="headerlink" href="#008-challenges-lab-008-challenges" title="Permanent link">&para;</a></h1>
+<ul>
+<li>This lab is a set of challenges that combine skills from the previous labs (000–007).</li>
+<li>You will practice creating users, building inventories, and managing Git repositories using Ansible.</li>
+<li>Each challenge has a clear goal — try to solve it yourself before checking the solution.</li>
+<li>Completing these challenges will reinforce your understanding of core Ansible concepts.</li>
+</ul>
 <h2 id="008-challenges-what-will-we-learn">What will we learn?<a class="headerlink" href="#008-challenges-what-will-we-learn" title="Permanent link">&para;</a></h2>
 <ul>
-<li>How to apply Ansible skills learned in previous labs</li>
-<li>How to create users and configure inventory independently</li>
-<li>How to work with Git repositories using Ansible</li>
+<li>How to apply the <code>user</code> module to create system accounts on remote hosts</li>
+<li>How to write an inventory file that references the created users as <code>ansible_ssh_user</code></li>
+<li>How to use the <code>git</code> module to clone and push to repositories on remote hosts</li>
+<li>How to chain multiple modules in a single playbook to complete a real-world workflow</li>
 </ul>
 <hr />
 <h2 id="008-challenges-prerequisites">Prerequisites<a class="headerlink" href="#008-challenges-prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Complete all previous labs (000-007)</li>
+<li>Complete all previous labs (000–007)</li>
 </ul>
 <hr />
-<h2 id="008-challenges-01-task-01">01. Task 01:<a class="headerlink" href="#008-challenges-01-task-01" title="Permanent link">&para;</a></h2>
-<p>1️⃣ Create a user named <code>&lt;hostname&gt;</code> for each machine.</p>
-<p>2️⃣ Verify that the user was created.</p>
-<p>3️⃣ Create an ansible inventory with the username in the configuration, using the format below:</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#008-challenges-__codelineno-0-1"></a>&lt;hostname&gt;<span class="w">    </span><span class="nv">ansible_host</span><span class="o">=</span>&lt;hostname&gt;<span class="w"> </span><span class="nv">ansible_ssh_user</span><span class="o">=</span>&lt;user&gt;
+<h2 id="008-challenges-01-challenge-1-user-management">01. Challenge 1 — User Management<a class="headerlink" href="#008-challenges-01-challenge-1-user-management" title="Permanent link">&para;</a></h2>
+<h3 id="008-challenges-goal">Goal<a class="headerlink" href="#008-challenges-goal" title="Permanent link">&para;</a></h3>
+<p>Create a user named after the hostname on each managed host, verify the user exists, then update the inventory to connect as that user.</p>
+<h3 id="008-challenges-tasks">Tasks<a class="headerlink" href="#008-challenges-tasks" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Write a playbook that creates a user named <code>{{ inventory_hostname }}</code> on all hosts.</li>
+<li>Verify the user was created by displaying its name in a debug message.</li>
+<li>Add an SSH key for the user during creation.</li>
+<li>Update your inventory so the connection uses the new user:</li>
+</ol>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#008-challenges-__codelineno-0-1"></a><span class="na">server-1    ansible_host</span><span class="o">=</span><span class="s">server-1 ansible_ssh_user=server-1</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#008-challenges-__codelineno-0-2"></a><span class="na">server-2    ansible_host</span><span class="o">=</span><span class="s">server-2 ansible_ssh_user=server-2</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#008-challenges-__codelineno-0-3"></a><span class="na">server-3    ansible_host</span><span class="o">=</span><span class="s">server-3 ansible_ssh_user=server-3</span>
 </span></code></pre></div>
+<details class="success">
+<summary>Solution</summary>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#008-challenges-__codelineno-1-1"></a><span class="nn">---</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#008-challenges-__codelineno-1-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Challenge 1 - Create user per hostname</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#008-challenges-__codelineno-1-3"></a><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#008-challenges-__codelineno-1-4"></a><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#008-challenges-__codelineno-1-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create user named after the host</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#008-challenges-__codelineno-1-6"></a><span class="w">      </span><span class="nt">ansible.builtin.user</span><span class="p">:</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#008-challenges-__codelineno-1-7"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#008-challenges-__codelineno-1-8"></a><span class="w">        </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#008-challenges-__codelineno-1-9"></a><span class="w">        </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#008-challenges-__codelineno-1-10"></a><span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#008-challenges-__codelineno-1-11"></a><span class="w">        </span><span class="nt">generate_ssh_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#008-challenges-__codelineno-1-12"></a><span class="w">        </span><span class="nt">ssh_key_bits</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2048</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#008-challenges-__codelineno-1-13"></a><span class="w">        </span><span class="nt">ssh_key_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.ssh/id_rsa</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#008-challenges-__codelineno-1-14"></a><span class="w">        </span><span class="nt">create_home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#008-challenges-__codelineno-1-15"></a>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#008-challenges-__codelineno-1-16"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Verify user was created</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#008-challenges-__codelineno-1-17"></a><span class="w">      </span><span class="nt">ansible.builtin.debug</span><span class="p">:</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#008-challenges-__codelineno-1-18"></a><span class="w">        </span><span class="nt">msg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Created</span><span class="nv"> </span><span class="s">user:</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+</span></code></pre></div>
+</details>
 <hr />
-<h2 id="008-challenges-02-task-02">02. Task 02:<a class="headerlink" href="#008-challenges-02-task-02" title="Permanent link">&para;</a></h2>
-<p>1️⃣ Clone a <code>git</code> repository from your <a href="https://github.com">GitHub</a> or <a href="https://gitlab.com">GitLab</a> account.</p>
-<p>2️⃣ Commit changes to the repository.</p>
-<p>3️⃣ Push the changes to the repository.</p>
+<h2 id="008-challenges-02-challenge-2-git-repository-management">02. Challenge 2 — Git Repository Management<a class="headerlink" href="#008-challenges-02-challenge-2-git-repository-management" title="Permanent link">&para;</a></h2>
+<h3 id="008-challenges-goal_1">Goal<a class="headerlink" href="#008-challenges-goal_1" title="Permanent link">&para;</a></h3>
+<p>On a remote host, install <code>git</code>, clone a repository, make a change, commit it, and push it back to the remote.</p>
+<h3 id="008-challenges-tasks_1">Tasks<a class="headerlink" href="#008-challenges-tasks_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Ensure <code>git</code> is installed on the target host using the <code>apt</code> module.</li>
+<li>Clone a repository from GitHub or GitLab to <code>/tmp/ansible-git-demo</code>.</li>
+<li>Write a file to the cloned directory using the <code>copy</code> module.</li>
+<li>Commit and push the change using the <code>shell</code> module.</li>
+</ol>
+<details class="success">
+<summary>Solution</summary>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#008-challenges-__codelineno-2-1"></a><span class="nn">---</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#008-challenges-__codelineno-2-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Challenge 2 - Clone, modify, and push a git repository</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#008-challenges-__codelineno-2-3"></a><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server-2</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#008-challenges-__codelineno-2-4"></a><span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#008-challenges-__codelineno-2-5"></a><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#008-challenges-__codelineno-2-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ensure git is installed</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#008-challenges-__codelineno-2-7"></a><span class="w">      </span><span class="nt">ansible.builtin.apt</span><span class="p">:</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#008-challenges-__codelineno-2-8"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#008-challenges-__codelineno-2-9"></a><span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#008-challenges-__codelineno-2-10"></a><span class="w">      </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#008-challenges-__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#008-challenges-__codelineno-2-12"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Clone the repository</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#008-challenges-__codelineno-2-13"></a><span class="w">      </span><span class="nt">ansible.builtin.git</span><span class="p">:</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#008-challenges-__codelineno-2-14"></a><span class="w">        </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/yourusername/yourrepository.git</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#008-challenges-__codelineno-2-15"></a><span class="w">        </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/ansible-git-demo</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#008-challenges-__codelineno-2-16"></a><span class="w">        </span><span class="nt">clone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#008-challenges-__codelineno-2-17"></a><span class="w">        </span><span class="nt">update</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#008-challenges-__codelineno-2-18"></a>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#008-challenges-__codelineno-2-19"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Write a change file</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#008-challenges-__codelineno-2-20"></a><span class="w">      </span><span class="nt">ansible.builtin.copy</span><span class="p">:</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#008-challenges-__codelineno-2-21"></a><span class="w">        </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/ansible-git-demo/ansible-change.txt</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#008-challenges-__codelineno-2-22"></a><span class="w">        </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Change</span><span class="nv"> </span><span class="s">made</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">Ansible</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">ansible_date_time.iso8601</span><span class="nv"> </span><span class="s">}}\n&quot;</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#008-challenges-__codelineno-2-23"></a><span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0644&quot;</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#008-challenges-__codelineno-2-24"></a>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#008-challenges-__codelineno-2-25"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Commit and push changes</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#008-challenges-__codelineno-2-26"></a><span class="w">      </span><span class="nt">ansible.builtin.shell</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#008-challenges-__codelineno-2-27"></a><span class="w">        </span><span class="no">cd /tmp/ansible-git-demo</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#008-challenges-__codelineno-2-28"></a><span class="w">        </span><span class="no">git config user.email &quot;you@example.com&quot;</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#008-challenges-__codelineno-2-29"></a><span class="w">        </span><span class="no">git config user.name &quot;Ansible Bot&quot;</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#008-challenges-__codelineno-2-30"></a><span class="w">        </span><span class="no">git add ansible-change.txt</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#008-challenges-__codelineno-2-31"></a><span class="w">        </span><span class="no">git commit -m &quot;Automated commit by Ansible&quot;</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#008-challenges-__codelineno-2-32"></a><span class="w">        </span><span class="no">git push origin main</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#008-challenges-__codelineno-2-33"></a><span class="w">      </span><span class="nt">args</span><span class="p">:</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#008-challenges-__codelineno-2-34"></a><span class="w">        </span><span class="nt">executable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#008-challenges-__codelineno-2-35"></a><span class="w">      </span><span class="nt">changed_when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div>
+</details>
 <hr />
-<h2 id="008-challenges-03-summary">03. Summary<a class="headerlink" href="#008-challenges-03-summary" title="Permanent link">&para;</a></h2>
+<h2 id="008-challenges-03-hands-on">03. Hands-on<a class="headerlink" href="#008-challenges-03-hands-on" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Run the user-creation playbook against all three lab servers.</li>
+<li>Verify each user exists by running <code>ansible all -m shell -a "id {{ inventory_hostname }}"</code>.</li>
+<li>Update your inventory file to use the new users and re-run <code>ansible all -m ping</code> to confirm connectivity.</li>
+<li>Clone a public GitHub repo to <code>server-2</code> using the <code>git</code> module.</li>
+<li>Add a file to the cloned repo and commit the change using a <code>shell</code> task.</li>
+</ol>
+<hr />
+<h2 id="008-challenges-04-summary">04. Summary<a class="headerlink" href="#008-challenges-04-summary" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Ansible inventories can specify <code>ansible_host</code>, <code>ansible_ssh_user</code>, and <code>ansible_port</code> per host</li>
-<li>Git repositories can be cloned and managed on remote hosts using the <code>ansible.builtin.git</code> module</li>
-<li>Challenge labs reinforce skills from earlier labs by combining inventory, modules, and ad-hoc commands</li>
-<li>The <code>ansible -m command</code> ad-hoc syntax is useful for one-off tasks without writing a full playbook</li>
-<li>Testing your setup with <code>ansible all -m ping</code> before running tasks verifies connectivity early</li>
+<li>🔹 The <code>ansible.builtin.user</code> module can create, update, and remove system users, including SSH key generation</li>
+<li>🔹 Using <code>{{ inventory_hostname }}</code> as a username ties each host&rsquo;s account to its identity in the inventory</li>
+<li>🔹 Inventories can specify <code>ansible_ssh_user</code> per host to control which account Ansible connects with</li>
+<li>🔹 The <code>ansible.builtin.git</code> module handles clone and update operations; push requires a <code>shell</code> task</li>
+<li>🔹 Challenge labs combine multiple modules in sequence — this mirrors real automation workflows</li>
 </ul></section><section class="print-page" id="009-roles" heading-number="2.11"><h1 id="009-roles-roles">Roles<a class="headerlink" href="#009-roles-roles" title="Permanent link">&para;</a></h1>
 <hr />
 <h2 id="009-roles-what-will-we-learn">What will we learn?<a class="headerlink" href="#009-roles-what-will-we-learn" title="Permanent link">&para;</a></h2>
