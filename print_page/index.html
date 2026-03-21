@@ -60,7 +60,7 @@
     
       <link rel="stylesheet" href="../css/print-site-material.css">
     
-      <link rel="stylesheet" href="../assets/stylesheets/codewizard.css?v=1774114910">
+      <link rel="stylesheet" href="../assets/stylesheets/codewizard.css?v=1774119591">
     
     <script>__md_scope=new URL("/AnsibleLabs/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -635,21 +635,7 @@
 </div>
 <hr />
 <p><img src="../assets/images/tldr.png" style="width:100px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"></p>
-<div class="admonition success">
-<p class="admonition-title">Getting Started Tip</p>
-</div>
-<p>Choose the preferred way to run the labs. If you encounter any issues, please contact your instructor.</p>
-<div class="grid cards" style="text-align: center;border-radius: 20px;">
-<ul>
-<li><img alt="" src="../assets/images/docker.png" /></li>
-</ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#welcome-__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span><span class="m">000</span>-setup<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
-</span></code></pre></div>
-<ul>
-<li><img alt="" class="height-64px" src="../assets/images/killercoda.png" /><br/><br/>
-  <a target="_blank" href="https://killercoda.com/codewizard/scenario/Ansible">Launch on KillerCoda</a></li>
-</ul>
-</div>
+<hr />
 <h2 id="welcome-intro">Intro<a class="headerlink" href="#welcome-intro" title="Permanent link">&para;</a></h2>
 <ul>
 <li>This tutorial is for teaching Ansible through hands-on labs designed as practical exercises.</li>
@@ -669,6 +655,7 @@
 <li>For advanced Labs:</li>
 <li><code>Ansible</code> basics (<code>inventory</code>, <code>playbooks</code>, <code>modules</code>)</li>
 </ul>
+<hr />
 <!-- markdownlint-disable MD033 -->
 
 <h2 id="welcome-usage">Usage<a class="headerlink" href="#welcome-usage" title="Permanent link">&para;</a></h2>
@@ -680,8 +667,8 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Using Docker is the easiest way to get started locally with the labs:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#welcome-__codelineno-1-1"></a><span class="c1"># GitHub Container Registry</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#welcome-__codelineno-1-2"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="o">=</span>always<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>ghcr.io/nirgeier/ansiblelabs
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#welcome-__codelineno-0-1"></a><span class="c1"># GitHub Container Registry</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#welcome-__codelineno-0-2"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="o">=</span>always<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>ghcr.io/nirgeier/ansiblelabs
 </span></code></pre></div>
 <p><strong>Prerequisites:</strong></p>
 <ul>
@@ -705,14 +692,14 @@
 </div>
 <div class="tabbed-block">
 <p>For those who prefer to run it directly on their machine:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#welcome-__codelineno-2-1"></a><span class="c1"># Clone the repository</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#welcome-__codelineno-2-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nirgeier/AnsibleLabs
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#welcome-__codelineno-2-3"></a><span class="c1"># Change to the Labs directory</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#welcome-__codelineno-2-4"></a><span class="nb">cd</span><span class="w"> </span>AnsibleLabs/Labs
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#welcome-__codelineno-2-5"></a><span class="c1"># Start with the setup lab</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#welcome-__codelineno-2-6"></a><span class="nb">cd</span><span class="w"> </span><span class="m">000</span>-setup
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#welcome-__codelineno-2-7"></a><span class="c1"># Follow the instructions in the README of each lab</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#welcome-__codelineno-2-8"></a>cat<span class="w"> </span>README.md
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#welcome-__codelineno-1-1"></a><span class="c1"># Clone the repository</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#welcome-__codelineno-1-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nirgeier/AnsibleLabs
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#welcome-__codelineno-1-3"></a><span class="c1"># Change to the Labs directory</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#welcome-__codelineno-1-4"></a><span class="nb">cd</span><span class="w"> </span>AnsibleLabs/Labs
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#welcome-__codelineno-1-5"></a><span class="c1"># Start with the setup lab</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#welcome-__codelineno-1-6"></a><span class="nb">cd</span><span class="w"> </span><span class="m">000</span>-setup
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#welcome-__codelineno-1-7"></a><span class="c1"># Follow the instructions in the README of each lab</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#welcome-__codelineno-1-8"></a>cat<span class="w"> </span>README.md
 </span></code></pre></div>
 <p><strong>Prerequisites:</strong></p>
 <ul>
@@ -2554,7 +2541,7 @@
 <blockquote>
 <p><strong>From the docs:</strong></p>
 <ul>
-<li><em>ansible.builtin.ping</em> module – <em>Try to connect to host, verify a usable python and return pong on success</em></li>
+<li><em>ansible.builtin.ping</em> module - <em>Try to connect to host, verify a usable python and return pong on success</em></li>
 <li><em>This module is part of ansible-core and included in all Ansible installations.</em></li>
 <li><em>In most cases, you can use the short module name <code>ping</code></em></li>
 </ul>
@@ -2926,7 +2913,7 @@
 <details class="success">
 <summary>Solution</summary>
 </details>
-<p>```sh # Using the shell module
+<p>````sh # Using the shell module
 docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible linux-server-1 -m shell -a &lsquo;uname -a&rsquo;&rdquo;
 docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible linux-server-1 -m shell -a &lsquo;date&rsquo;&rdquo;</p>
 <div class="codehilite"><pre><span></span><code>#<span class="w"> </span><span class="nv">Using</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">ansible</span><span class="w"> </span><span class="nv">command</span><span class="w"> </span><span class="nv">module</span>
@@ -2935,6 +2922,7 @@ docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible 
 ```
 </code></pre></div>
 
+<p>````</p>
 </li>
 <li>
 <p>Use the Ansible <code>command</code> module to print out the previous shell commands.</p>
@@ -2953,7 +2941,7 @@ docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m
 <details class="success">
 <summary>Solution</summary>
 </details>
-<p>```sh # The command
+<p>````sh # The command
 docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m shell -a &lsquo;git config -l&rsquo;&rdquo;</p>
 <div class="codehilite"><pre><span></span><code><span class="err">###</span><span class="w"> </span><span class="k">Output</span>
 <span class="err">#</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">installed</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="s1">&#39;ll get an error</span>
@@ -2967,6 +2955,7 @@ docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible 
 <span class="err">```</span>
 </code></pre></div>
 
+<p>````</p>
 </li>
 <li>
 <p>Create a directory called <code>/tmp/ansible-test</code> on all servers using the <code>file</code> module.</p>
@@ -2997,13 +2986,14 @@ docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m
 <details class="success">
 <summary>Solution</summary>
 </details>
-<p>```sh # Using shell module
+<p>````sh # Using shell module
 docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m shell -a &lsquo;which git&rsquo;&rdquo;</p>
 <div class="codehilite"><pre><span></span><code>#<span class="w"> </span><span class="nv">Or</span><span class="w"> </span><span class="nv">check</span><span class="w"> </span><span class="nv">version</span>
 <span class="nv">docker</span><span class="w"> </span><span class="k">exec</span><span class="w"> </span><span class="nv">ansible</span><span class="o">-</span><span class="nv">controller</span><span class="w"> </span><span class="nv">sh</span><span class="w"> </span><span class="o">-</span><span class="nv">c</span><span class="w"> </span><span class="s2">&quot;cd /labs-scripts &amp;&amp; ansible all -m shell -a &#39;git --version&#39;&quot;</span>
 ```
 </code></pre></div>
 
+<p>````</p>
 </li>
 <li>
 <p>Use the <code>file</code> module to change the permissions of <code>/tmp/info.txt</code> to <code>0600</code>.</p>
@@ -3050,13 +3040,12 @@ docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m
 <details class="success">
 <summary>Solution</summary>
 </details>
-<p>```sh
-docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible linux-server-1 -m setup -a &lsquo;filter=ansible_memory*&lsquo;&ldquo;</p>
-<div class="codehilite"><pre><span></span><code>#<span class="w"> </span><span class="nv">Or</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">facts</span>
-<span class="nv">docker</span><span class="w"> </span><span class="k">exec</span><span class="w"> </span><span class="nv">ansible</span><span class="o">-</span><span class="nv">controller</span><span class="w"> </span><span class="nv">sh</span><span class="w"> </span><span class="o">-</span><span class="nv">c</span><span class="w"> </span><span class="s2">&quot;cd /labs-scripts &amp;&amp; ansible linux-server-1 -m setup&quot;</span>
-```
-</code></pre></div>
-
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#003-modules-__codelineno-16-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>ansible-controller<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;cd /labs-scripts &amp;&amp; ansible linux-server-1 -m setup -a &#39;filter=ansible_memory\*&#39;&quot;</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#003-modules-__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#003-modules-__codelineno-16-3"></a><span class="w">    </span><span class="c1"># Or all facts</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#003-modules-__codelineno-16-4"></a><span class="w">    </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>ansible-controller<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;cd /labs-scripts &amp;&amp; ansible linux-server-1 -m setup&quot;</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#003-modules-__codelineno-16-5"></a><span class="w">    </span><span class="sb">```</span>
+</span></code></pre></div>
 </li>
 <li>
 <p>Create a user named <code>ansibleuser</code> with home directory <code>/home/ansibleuser</code>.</p>
@@ -3071,13 +3060,14 @@ docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m
 <details class="success">
 <summary>Solution</summary>
 </details>
-<p>```sh # Using shell module
+<p>````sh # Using shell module
 docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m shell -a &lsquo;df -h&rsquo;&rdquo;</p>
 <div class="codehilite"><pre><span></span><code>#<span class="w"> </span><span class="nv">Or</span><span class="w"> </span><span class="nv">specific</span><span class="w"> </span><span class="nv">path</span>
 <span class="nv">docker</span><span class="w"> </span><span class="k">exec</span><span class="w"> </span><span class="nv">ansible</span><span class="o">-</span><span class="nv">controller</span><span class="w"> </span><span class="nv">sh</span><span class="w"> </span><span class="o">-</span><span class="nv">c</span><span class="w"> </span><span class="s2">&quot;cd /labs-scripts &amp;&amp; ansible all -m shell -a &#39;du -sh /tmp&#39;&quot;</span>
 ```
 </code></pre></div>
 
+<p>````</p>
 </li>
 </ol>
 <hr />
@@ -5768,7 +5758,7 @@ It is done to prevent naming collision between builtin modules and community mod
 <li>Running the same playbook twice produces <code>changed=0</code> on the second run - demonstrating idempotency</li>
 </ul></section><section class="print-page" id="008-challenges" heading-number="2.10"><h1 id="008-challenges-lab-008-challenges">Lab 008 - Challenges<a class="headerlink" href="#008-challenges-lab-008-challenges" title="Permanent link">&para;</a></h1>
 <ul>
-<li>This lab is a set of challenges that combine skills from the previous labs (000–007).</li>
+<li>This lab is a set of challenges that combine skills from the previous labs (000-007).</li>
 <li>You will practice creating users, building inventories, and managing Git repositories using Ansible.</li>
 <li>Each challenge has a clear goal — try to solve it yourself before checking the solution.</li>
 <li>Completing these challenges will reinforce your understanding of core Ansible concepts.</li>
@@ -5783,7 +5773,7 @@ It is done to prevent naming collision between builtin modules and community mod
 <hr />
 <h2 id="008-challenges-prerequisites">Prerequisites<a class="headerlink" href="#008-challenges-prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Complete all previous labs (000–007)</li>
+<li>Complete all previous labs (000-007)</li>
 </ul>
 <hr />
 <h2 id="008-challenges-01-challenge-1-user-management">01. Challenge 1 — User Management<a class="headerlink" href="#008-challenges-01-challenge-1-user-management" title="Permanent link">&para;</a></h2>
@@ -11177,7 +11167,7 @@ It is done to prevent naming collision between builtin modules and community mod
 </span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#026-cicd-github-actions-__codelineno-0-23"></a>
 </span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#026-cicd-github-actions-__codelineno-0-24"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 </span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#026-cicd-github-actions-__codelineno-0-25"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout code</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#026-cicd-github-actions-__codelineno-0-26"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#026-cicd-github-actions-__codelineno-0-26"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v5</span>
 </span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#026-cicd-github-actions-__codelineno-0-27"></a>
 </span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#026-cicd-github-actions-__codelineno-0-28"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python</span>
 </span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#026-cicd-github-actions-__codelineno-0-29"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v5</span>
@@ -11235,7 +11225,7 @@ It is done to prevent naming collision between builtin modules and community mod
 </span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#026-cicd-github-actions-__codelineno-1-15"></a>
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#026-cicd-github-actions-__codelineno-1-16"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 </span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#026-cicd-github-actions-__codelineno-1-17"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#026-cicd-github-actions-__codelineno-1-18"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#026-cicd-github-actions-__codelineno-1-18"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v5</span>
 </span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#026-cicd-github-actions-__codelineno-1-19"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
 </span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#026-cicd-github-actions-__codelineno-1-20"></a><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 </span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#026-cicd-github-actions-__codelineno-1-21"></a>
@@ -11270,7 +11260,7 @@ It is done to prevent naming collision between builtin modules and community mod
 </span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#026-cicd-github-actions-__codelineno-2-22"></a>
 </span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#026-cicd-github-actions-__codelineno-2-23"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 </span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#026-cicd-github-actions-__codelineno-2-24"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span>
-</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#026-cicd-github-actions-__codelineno-2-25"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#026-cicd-github-actions-__codelineno-2-25"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v5</span>
 </span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#026-cicd-github-actions-__codelineno-2-26"></a>
 </span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#026-cicd-github-actions-__codelineno-2-27"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Ansible</span>
 </span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#026-cicd-github-actions-__codelineno-2-28"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install ansible</span>
@@ -11300,7 +11290,7 @@ It is done to prevent naming collision between builtin modules and community mod
 </span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#026-cicd-github-actions-__codelineno-3-12"></a>
 </span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#026-cicd-github-actions-__codelineno-3-13"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 </span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#026-cicd-github-actions-__codelineno-3-14"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#026-cicd-github-actions-__codelineno-3-15"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#026-cicd-github-actions-__codelineno-3-15"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v5</span>
 </span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#026-cicd-github-actions-__codelineno-3-16"></a>
 </span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#026-cicd-github-actions-__codelineno-3-17"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run playbook (private network access)</span>
 </span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#026-cicd-github-actions-__codelineno-3-18"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -11410,7 +11400,7 @@ It is done to prevent naming collision between builtin modules and community mod
 </span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#026-cicd-github-actions-__codelineno-7-12"></a><span class="s">    runs-on: ubuntu-latest</span>
 </span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#026-cicd-github-actions-__codelineno-7-13"></a><span class="s">    steps:</span>
 </span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#026-cicd-github-actions-__codelineno-7-14"></a><span class="s">      - name: Checkout</span>
-</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#026-cicd-github-actions-__codelineno-7-15"></a><span class="s">        uses: actions/checkout@v4</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#026-cicd-github-actions-__codelineno-7-15"></a><span class="s">        uses: actions/checkout@v5</span>
 </span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#026-cicd-github-actions-__codelineno-7-16"></a>
 </span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#026-cicd-github-actions-__codelineno-7-17"></a><span class="s">      - name: Install Ansible and lint</span>
 </span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#026-cicd-github-actions-__codelineno-7-18"></a><span class="s">        run: |</span>
@@ -11449,7 +11439,7 @@ It is done to prevent naming collision between builtin modules and community mod
 </span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#026-cicd-github-actions-__codelineno-8-20"></a>
 </span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#026-cicd-github-actions-__codelineno-8-21"></a><span class="s">    steps:</span>
 </span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#026-cicd-github-actions-__codelineno-8-22"></a><span class="s">      - name: Checkout</span>
-</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#026-cicd-github-actions-__codelineno-8-23"></a><span class="s">        uses: actions/checkout@v4</span>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#026-cicd-github-actions-__codelineno-8-23"></a><span class="s">        uses: actions/checkout@v5</span>
 </span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#026-cicd-github-actions-__codelineno-8-24"></a>
 </span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#026-cicd-github-actions-__codelineno-8-25"></a><span class="s">      - name: Install Ansible</span>
 </span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26" href="#026-cicd-github-actions-__codelineno-8-26"></a><span class="s">        run: pip install ansible</span>
@@ -11492,7 +11482,7 @@ It is done to prevent naming collision between builtin modules and community mod
 </span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#026-cicd-github-actions-__codelineno-10-11"></a><span class="s2">  lint:</span>
 </span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#026-cicd-github-actions-__codelineno-10-12"></a><span class="s2">    runs-on: ubuntu-latest</span>
 </span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#026-cicd-github-actions-__codelineno-10-13"></a><span class="s2">    steps:</span>
-</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#026-cicd-github-actions-__codelineno-10-14"></a><span class="s2">      - uses: actions/checkout@v4</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#026-cicd-github-actions-__codelineno-10-14"></a><span class="s2">      - uses: actions/checkout@v5</span>
 </span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#026-cicd-github-actions-__codelineno-10-15"></a>
 </span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#026-cicd-github-actions-__codelineno-10-16"></a><span class="s2">      - name: Set up Python</span>
 </span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#026-cicd-github-actions-__codelineno-10-17"></a><span class="s2">        uses: actions/setup-python@v5</span>
@@ -11528,7 +11518,7 @@ It is done to prevent naming collision between builtin modules and community mod
 </span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#026-cicd-github-actions-__codelineno-11-14"></a><span class="s2">      fail-fast: false</span>
 </span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#026-cicd-github-actions-__codelineno-11-15"></a>
 </span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#026-cicd-github-actions-__codelineno-11-16"></a><span class="s2">    steps:</span>
-</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#026-cicd-github-actions-__codelineno-11-17"></a><span class="s2">      - uses: actions/checkout@v4</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#026-cicd-github-actions-__codelineno-11-17"></a><span class="s2">      - uses: actions/checkout@v5</span>
 </span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#026-cicd-github-actions-__codelineno-11-18"></a>
 </span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#026-cicd-github-actions-__codelineno-11-19"></a><span class="s2">      - name: Set up Python</span>
 </span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#026-cicd-github-actions-__codelineno-11-20"></a><span class="s2">        uses: actions/setup-python@v5</span>
@@ -15795,7 +15785,7 @@ It is done to prevent naming collision between builtin modules and community mod
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      ©2021-2025 Nir Geier<br/><a href="https://visitor-badge.laobi.icu/badge?page_id=nirgeier" target="_blank" rel="noopener"><img src="https://visitor-badge.laobi.icu/badge?page_id=nirgeier" alt="Visitor Badge"></a>
+      ©2026 Nir Geier<br/><a href="https://visitor-badge.laobi.icu/badge?page_id=nirgeier" target="_blank" rel="noopener"><img src="https://visitor-badge.laobi.icu/badge?page_id=nirgeier" alt="Visitor Badge"></a>
     </div>
   
   
@@ -15902,7 +15892,7 @@ It is done to prevent naming collision between builtin modules and community mod
       
         <script src="../js/print-site.js"></script>
       
-        <script src="https://buttons.github.io/buttons.js?v=1774114910"></script>
+        <script src="https://buttons.github.io/buttons.js?v=1774119591"></script>
       
     
   </body>

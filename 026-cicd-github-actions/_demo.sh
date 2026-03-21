@@ -7,8 +7,8 @@ ROOT_FOLDER=$(git rev-parse --show-toplevel)
 source $ROOT_FOLDER/_utils/common.sh
 
 # Spin up the docker containers
-source $ROOT_FOLDER/Labs/000-setup/01-init-servers.sh 2>&1 > /dev/null
-source $ROOT_FOLDER/Labs/000-setup/02-init-ansible.sh 2>&1 > /dev/null
+source $ROOT_FOLDER/Labs/000-setup/01-init-servers.sh 2>&1 >/dev/null
+source $ROOT_FOLDER/Labs/000-setup/02-init-ansible.sh 2>&1 >/dev/null
 
 clear
 
@@ -48,7 +48,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -101,7 +101,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
