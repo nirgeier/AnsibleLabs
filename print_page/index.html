@@ -60,7 +60,7 @@
     
       <link rel="stylesheet" href="../css/print-site-material.css">
     
-      <link rel="stylesheet" href="../assets/stylesheets/codewizard.css?v=1774112789">
+      <link rel="stylesheet" href="../assets/stylesheets/codewizard.css?v=1774113134">
     
     <script>__md_scope=new URL("/AnsibleLabs/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -836,7 +836,88 @@
                         </h1>
                     <section class="print-page" id="index" heading-number="2.1"><h1 id="index-ansible-labs">Ansible Labs<a class="headerlink" href="#index-ansible-labs" title="Permanent link">&para;</a></h1>
 <h2 id="index-lab-overview">📋 Lab Overview<a class="headerlink" href="#index-lab-overview" title="Permanent link">&para;</a></h2>
-<p>Welcome to the hands-on Ansible labs! This comprehensive series of 36 labs guides you from basic setup through advanced topics like custom modules, CI/CD integration, security hardening, and cloud provisioning.</p>
+<ul>
+<li>Welcome to the hands-on Ansible labs!</li>
+<li>This comprehensive series of 36 labs guides you from basic setup through advanced topics like custom modules, CI/CD integration, security hardening, and cloud provisioning.</li>
+</ul>
+<hr />
+<!-- markdownlint-disable MD033 -->
+
+<h2 id="index-usage">Usage<a class="headerlink" href="#index-usage" title="Permanent link">&para;</a></h2>
+<ul>
+<li>There are several ways to run the AnsibleLabs Labs.</li>
+<li>Choose the method that works best for you.</li>
+<li><img alt="" class="width-24px" src="../assets/images/killercoda-icon.png" /> Killercoda (Recommended)</li>
+<li>🐳 Docker / 📜 From Source / <img alt="" class="width-24px" src="../assets/images/gcp.png" /> Using Google Cloud Shell</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="index-__tabbed_1_1" name="index-__tabbed_1" type="radio" /><input id="index-__tabbed_1_2" name="index-__tabbed_1" type="radio" /><input id="index-__tabbed_1_3" name="index-__tabbed_1" type="radio" /><input id="index-__tabbed_1_4" name="index-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="index-__tabbed_1_1">🐳 Docker</label><label for="index-__tabbed_1_2"><img alt="" class="" src="../assets/images/killercoda-icon.png" width-24px="width-24px" /> Killercoda (Recommended)</label><label for="index-__tabbed_1_3">📜 From Source</label><label for="index-__tabbed_1_4"><img alt="" class="width-24px" src="../assets/images/gcp.png" /> Using Google Cloud Shell</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Using Docker is the easiest way to get started locally with the labs:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#index-__codelineno-0-1"></a><span class="c1"># GitHub Container Registry</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#index-__codelineno-0-2"></a>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--pull<span class="o">=</span>always<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>ghcr.io/nirgeier/ansiblelabs
+</span></code></pre></div>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Docker and Docker Compose installed on your system</li>
+<li>No additional setup required</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>The easiest way to get started with the labs</li>
+<li>Learn in your browser without any local installation</li>
+</ul>
+<p>🌐 <a href="https://killercoda.com/codewizard/scenario/AnsibleLabs" target="_blank"><strong>Launch on Killercoda</strong></a></p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>No installation required</li>
+<li>Pre-configured environment</li>
+<li>Works on any device with a web browser</li>
+<li>All tools pre-installed</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>For those who prefer to run it directly on their machine:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#index-__codelineno-1-1"></a><span class="c1"># Clone the repository</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#index-__codelineno-1-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nirgeier/AnsibleLabs
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#index-__codelineno-1-3"></a><span class="c1"># Change to the Labs directory</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#index-__codelineno-1-4"></a><span class="nb">cd</span><span class="w"> </span>AnsibleLabs/Labs
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#index-__codelineno-1-5"></a><span class="c1"># Start with the setup lab</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#index-__codelineno-1-6"></a><span class="nb">cd</span><span class="w"> </span><span class="m">000</span>-setup
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#index-__codelineno-1-7"></a><span class="c1"># Follow the instructions in the README of each lab</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#index-__codelineno-1-8"></a>cat<span class="w"> </span>README.md
+</span></code></pre></div>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>A Unix-like operating system (Linux, macOS, or Windows with WSL)</li>
+<li>Basic command-line tools</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Google Cloud Shell provides a free, browser-based environment with all necessary tools pre-installed.</li>
+<li>Click on the <code>Open in Google Cloud Shell</code> button below:</li>
+</ul>
+<p><a href="https://console.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/nirgeier/AnsibleLabs"><img alt="Open in Cloud Shell" src="https://gstatic.com/cloudssh/images/open-btn.svg" /></a></p>
+<ul>
+<li>The repository will automatically be cloned into a free Cloud instance.</li>
+<li>Use <strong><kbd>CTRL</kbd></strong> + click to open it in a new window.</li>
+<li>Follow the instructions in the README of each lab.</li>
+</ul>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>No local installation required</li>
+<li>Pre-configured environment</li>
+<li>Works on any device with a web browser</li>
+<li>All tools pre-installed</li>
+<li>Free tier available</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- markdownlint-enable MD033 -->
+
 <hr />
 <h2 id="index-available-labs">🗂️ Available Labs<a class="headerlink" href="#index-available-labs" title="Permanent link">&para;</a></h2>
 <h3 id="index-beginner-track-foundation">Beginner Track - Foundation<a class="headerlink" href="#index-beginner-track-foundation" title="Permanent link">&para;</a></h3>
@@ -15825,7 +15906,7 @@ It is done to prevent naming collision between builtin modules and community mod
       
         <script src="../js/print-site.js"></script>
       
-        <script src="https://buttons.github.io/buttons.js?v=1774112789"></script>
+        <script src="https://buttons.github.io/buttons.js?v=1774113134"></script>
       
     
   </body>
