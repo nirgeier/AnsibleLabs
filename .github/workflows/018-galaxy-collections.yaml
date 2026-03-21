@@ -1,0 +1,29 @@
+name: Lab-018.yaml
+
+on:
+  push:
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
+    paths:
+      - "Labs/018-galaxy-collections/**"
+  pull_request:
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
+    paths:
+      - "Labs/018-galaxy-collections/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Execute the step demo to verify that all is working
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v5
+
+      - name: Test Lab
+        working-directory: Labs/018-galaxy-collections
+        run: bash ./_demo.sh

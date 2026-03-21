@@ -1,0 +1,19 @@
+# MD013 disabled: long lines acceptable in MkDocs content (tables, admonition
+# hints often exceed 80 chars by necessity).
+MD013: false
+
+# MD033 disabled: inline HTML is used for centering/styling titles in MkDocs.
+MD033: false
+
+# MD040 disabled: some illustrative code blocks intentionally omit a language.
+MD040: false
+
+# MD041 disabled: files start with YAML front-matter, not a heading.
+MD041: false
+
+# MD046 disabled: fenced code blocks inside MkDocs admonitions must be
+# indented 4 spaces, which markdownlint misreads as "indented" style.
+MD046: false
+
+# MD060 disabled: compact-style tables without padding are fine for MkDocs.
+MD060: false

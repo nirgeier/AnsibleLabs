@@ -1,0 +1,6 @@
+[submodule "Labs/009-roles/codewizard_lab_role"]
+	path = Labs/009-roles/codewizard_lab_role
+	url = git@github.com:nirgeier/AnsibleRoleLab.git
+[submodule ".mkdocs-shared"]
+	path = .mkdocs-shared
+	url = https://github.com/nirgeier/mkdocs.git

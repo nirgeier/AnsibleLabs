@@ -1,0 +1,39 @@
+FROM ubuntu:24.04
+
+# Avoid interactive prompts during package installation
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install SSH server and basic tools
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  openssh-server \
+  vim \
+  curl \
+  python3 \
+  && rm -rf /var/lib/apt/lists/*
+
+# ── Custom MOTD ───────────────────────────────────────────────────────────────
+RUN chmod -x /etc/update-motd.d/* 2>/dev/null || true && \
+  cat > /etc/motd << 'MOTD'
+
+╔══════════════════════════════════════════════════════════════╗
+║                  Ansible Labs - Interactive                  ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║   Liked it? Don't forget to ⭐ star it on GitHub:             ║
+║   https://github.com/nirgeier/AnsibleLabs                    ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+MOTD
+
+# Entrypoint: waits for controller public key then starts sshd
+COPY linux-server-entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 22
+
+HEALTHCHECK --interval=10s --timeout=10s --start-period=15s --retries=10 \
+  CMD ssh -o StrictHostKeyChecking=no -o BatchMode=yes localhost true 2>/dev/null || exit 1
+
+ENTRYPOINT ["/entrypoint.sh"]

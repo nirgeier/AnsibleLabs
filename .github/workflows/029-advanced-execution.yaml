@@ -1,0 +1,29 @@
+name: Lab-029.yaml
+
+on:
+  push:
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
+    paths:
+      - "Labs/029-advanced-execution/**"
+  pull_request:
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
+    paths:
+      - "Labs/029-advanced-execution/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Execute the step demo to verify that all is working
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v5
+
+      - name: Test Lab
+        working-directory: Labs/029-advanced-execution
+        run: bash ./_demo.sh

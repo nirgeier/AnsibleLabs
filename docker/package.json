@@ -1,0 +1,14 @@
+{
+  "name": "ansible-labs-web-terminal",
+  "version": "1.0.0",
+  "description": "Web-based terminal for Ansible Labs using xterm.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "node-pty": "^1.0.0",
+    "ws": "^8.18.0"
+  }
+}

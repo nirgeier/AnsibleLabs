@@ -1,0 +1,243 @@
+###
+### mkdocs-site.yml
+###
+docs_dir: Labs
+edit_uri: ""
+repo_name: nirgeier/AnsibleLabs
+repo_url: https://github.com/nirgeier/AnsibleLabs
+site_author: Nir Geier - nirgeier@gmail.com
+site_description: A collection of Ansible Labs for learning and practicing Ansible skills.
+site_dir: ./mkdocs-site
+site_name: AnsibleLabs
+site_url: https://nirgeier.github.io/AnsibleLabs/
+###
+### mkdocs-theme.yml
+###
+copyright:
+  '©2026 Nir Geier<br/><a href="https://visitor-badge.laobi.icu/badge?page_id=nirgeier" target="_blank" rel="noopener"><img
+  src="https://visitor-badge.laobi.icu/badge?page_id=nirgeier" alt="Visitor Badge"></a>'
+theme:
+  name: material
+  custom_dir: .mkdocs-build/overrides
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - content.footnote.tooltips
+    - content.tabs.link
+    - content.tooltips
+    - content.footer.last-updated
+    - content.footer.contributors
+    - navigation.expand: false
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top: true
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    - toc.integrate
+    - toc.sticky
+
+    #- header.autohide  # Disabled to keep top nav always visible
+
+  # 👈 enables avatar display
+  palette:
+    # Dark mode only
+    - scheme: slate
+      primary: indigo # You can choose any color here
+
+  font:
+    text: Mulish
+    code: JetBrains Mono
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
+    repo: fontawesome/brands/github
+    admonition:
+      note: material/lightbulb
+###
+### mkdocs-extra.yml
+###
+
+extra:
+  assets:
+    - ./assets/images/
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/nirgeier/AnsibleLabs
+      name: View on GitHub
+      class: social-class__github
+
+    - icon: octicons/repo-forked-16
+      link: https://github.com/nirgeier/AnsibleLabs/network/members
+      name: Fork this repo
+      class: social-class__fork
+
+    - icon: octicons/star-16
+      link: https://github.com/nirgeier/AnsibleLabs/stargazers
+      name: Star this repo
+      class: social-class__star
+
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/nirgeier/
+      name: Connect on LinkedIn
+      class: social-class__linkedin
+
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/U6xW23Ss
+      name: Follow me on Discord
+      class: social-class__discord
+
+    - icon: fontawesome/brands/stack-overflow
+      link: https://stackoverflow.com/users/1755598/codewizard
+      name: Follow me on Stack Overflow
+      class: social-class__stackoverflow
+
+    - icon: fontawesome/brands/whatsapp
+      link: https://wa.me/972548122310
+      name: Follow me on WhatsApp
+      class: social-class__whatsapp
+
+    - icon: fontawesome/solid/envelope
+      link: mailto:nirg@codewizard.co.il
+      name: Email me
+      class: social-class__email
+
+extra_css:
+  - ./assets/stylesheets/codewizard.css?v=1774116428
+extra_javascript:
+  - https://buttons.github.io/buttons.js?v=1774116428
+###
+### mkdocs-plugins.yml
+###
+
+plugins:
+      - awesome-pages
+      - meta
+      # - pdf-export:
+      #     combined: true # all pages in one PDF
+      #     combined_output_path: docs/Full-Documentation.pdf
+      #     media_type: print
+      #     verbose: true
+      # Git
+      #- git-authors
+      - git-committers:
+              branch: main
+              docs_path: Labs # set if your docs folder is not root
+              enabled: true
+              repository: nirgeier/AnsibleLabs
+      - git-revision-date-localized:
+              enable_creation_date: true
+              enable_git_follow: false
+              fallback_to_build_date: true
+              locale: en
+              timezone: UTC
+              type: date
+      - search:
+              separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+      - minify:
+              minify_html: true
+
+      # Leave this one as the last one in the list
+      - print-site
+      - include-markdown
+###
+### mkdocs-extensions.yml
+###
+
+markdown_extensions:
+    - toc:
+          permalink: true
+          baselevel: 1
+          toc_depth: 3
+    - abbr
+    - tables
+    - admonition # For callouts/notes
+    - footnotes # Footnotes support
+    - attr_list # Attribute lists for elements
+    - def_list # Definition lists
+    - md_in_html # Markdown inside HTML blocks
+    - smarty # Smart punctuation
+    - meta
+    - codehilite:
+          guess_lang: true # Fallback code highlighting
+    - pymdownx.tabbed:
+          alternate_style: true
+    - pymdownx.details # Collapsible details
+    - pymdownx.inlinehilite # Inline code highlighting
+    - pymdownx.keys # Keyboard key formatting
+    - pymdownx.tasklist:
+          custom_checkbox: true
+    - pymdownx.betterem:
+          smart_enable: all
+    - pymdownx.tilde # Subscript/superscript
+    - pymdownx.snippets # Snippet includes
+    - pymdownx.highlight:
+          anchor_linenums: true
+          line_spans: __span
+          pygments_lang_class: true
+    - pymdownx.superfences:
+          custom_fences:
+              - name: mermaid
+                class: mermaid
+                format: !!python/name:pymdownx.superfences.fence_code_format
+    - pymdownx.emoji:
+          emoji_index: !!python/name:material.extensions.emoji.twemoji
+          emoji_generator: !!python/name:material.extensions.emoji.to_svg
+###
+### mkdocs-nav.yml
+###
+
+nav:
+  - Start Here: welcome.md
+  - Labs:
+      - index.md
+      - 000 Setup: 000-setup/README.md
+      - 001 Verify Ansible: 001-verify-ansible/README.md
+      - 002 No Inventory: 002-no-inventory/README.md
+      - 003 Modules: 003-modules/README.md
+      - 004 Playbooks: 004-playbooks/README.md
+      - 005 Facts: 005-facts/README.md
+      - 006 Git: 006-git/README.md
+      - 007 Create User: 007-create-user/README.md
+      - 008 Challenges: 008-challenges/README.md
+      - 009 Roles: 009-roles/README.md
+      - 010 Loops And Conditionals: 010-loops-and-conditionals/README.md
+      - 011 Jinja Templating: 011-jinja-templating/README.md
+      - 012 Host And Group Variables: 012-host-group-variables/README.md
+      - 013 Ad-Hoc Commands: 013-adhoc-commands/README.md
+      - 014 Playbook Variables: 014-playbook-variables/README.md
+      - 015 Handlers And Blocks: 015-handlers-blocks/README.md
+      - 016 File Modules: 016-file-modules/README.md
+      - 017 Package And Service Modules: 017-package-service-modules/README.md
+      - 018 Galaxy And Collections: 018-galaxy-collections/README.md
+      - 019 Ansible Vault: 019-ansible-vault/README.md
+      - 020 Tags: 020-tags/README.md
+      - 021 Ansible With Docker: 021-ansible-docker/README.md
+      - 022 Debugging: 022-debugging/README.md
+      - 023 Idempotency: 023-idempotency/README.md
+      - 024 Ansible Lint: 024-ansible-lint/README.md
+      - 025 CI/CD Jenkins: 025-cicd-jenkins/README.md
+      - 026 CI/CD GitHub Actions: 026-cicd-github-actions/README.md
+      - 027 CI/CD GitLab: 027-cicd-gitlab/README.md
+      - 028 Custom Modules: 028-custom-modules/README.md
+      - 029 Advanced Execution: 029-advanced-execution/README.md
+      - 030 AWX And AAP: 030-awx-aap/README.md
+      - 031 Facts Deep Dive: 031-facts-deep-dive/README.md
+      - 032 Plugins: 032-plugins/README.md
+      - 033 Best Practices: 033-best-practices/README.md
+      - 034 Security Hardening: 034-security-hardening/README.md
+      - 035 Cloud Modules: 035-cloud-modules/README.md

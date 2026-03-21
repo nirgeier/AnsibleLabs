@@ -1,0 +1,63 @@
+# -----------------------------------------------------------------------------
+# GitHub Actions Workflow: Deploy MkDocs to GitHub Pages
+#
+# This workflow automates the process of building and deploying an MkDocs site
+# to GitHub Pages using the traditional mkdocs gh-deploy command.
+#
+# Main Steps:
+#   1. Checkout the repository with full history.
+#   2. Install uv and dependencies via init_site.sh.
+#   3. Build and deploy the MkDocs documentation site to gh-pages branch.
+#
+# This approach uses the mkdocs gh-deploy command which handles the GitHub Pages
+# deployment automatically without requiring special permissions.
+# -----------------------------------------------------------------------------
+
+name: Deploy MkDocs to GitHub Pages
+
+# Event triggers for the workflow
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Workflow permissions
+permissions:
+  contents: write
+
+# Concurrency settings
+concurrency:
+  cancel-in-progress: false
+  group: "pages"
+
+# The deployment job
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          submodules: recursive
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Build and Deploy to GitHub Pages
+        run: |
+          if [ -n "$ACT" ]; then
+            bash .mkdocs-shared/init_site.sh --no-serve
+          else
+            bash .mkdocs-shared/init_site.sh --no-serve
+            cp vercel.json mkdocs-site/
+            source .venv/bin/activate
+            mkdocs gh-deploy --force
+          fi

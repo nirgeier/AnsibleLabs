@@ -1,0 +1,29 @@
+# MkDocs
+**/mkdocs-site/**
+
+# IDE / Editor
+.history
+.DS_Store
+
+# Python
+.venv
+__pycache__/
+*.py[cod]
+
+# Node
+**/node_modules/**
+
+# Vercel
+.vercel
+
+# Project-specific
+.ssh
+**/runtime/**
+**/*demo*/**
+!*demo.sh
+
+# Generated assets (copied from .mkdocs-build at build time)
+Labs/assets/
+.mkdocs-build/
+.mkdocs_cache/
+.env*.local

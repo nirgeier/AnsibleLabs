@@ -1,0 +1,91 @@
+services:
+
+  # ── Ansible controller + web terminal UI ─────────────────────────────────────
+  ansible-labs:
+    build:
+      args:
+        BUILD_TIME: ${BUILD_TIME:-}
+        IMAGE: ${IMAGE:-ghcr.io/nirgeier/ansiblelabs}
+        IMAGE_TAG: ${IMAGE_TAG:-latest}
+        SourceRepository: ${SourceRepository:-}
+      context: ..
+      dockerfile: docker/Dockerfile
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
+          - linux/arm/v6
+          - linux/arm/v7
+        tags:
+          - ghcr.io/nirgeier/ansiblelabs:latest
+          - ghcr.io/nirgeier/ansiblelabs:${IMAGE_TAG:-latest}
+          - nirgeier/ansiblelabs:latest
+          - nirgeier/ansiblelabs:${IMAGE_TAG:-latest}
+    container_name: ansible-labs
+    image: "ghcr.io/nirgeier/ansiblelabs:${IMAGE_TAG:-latest}"
+    labels:
+      - "com.example.app.Metadata.LastTagTime=${BUILD_TIME:-}"
+      - "com.example.app.Metadata.SourceRepository=${SourceRepository:-}"
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ssh-keys:/ssh-shared
+    networks:
+      - ansible-labs-net
+    depends_on:
+      - server-1
+      - server-2
+      - server-3
+
+  # ── Linux target servers ──────────────────────────────────────────────────────
+  server-1:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: ansible-server-1
+    hostname: server-1
+    restart: unless-stopped
+    volumes:
+      - ssh-keys:/ssh-shared
+    networks:
+      ansible-labs-net:
+        aliases:
+          - server-1
+
+  server-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: ansible-server-2
+    hostname: server-2
+    restart: unless-stopped
+    volumes:
+      - ssh-keys:/ssh-shared
+    networks:
+      ansible-labs-net:
+        aliases:
+          - server-2
+
+  server-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: ansible-server-3
+    hostname: server-3
+    restart: unless-stopped
+    volumes:
+      - ssh-keys:/ssh-shared
+    networks:
+      ansible-labs-net:
+        aliases:
+          - server-3
+
+volumes:
+  ssh-keys:
+
+networks:
+  ansible-labs-net:
+    driver: bridge
