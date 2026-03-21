@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "outputDirectory": "mkdocs-site",
+  "installCommand": "echo 'Pre-built by CI'",
+  "buildCommand": "echo 'Pre-built by CI'",
+  "ignoreCommand": "exit 0",
+  "framework": null
+}

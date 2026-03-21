@@ -1,0 +1,29 @@
+name: Lab-015.yaml
+
+on:
+  push:
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
+    paths:
+      - "Labs/015-handlers-blocks/**"
+  pull_request:
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
+    paths:
+      - "Labs/015-handlers-blocks/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Execute the step demo to verify that all is working
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v5
+
+      - name: Test Lab
+        working-directory: Labs/015-handlers-blocks
+        run: bash ./_demo.sh

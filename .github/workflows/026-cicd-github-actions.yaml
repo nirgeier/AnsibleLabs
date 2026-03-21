@@ -1,0 +1,29 @@
+name: Lab-026.yaml
+
+on:
+  push:
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
+    paths:
+      - "Labs/026-cicd-github-actions/**"
+  pull_request:
+    branches:
+      - main
+      - mkdocs
+      - gh-pages
+    paths:
+      - "Labs/026-cicd-github-actions/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Execute the step demo to verify that all is working
+    steps:
+      # Check out the code
+      - uses: actions/checkout@v5
+
+      - name: Test Lab
+        working-directory: Labs/026-cicd-github-actions
+        run: bash ./_demo.sh

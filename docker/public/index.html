@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ansible Labs</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/css/xterm.min.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-deep:   #0d1117;
+      --bg-panel:  #161b22;
+      --bg-header: #0a0e14;
+      --accent:    #e6532a;
+      --accent2:   #1abc9c;
+      --border:    #21262d;
+      --text:      #c9d1d9;
+      --text-dim:  #484f58;
+      --handle-w:  6px;
+      --header-h:  48px;
+      --tabbar-h:  36px;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg-deep);
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* ── Header ──────────────────────────────────────────── */
+    #header {
+      height: var(--header-h);
+      background: var(--bg-header);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 16px;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+    #header h1 { font-size: 1.1rem; color: var(--accent); white-space: nowrap; letter-spacing: .03em; }
+    .spacer { flex: 1; }
+
+    /* ── Status dot ──────────────────────────────────────── */
+    #status { display: flex; align-items: center; gap: 7px; font-size: .8rem; color: var(--text-dim); white-space: nowrap; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--text-dim); transition: background .3s; flex-shrink: 0; }
+    .dot.connected    { background: #4caf50; }
+    .dot.disconnected { background: var(--accent); }
+
+    /* ── Main split ──────────────────────────────────────── */
+    #main {
+      display: flex;
+      height: calc(100vh - var(--header-h));
+      overflow: hidden;
+    }
+
+    /* ── Docs pane (left) ────────────────────────────────── */
+    #docs-pane {
+      width: 65%;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    #docs-pane-bar {
+      height: 32px;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 8px;
+      font-size: .75rem;
+      color: var(--text-dim);
+      flex-shrink: 0;
+    }
+    #docs-pane-bar svg { width: 14px; height: 14px; fill: var(--accent2); flex-shrink: 0; }
+    #docs-frame { flex: 1; border: none; width: 100%; background: #fff; }
+
+    /* ── Drag handle ─────────────────────────────────────── */
+    #drag-handle {
+      width: var(--handle-w);
+      background: var(--border);
+      cursor: col-resize;
+      flex-shrink: 0;
+      position: relative;
+      transition: background .15s;
+      z-index: 5;
+    }
+    #drag-handle:hover, #drag-handle.dragging { background: var(--accent2); }
+    #drag-handle::after { content: ''; position: absolute; inset: 0 -4px; }
+
+    /* ── Terminal pane (right) ───────────────────────────── */
+    #terminal-pane {
+      flex: 1;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── Tab bar ─────────────────────────────────────────── */
+    #tab-bar {
+      height: var(--tabbar-h);
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: stretch;
+      flex-shrink: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    #tab-bar::-webkit-scrollbar { display: none; }
+
+    .tab {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 14px;
+      font-size: .78rem;
+      color: var(--text-dim);
+      cursor: pointer;
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+      user-select: none;
+      transition: color .15s, background .15s;
+      position: relative;
+    }
+    .tab:hover { color: var(--text); background: rgba(255,255,255,.04); }
+    .tab.active {
+      color: var(--accent2);
+      background: var(--bg-deep);
+    }
+    .tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      height: 2px;
+      background: var(--accent2);
+    }
+    .tab-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--text-dim);
+      flex-shrink: 0;
+      transition: background .3s;
+    }
+    .tab-dot.connected    { background: #4caf50; }
+    .tab-dot.disconnected { background: var(--accent); }
+
+    /* ── Terminal panels ─────────────────────────────────── */
+    #terminal-panels { flex: 1; position: relative; overflow: hidden; }
+
+    .term-panel {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .term-panel.active { display: flex; }
+
+    .term-container {
+      flex: 1;
+      padding: 6px 8px;
+      overflow: hidden;
+      background: var(--bg-deep);
+    }
+    .term-container .xterm { height: 100%; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0">
+      <path d="M9.5 8l-5 4 5 4M14.5 8l5 4-5 4M11 19l2-14" stroke="#e6532a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h1>Ansible Labs</h1>
+    <div class="spacer"></div>
+    <div id="status">
+      <div class="dot" id="global-dot"></div>
+      <span id="global-status-text">Connecting…</span>
+    </div>
+  </div>
+
+  <!-- Main split -->
+  <div id="main">
+
+    <!-- Left: Docs -->
+    <div id="docs-pane">
+      <div id="docs-pane-bar">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/></svg>
+        <span>Documentation</span>
+      </div>
+      <iframe id="docs-frame" src="about:blank"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+        title="Ansible Labs Documentation"></iframe>
+    </div>
+
+    <!-- Drag handle -->
+    <div id="drag-handle"></div>
+
+    <!-- Right: Terminals -->
+    <div id="terminal-pane">
+
+      <!-- Tab bar -->
+      <div id="tab-bar">
+        <div class="tab active" data-target="controller">
+          <span class="tab-dot" id="dot-controller"></span>
+          ansible-controller
+        </div>
+        <div class="tab" data-target="server-1">
+          <span class="tab-dot" id="dot-server-1"></span>
+          server-1
+        </div>
+        <div class="tab" data-target="server-2">
+          <span class="tab-dot" id="dot-server-2"></span>
+          server-2
+        </div>
+        <div class="tab" data-target="server-3">
+          <span class="tab-dot" id="dot-server-3"></span>
+          server-3
+        </div>
+      </div>
+
+      <!-- Terminal panels (one per container) -->
+      <div id="terminal-panels">
+        <div class="term-panel active" id="panel-controller">
+          <div class="term-container" id="term-controller"></div>
+        </div>
+        <div class="term-panel" id="panel-server-1">
+          <div class="term-container" id="term-server-1"></div>
+        </div>
+        <div class="term-panel" id="panel-server-2">
+          <div class="term-container" id="term-server-2"></div>
+        </div>
+        <div class="term-panel" id="panel-server-3">
+          <div class="term-container" id="term-server-3"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/lib/xterm.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-web-links@0.11.0/lib/addon-web-links.min.js"></script>
+  <script>
+  (function () {
+
+    /* ── Docs frame ──────────────────────────────────────── */
+    const docsFrame = document.getElementById('docs-frame');
+    fetch('/docs/', { method: 'HEAD' })
+      .then(r => { docsFrame.src = r.ok ? '/docs/' : 'https://nirgeier.github.io/AnsibleLabs/'; })
+      .catch(() => { docsFrame.src = 'https://nirgeier.github.io/AnsibleLabs/'; });
+
+    /* ── Resizable split ─────────────────────────────────── */
+    const mainEl   = document.getElementById('main');
+    const docsPane = document.getElementById('docs-pane');
+    const handle   = document.getElementById('drag-handle');
+    let dragging = false, startX, startW;
+
+    handle.addEventListener('mousedown', e => {
+      dragging = true; startX = e.clientX;
+      startW = docsPane.getBoundingClientRect().width;
+      handle.classList.add('dragging');
+      document.body.style.cssText += ';cursor:col-resize;user-select:none';
+      docsFrame.style.pointerEvents = 'none';
+    });
+    document.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      const totalW = mainEl.getBoundingClientRect().width;
+      docsPane.style.width = Math.max(200, Math.min(startW + (e.clientX - startX), totalW - 300)) + 'px';
+      fitAll();
+    });
+    document.addEventListener('mouseup', () => {
+      if (!dragging) return;
+      dragging = false;
+      handle.classList.remove('dragging');
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+      docsFrame.style.pointerEvents = '';
+      fitAll();
+    });
+
+    /* ── xterm.js theme ─────────────────────────────────── */
+    const THEME = {
+      background:       '#0d1117',
+      foreground:       '#c9d1d9',
+      cursor:           '#e6532a',
+      selectionBackground: '#21262d',
+      black:  '#0d1117', red:     '#e6532a', green:   '#4caf50', yellow: '#f0db4f',
+      blue:   '#3e84e0', magenta: '#9b59b6', cyan:    '#1abc9c', white:  '#c9d1d9',
+      brightBlack: '#4a5068', brightRed:    '#ff6b81', brightGreen: '#6bcb77',
+      brightYellow:'#ffd460', brightBlue:   '#74b9ff', brightMagenta:'#c39bd3',
+      brightCyan:  '#55efc4', brightWhite:  '#e0e6f0',
+    };
+
+    /* ── Terminal instances ──────────────────────────────── */
+    const TARGETS = ['controller', 'server-1', 'server-2', 'server-3'];
+    const sessions = {};   // target → { term, fit, ws }
+
+    function createTerminal(target) {
+      const container = document.getElementById('term-' + target);
+      const term = new Terminal({
+        cursorBlink: true,
+        fontSize: 14,
+        fontFamily: '"Cascadia Code","Fira Code","JetBrains Mono",Menlo,Monaco,monospace',
+        theme: THEME,
+        allowProposedApi: true,
+        scrollback: 5000,
+      });
+      const fit  = new FitAddon.FitAddon();
+      const wl   = new WebLinksAddon.WebLinksAddon();
+      term.loadAddon(fit);
+      term.loadAddon(wl);
+      term.open(container);
+      setTimeout(() => fit.fit(), 50);
+
+      sessions[target] = { term, fit, ws: null };
+      connectWS(target);
+    }
+
+    function setDot(target, state) {
+      const dot = document.getElementById('dot-' + target);
+      if (!dot) return;
+      dot.className = 'tab-dot ' + state;
+      // Update global status from active tab
+      if (activeTarget === target) {
+        const gdot = document.getElementById('global-dot');
+        const gtxt = document.getElementById('global-status-text');
+        gdot.className = 'dot ' + state;
+        gtxt.textContent = state === 'connected' ? 'Connected' : 'Disconnected';
+      }
+    }
+
+    function connectWS(target) {
+      const { term } = sessions[target];
+      const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const ws = new WebSocket(`${proto}//${location.host}?target=${target}`);
+
+      sessions[target].ws = ws;
+      setDot(target, 'disconnected');
+
+      ws.onopen = () => {
+        setDot(target, 'connected');
+        const s = sessions[target];
+        ws.send(JSON.stringify({ type: 'resize', cols: s.term.cols, rows: s.term.rows }));
+      };
+
+      ws.onmessage = (event) => {
+        try {
+          const msg = JSON.parse(event.data);
+          if (msg.type === 'output') term.write(msg.data);
+          if (msg.type === 'exit') {
+            term.writeln('\r\n\x1b[31m[Session ended]\x1b[0m');
+            setDot(target, 'disconnected');
+          }
+        } catch (_) {}
+      };
+
+      ws.onclose = () => {
+        setDot(target, 'disconnected');
+        term.writeln('\r\n\x1b[33m[Reconnecting in 3 s…]\x1b[0m');
+        setTimeout(() => connectWS(target), 3000);
+      };
+
+      ws.onerror = () => setDot(target, 'disconnected');
+
+      term.onData(data => {
+        if (ws.readyState === WebSocket.OPEN)
+          ws.send(JSON.stringify({ type: 'input', data }));
+      });
+
+      term.onResize(size => {
+        if (ws.readyState === WebSocket.OPEN)
+          ws.send(JSON.stringify({ type: 'resize', cols: size.cols, rows: size.rows }));
+      });
+    }
+
+    /* ── Tab switching ───────────────────────────────────── */
+    let activeTarget = 'controller';
+
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.target;
+        if (target === activeTarget) return;
+
+        // Deactivate old
+        document.querySelector('.tab.active').classList.remove('active');
+        document.querySelector('.term-panel.active').classList.remove('active');
+
+        // Activate new
+        tab.classList.add('active');
+        document.getElementById('panel-' + target).classList.add('active');
+        activeTarget = target;
+
+        // Sync global status dot
+        const dot = document.getElementById('dot-' + target);
+        const state = dot ? dot.classList[1] || 'disconnected' : 'disconnected';
+        document.getElementById('global-dot').className = 'dot ' + state;
+        document.getElementById('global-status-text').textContent =
+          state === 'connected' ? 'Connected' : 'Disconnected';
+
+        // Refit after layout settles
+        requestAnimationFrame(() => sessions[target]?.fit.fit());
+      });
+    });
+
+    /* ── Fit helpers ─────────────────────────────────────── */
+    function fitAll() {
+      TARGETS.forEach(t => { try { sessions[t]?.fit.fit(); } catch (_) {} });
+    }
+    window.addEventListener('resize', fitAll);
+
+    /* ── Boot all terminals ──────────────────────────────── */
+    TARGETS.forEach(createTerminal);
+
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+    "liveSassCompile.settings.autoprefix": "defaults",
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "./mkdocs/overrides/assets/stylesheets"
+        }
+    ],
+    "liveSassCompile.settings.includeItems": [
+        "/mkdocs/**/*.scss"
+    ],
+    "liveSassCompile.settings.excludeList": [
+        "**/node_modules/**",
+        ".vscode/**"
+    ],
+    "liveSassCompile.settings.generateMap": false,
+    "ansible.python.interpreterPath": "/Users/nirg/repositories/AnsibleLabs/.venv/bin/python"
+}

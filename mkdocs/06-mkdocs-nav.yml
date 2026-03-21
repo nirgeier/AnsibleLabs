@@ -1,0 +1,44 @@
+###
+### mkdocs-nav.yml
+###
+
+nav:
+  - Start Here: welcome.md
+  - Labs:
+      - index.md
+      - 000 Setup: 000-setup/README.md
+      - 001 Verify Ansible: 001-verify-ansible/README.md
+      - 002 No Inventory: 002-no-inventory/README.md
+      - 003 Modules: 003-modules/README.md
+      - 004 Playbooks: 004-playbooks/README.md
+      - 005 Facts: 005-facts/README.md
+      - 006 Git: 006-git/README.md
+      - 007 Create User: 007-create-user/README.md
+      - 008 Challenges: 008-challenges/README.md
+      - 009 Roles: 009-roles/README.md
+      - 010 Loops And Conditionals: 010-loops-and-conditionals/README.md
+      - 011 Jinja Templating: 011-jinja-templating/README.md
+      - 012 Host And Group Variables: 012-host-group-variables/README.md
+      - 013 Ad-Hoc Commands: 013-adhoc-commands/README.md
+      - 014 Playbook Variables: 014-playbook-variables/README.md
+      - 015 Handlers And Blocks: 015-handlers-blocks/README.md
+      - 016 File Modules: 016-file-modules/README.md
+      - 017 Package And Service Modules: 017-package-service-modules/README.md
+      - 018 Galaxy And Collections: 018-galaxy-collections/README.md
+      - 019 Ansible Vault: 019-ansible-vault/README.md
+      - 020 Tags: 020-tags/README.md
+      - 021 Ansible With Docker: 021-ansible-docker/README.md
+      - 022 Debugging: 022-debugging/README.md
+      - 023 Idempotency: 023-idempotency/README.md
+      - 024 Ansible Lint: 024-ansible-lint/README.md
+      - 025 CI/CD Jenkins: 025-cicd-jenkins/README.md
+      - 026 CI/CD GitHub Actions: 026-cicd-github-actions/README.md
+      - 027 CI/CD GitLab: 027-cicd-gitlab/README.md
+      - 028 Custom Modules: 028-custom-modules/README.md
+      - 029 Advanced Execution: 029-advanced-execution/README.md
+      - 030 AWX And AAP: 030-awx-aap/README.md
+      - 031 Facts Deep Dive: 031-facts-deep-dive/README.md
+      - 032 Plugins: 032-plugins/README.md
+      - 033 Best Practices: 033-best-practices/README.md
+      - 034 Security Hardening: 034-security-hardening/README.md
+      - 035 Cloud Modules: 035-cloud-modules/README.md
