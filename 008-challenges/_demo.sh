@@ -12,8 +12,8 @@ source $ROOT_FOLDER/_utils/common.sh
 CURRENT_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
 # Spin up the docker containers
-source $ROOT_FOLDER/Labs/000-setup/01-init-servers.sh 2>&1 > /dev/null
-source $ROOT_FOLDER/Labs/000-setup/02-init-ansible.sh 2>&1 > /dev/null
+source $ROOT_FOLDER/Labs/000-setup/01-init-servers.sh 2>&1 >/dev/null
+source $ROOT_FOLDER/Labs/000-setup/02-init-ansible.sh 2>&1 >/dev/null
 
 clear
 
@@ -48,7 +48,7 @@ echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 echo -e "${CYAN}[CHALLENGE 2] Clone and commit to a git repository${COLOR_OFF}"
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 echo -e "${Red}NOTE: This challenge requires a real GitHub/GitLab repo with push access.${COLOR_OFF}"
-echo -e "${Red}      The demo shows the structure — edit the playbook with your repo URL.${COLOR_OFF}"
+echo -e "${Red}      The demo shows the structure - edit the playbook with your repo URL.${COLOR_OFF}"
 
 docker exec ansible-controller sh -c "cat > /labs-scripts/008-challenge2-demo.yml << 'EOF'
 ---

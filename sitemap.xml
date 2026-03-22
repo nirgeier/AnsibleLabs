@@ -2,162 +2,162 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/welcome/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/000-setup/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/000-setup/usage/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/001-verify-ansible/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/002-no-inventory/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/003-modules/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/004-playbooks/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/005-facts/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/006-git/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/007-create-user/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/008-challenges/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/009-roles/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/010-loops-and-conditionals/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/011-jinja-templating/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/012-host-group-variables/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/013-adhoc-commands/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/014-playbook-variables/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/015-handlers-blocks/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/016-file-modules/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/017-package-service-modules/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/018-galaxy-collections/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/019-ansible-vault/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/020-tags/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/021-ansible-docker/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/022-debugging/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/023-idempotency/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/024-ansible-lint/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/025-cicd-jenkins/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/026-cicd-github-actions/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/027-cicd-gitlab/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/028-custom-modules/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/029-advanced-execution/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/030-awx-aap/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/031-facts-deep-dive/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/032-plugins/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/033-best-practices/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/034-security-hardening/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/035-cloud-modules/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
     <url>
          <loc>https://nirgeier.github.io/AnsibleLabs/assets/partials/usage/</loc>
-         <lastmod>2026-03-21</lastmod>
+         <lastmod>2026-03-22</lastmod>
     </url>
 </urlset>
