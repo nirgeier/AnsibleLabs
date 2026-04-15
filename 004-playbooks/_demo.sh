@@ -17,22 +17,19 @@ docker exec ansible-controller sh -c "ansible-galaxy collection install communit
 
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 echo -e "* Copying the playbook to the scripts folder${COLOR_OFF}"
-cp    *.yaml      $RUNTIME_FOLDER/labs-scripts
-cp -r templates/  $RUNTIME_FOLDER/labs-scripts
-
-tree -a $RUNTIME_FOLDER/labs-scripts
+docker exec ansible-labs bash -c "tree -a /home/ansible/labs/004-playbooks"
 
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 echo -e ""
 echo -e "* Executing ansible playbook"
 echo -e ""
 echo -e "${GREEN}$ cat 004-playbook.yaml ${COLOR_OFF}"
-docker exec ansible-controller sh -c "cd /labs-scripts && cat 004-playbook.yaml"
+docker exec ansible-labs bash -c "cd /home/ansible/labs/004-playbooks && cat 004-playbook.yaml"
 
 echo -e ""
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 echo -e ""
 echo -e "${GREEN}$ ansible-playbook 004-playbook.yaml ${COLOR_OFF}"
-docker exec ansible-controller sh -c "cd /labs-scripts && ansible-playbook 004-playbook.yaml"
+docker exec ansible-labs bash -c "cd /home/ansible/labs/004-playbooks && ansible-playbook 004-playbook.yaml"
 
 echo -e ""

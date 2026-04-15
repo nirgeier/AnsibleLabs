@@ -53,14 +53,14 @@ body {
 
 @media screen and (min-width: 800px) {
   .logo1 {
-    width: 182px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     margin: 20px auto;
     display: block;
     position: fixed;
     right: 10px;
     bottom: 0px;
-    background-image: url("https://raw.githubusercontent.com/nirgeier/labs-assets/main/assets/images/codeWizard.png");
+    background-image: url("../images/MikaCenter.png");
     background-size: cover;
     background-position: center;
   }
@@ -389,8 +389,7 @@ body[data-path*="02"] .md-content {
   pre,
   table,
   img {
-    -moz-column-break-inside: avoid;
-         break-inside: avoid;
+    break-inside: avoid;
   }
   /* Remove page breaks before and after headers and sections */
   h1,
@@ -400,10 +399,8 @@ body[data-path*="02"] .md-content {
   h5,
   h6,
   section {
-    -moz-column-break-before: auto;
-         break-before: auto;
-    -moz-column-break-after: auto;
-         break-after: auto;
+    break-before: auto;
+    break-after: auto;
   }
   emsp {
     padding: 0 5px 0 0;
@@ -574,8 +571,7 @@ body[data-path*="02"] .md-content {
   border-radius: 50%;
   height: 100%;
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border: 2px solid rgba(0, 0, 0, 0.1);
 }
 

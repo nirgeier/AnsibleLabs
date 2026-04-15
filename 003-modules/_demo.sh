@@ -12,7 +12,7 @@ source $ROOT_FOLDER/Labs/000-setup/02-init-ansible.sh 2>&1 > /dev/null
 
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 echo -e "${Red}* Our inventory file:${COLOR_OFF}"
-cat $RUNTIME_FOLDER/labs-scripts/inventory
+docker exec ansible-labs bash -c "cat /home/ansible/labs/000-setup/inventory.yml"
 
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 echo -e "${GREEN}* Executing: ${YELLOW}ansible all -m ping${COLOR_OFF}"
@@ -21,13 +21,13 @@ echo -e "${GREEN}* Executing: ${YELLOW}ansible all -m ping${COLOR_OFF}"
 
 echo -e ""
 echo -e "${YELLOW}[ansible all -m ping] -----------------------------------${COLOR_OFF}"
-docker exec ansible-controller sh -c "cd /labs-scripts && ansible all -m ping"
+docker exec ansible-labs bash -c "cd /home/ansible/labs/003-modules && ansible all -m ping"
 
 echo -e ""
 echo -e "${YELLOW}[ansible all -m shell -a 'hostname'] -----------------------------------${COLOR_OFF}"
-docker exec ansible-controller sh -c "cd /labs-scripts && ansible all -m shell -a 'hostname'"
+docker exec ansible-labs bash -c "cd /home/ansible/labs/003-modules && ansible all -m shell -a 'hostname'"
 
 echo -e ""
 echo -e "${YELLOW}[ansible linux-server-1 -m shell -a 'uname -a'] -----------------------------------${COLOR_OFF}"
-docker exec ansible-controller sh -c "cd /labs-scripts && ansible linux-server-1 -m shell -a 'uname -a'"
+docker exec ansible-labs bash -c "cd /home/ansible/labs/003-modules && ansible linux-server-1 -m shell -a 'uname -a'"
 

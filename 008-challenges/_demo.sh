@@ -30,15 +30,14 @@ echo -e "${CYAN}[CHALLENGE 1] Create a user named after each hostname${COLOR_OFF
 echo -e "${GREEN}\$ ansible-playbook 01-solution-create-user.yaml${COLOR_OFF}"
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 
-cp "$CURRENT_DIR/01-solution-create-user.yaml" "$RUNTIME_FOLDER/labs-scripts/"
-docker exec ansible-controller sh -c "cd /labs-scripts && ansible-playbook 01-solution-create-user.yaml"
+docker exec ansible-labs bash -c "cd /home/ansible/labs/008-challenges && ansible-playbook 01-solution-create-user.yaml"
 
 echo -e ""
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 echo -e "${CYAN}[CHALLENGE 1] Verify users were created${COLOR_OFF}"
 echo -e "${GREEN}\$ ansible all -m shell -a 'id {{ inventory_hostname }}'${COLOR_OFF}"
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
-docker exec ansible-controller sh -c "ansible all -m shell -a 'getent passwd \$(hostname)'"
+docker exec ansible-labs bash -c "ansible all -m shell -a 'getent passwd \$(hostname)'"
 
 # -------------------------------------------------------
 # Challenge 2 - Git repository management

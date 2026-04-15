@@ -11,8 +11,8 @@ source $ROOT_FOLDER/Labs/000-setup/01-init-servers.sh 2>&1 > /dev/null
 source $ROOT_FOLDER/Labs/000-setup/02-init-ansible.sh 2>&1 > /dev/null
 
 # Empty the inventory file so that no server is listening
-echo -e "${CYAN}* Creating $RUNTIME_FOLDER/labs-scripts/inventory"
-cat <<EOF > $RUNTIME_FOLDER/labs-scripts/inventory
+echo -e "${CYAN}* Creating $LABS/000-setup/inventory.yml"
+cat <<EOF > $LABS/000-setup/inventory.yml
 ###
 ### Empty inventory file
 ###
@@ -22,12 +22,12 @@ EOF
 
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 echo -e "${Red}* Our inventory file:${COLOR_OFF}"
-cat $RUNTIME_FOLDER/labs-scripts/inventory
+cat $LABS/000-setup/inventory.yml
 
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 echo -e "${Red}* Ansible should fail. No inventory file used${COLOR_OFF}"
 echo -e "${GREEN}* Executing: ${YELLOW}ansible all -m ping${COLOR_OFF}"
 # The script should fail
-docker exec ansible-controller sh -c "cd /labs-scripts && ansible all -m ping"
+docker exec ansible-labs bash -c "cd /home/ansible/labs/002-no-inventory && ansible all -m ping"
 
 

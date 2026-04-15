@@ -60,7 +60,7 @@
     
       <link rel="stylesheet" href="../css/print-site-material.css">
     
-      <link rel="stylesheet" href="../assets/stylesheets/codewizard.css?v=1774157082">
+      <link rel="stylesheet" href="../assets/stylesheets/codewizard.css?v=1776273065">
     
     <script>__md_scope=new URL("/AnsibleLabs/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1764,7 +1764,7 @@
 <li>You can choose to execute <code>ansible-config init</code>, which will generate a sample Ansible configuration file.</li>
 <li>As this is the main configuration file for our demo application, it is the content of <code>ansible.cfg</code> which we will use in this lab.</li>
 </ul>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#001-verify-ansible-__codelineno-11-1"></a><span class="c1"># File location: $RUNTIME_FOLDER/labs-scripts/ansible.cfg.</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#001-verify-ansible-__codelineno-11-1"></a><span class="c1"># File location: /home/ansible/ansible.cfg</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#001-verify-ansible-__codelineno-11-2"></a><span class="c1"># This is the default location of the inventory file, script, or directory that</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#001-verify-ansible-__codelineno-11-3"></a><span class="na">Ansible will use to determine what hosts it has available to talk to.</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#001-verify-ansible-__codelineno-11-4"></a>
@@ -1793,7 +1793,7 @@
 <li>Ansible ssh.config file allows you to define custom SSH settings for connecting to remote hosts.</li>
 <li>In this demo we will use our own <code>ssh.config</code> configuration file.</li>
 </ul>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#001-verify-ansible-__codelineno-12-1"></a><span class="c1"># File location: $RUNTIME_FOLDER/labs-scripts/ssh.config</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#001-verify-ansible-__codelineno-12-1"></a><span class="c1"># File location: /home/ansible/.ssh/config</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#001-verify-ansible-__codelineno-12-2"></a><span class="c1"># Set up the desired hosts</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#001-verify-ansible-__codelineno-12-3"></a><span class="c1"># keep in mind that we have set up the hosts in the docker-compose</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#001-verify-ansible-__codelineno-12-4"></a>
@@ -1847,7 +1847,7 @@
 <li>Using <code>-i &lt;path&gt;</code> inventory option takes precedence over environment variable.</li>
 <li>The inventory configuration we will use for the labs:</li>
 </ul>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#001-verify-ansible-__codelineno-13-1"></a><span class="c1"># File location: $RUNTIME_FOLDER/labs-scripts/inventory</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#001-verify-ansible-__codelineno-13-1"></a><span class="c1"># File location: $LABS/000-setup/inventory.yml</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#001-verify-ansible-__codelineno-13-2"></a>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#001-verify-ansible-__codelineno-13-3"></a><span class="c1"># List of servers which we want ansible to connect to</span>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#001-verify-ansible-__codelineno-13-4"></a><span class="c1"># The names are defined in the docker-compose</span>
@@ -1981,10 +1981,10 @@
 <li>Create an empty inventory file or remove all host entries from existing inventory:</li>
 </ul>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#002-no-inventory-__codelineno-0-1"></a><span class="c1"># Option 1: Create empty inventory file</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#002-no-inventory-__codelineno-0-2"></a>touch<span class="w"> </span><span class="nv">$RUNTIME_FOLDER</span>/labs-scripts/inventory
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#002-no-inventory-__codelineno-0-2"></a>touch<span class="w"> </span><span class="nv">$LABS</span>/000-setup/inventory.yml
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#002-no-inventory-__codelineno-0-3"></a>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#002-no-inventory-__codelineno-0-4"></a><span class="c1"># Option 2: Clear existing inventory</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#002-no-inventory-__codelineno-0-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# Empty inventory&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$RUNTIME_FOLDER</span>/labs-scripts/inventory
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#002-no-inventory-__codelineno-0-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# Empty inventory&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$LABS</span>/000-setup/inventory.yml
 </span></code></pre></div>
 <hr />
 <h2 id="002-no-inventory-02-create-the-inventory-file">02. Create the <code>inventory</code> file<a class="headerlink" href="#002-no-inventory-02-create-the-inventory-file" title="Permanent link">&para;</a></h2>
@@ -2290,7 +2290,7 @@
 <ul>
 <li>Let&rsquo;s create the inventory configuration that we will use for the rest of our labs:</li>
 </ul>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#002-no-inventory-__codelineno-11-1"></a><span class="c1">### File location: $RUNTIME_FOLDER/labs-scripts/inventory</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#002-no-inventory-__codelineno-11-1"></a><span class="c1">### File location: $LABS/000-setup/inventory.yml</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#002-no-inventory-__codelineno-11-2"></a><span class="c1">###</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#002-no-inventory-__codelineno-11-3"></a><span class="c1">### List of servers which we want Ansible to connect to</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#002-no-inventory-__codelineno-11-4"></a><span class="c1">### The names are defined in the docker-compose</span>
@@ -2347,97 +2347,94 @@
 <ul>
 <li>Create an inventory file with two groups: <code>webservers</code> and <code>databases</code>, with at least 2 hosts each.</li>
 </ul>
-<p>??? success &ldquo;Solution&rdquo;
-  ```ini
-  [webservers]
-  web1.example.com
-  web2.example.com</p>
-<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="o">[</span><span class="n">databases</span><span class="o">]</span>
-<span class="w">  </span><span class="n">db1</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span>
-<span class="w">  </span><span class="n">db2</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span>
-<span class="w">  </span><span class="err">```</span>
-</code></pre></div>
-
+<p>??? success &ldquo;Solution&rdquo;</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#002-no-inventory-__codelineno-16-1"></a><span class="k">[webservers]</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#002-no-inventory-__codelineno-16-2"></a><span class="na">web1.example.com</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#002-no-inventory-__codelineno-16-3"></a><span class="na">web2.example.com</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#002-no-inventory-__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#002-no-inventory-__codelineno-16-5"></a><span class="w">    </span><span class="k">[databases]</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#002-no-inventory-__codelineno-16-6"></a><span class="w">    </span><span class="na">db1.example.com</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#002-no-inventory-__codelineno-16-7"></a><span class="w">    </span><span class="na">db2.example.com</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#002-no-inventory-__codelineno-16-8"></a><span class="w">    </span><span class="na">```</span>
+</span></code></pre></div>
 <ul>
 <li>Add host variables to set different SSH ports for each host in your inventory.</li>
 </ul>
-<p>??? success &ldquo;Solution&rdquo;
-  ```ini
-  [webservers]
-  web1.example.com ansible_port=2222
-  web2.example.com ansible_port=2223</p>
-<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="o">[</span><span class="n">databases</span><span class="o">]</span>
-<span class="w">  </span><span class="n">db1</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="w"> </span><span class="n">ansible_port</span><span class="o">=</span><span class="mi">2224</span>
-<span class="w">  </span><span class="n">db2</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="w"> </span><span class="n">ansible_port</span><span class="o">=</span><span class="mi">2225</span>
-<span class="w">  </span><span class="err">```</span>
-</code></pre></div>
-
+<p>??? success &ldquo;Solution&rdquo;</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#002-no-inventory-__codelineno-17-1"></a><span class="k">[webservers]</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#002-no-inventory-__codelineno-17-2"></a><span class="na">web1.example.com ansible_port</span><span class="o">=</span><span class="s">2222</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#002-no-inventory-__codelineno-17-3"></a><span class="na">web2.example.com ansible_port</span><span class="o">=</span><span class="s">2223</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#002-no-inventory-__codelineno-17-4"></a>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#002-no-inventory-__codelineno-17-5"></a><span class="w">    </span><span class="k">[databases]</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#002-no-inventory-__codelineno-17-6"></a><span class="w">    </span><span class="na">db1.example.com ansible_port</span><span class="o">=</span><span class="s">2224</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#002-no-inventory-__codelineno-17-7"></a><span class="w">    </span><span class="na">db2.example.com ansible_port</span><span class="o">=</span><span class="s">2225</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#002-no-inventory-__codelineno-17-8"></a><span class="w">    </span><span class="na">```</span>
+</span></code></pre></div>
 <ul>
 <li>Create an inventory with group variables that set <code>ansible_user=admin</code> for all webservers.</li>
 </ul>
-<p>??? success &ldquo;Solution&rdquo;
-  ```ini
-  [webservers]
-  web1.example.com
-  web2.example.com</p>
-<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="p">[</span><span class="n">webservers</span><span class="p">:</span><span class="n">vars</span><span class="p">]</span>
-<span class="w">  </span><span class="n">ansible_user</span><span class="o">=</span><span class="n">admin</span>
-<span class="w">  </span><span class="err">```</span>
-</code></pre></div>
-
+<p>??? success &ldquo;Solution&rdquo;</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#002-no-inventory-__codelineno-18-1"></a><span class="k">[webservers]</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#002-no-inventory-__codelineno-18-2"></a><span class="na">web1.example.com</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#002-no-inventory-__codelineno-18-3"></a><span class="na">web2.example.com</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#002-no-inventory-__codelineno-18-4"></a>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#002-no-inventory-__codelineno-18-5"></a><span class="w">    </span><span class="k">[webservers:vars]</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#002-no-inventory-__codelineno-18-6"></a><span class="w">    </span><span class="na">ansible_user</span><span class="o">=</span><span class="s">admin</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#002-no-inventory-__codelineno-18-7"></a><span class="w">    </span><span class="na">```</span>
+</span></code></pre></div>
 <ul>
 <li>Create a nested group structure where <code>production</code> contains both <code>web_prod</code> and <code>db_prod</code> groups.</li>
 </ul>
-<p>??? success &ldquo;Solution&rdquo;
-  ```ini
-  [web_prod]
-  web-prod-1.example.com
-  web-prod-2.example.com</p>
-<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="o">[</span><span class="n">db_prod</span><span class="o">]</span>
-<span class="w">  </span><span class="n">db</span><span class="o">-</span><span class="n">prod</span><span class="o">-</span><span class="mf">1.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span>
-
-<span class="w">  </span><span class="o">[</span><span class="n">production:children</span><span class="o">]</span>
-<span class="w">  </span><span class="n">web_prod</span>
-<span class="w">  </span><span class="n">db_prod</span>
-<span class="w">  </span><span class="err">```</span>
-</code></pre></div>
-
+<p>??? success &ldquo;Solution&rdquo;</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#002-no-inventory-__codelineno-19-1"></a><span class="k">[web_prod]</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#002-no-inventory-__codelineno-19-2"></a><span class="na">web-prod-1.example.com</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#002-no-inventory-__codelineno-19-3"></a><span class="na">web-prod-2.example.com</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#002-no-inventory-__codelineno-19-4"></a>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#002-no-inventory-__codelineno-19-5"></a><span class="w">    </span><span class="k">[db_prod]</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#002-no-inventory-__codelineno-19-6"></a><span class="w">    </span><span class="na">db-prod-1.example.com</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#002-no-inventory-__codelineno-19-7"></a>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#002-no-inventory-__codelineno-19-8"></a><span class="w">    </span><span class="k">[production:children]</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#002-no-inventory-__codelineno-19-9"></a><span class="w">    </span><span class="na">web_prod</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#002-no-inventory-__codelineno-19-10"></a><span class="w">    </span><span class="na">db_prod</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#002-no-inventory-__codelineno-19-11"></a><span class="w">    </span><span class="na">```</span>
+</span></code></pre></div>
 <ul>
 <li>Use <code>ansible-inventory</code> command to list all hosts in a specific group.</li>
 </ul>
-<p>??? success &ldquo;Solution&rdquo;
-  ```sh # List all hosts in webservers group
+<p>??? success &ldquo;Solution&rdquo;</p>
+<p>````sh # List all hosts in webservers group
   ansible-inventory -i inventory &ndash;list &ndash;limit webservers</p>
 <div class="codehilite"><pre><span></span><code><span class="w">  </span>#<span class="w"> </span><span class="k">Show</span><span class="w"> </span><span class="nv">graph</span><span class="w"> </span><span class="nv">view</span>
 <span class="w">  </span><span class="nv">ansible</span><span class="o">-</span><span class="nv">inventory</span><span class="w"> </span><span class="o">-</span><span class="nv">i</span><span class="w"> </span><span class="nv">inventory</span><span class="w"> </span><span class="o">--</span><span class="nv">graph</span><span class="w"> </span><span class="nv">webservers</span>
 <span class="w">  </span>```
 </code></pre></div>
 
+<p>````</p>
 <ul>
 <li>Create a YAML format inventory with the same structure as your INI inventory.</li>
 </ul>
 <p>??? success &ldquo;Solution&rdquo;
   <code>yaml
-    all:
-      children:
-        webservers:
-          hosts:
-            web1.example.com:
-              ansible_port: 2222
-            web2.example.com:
-              ansible_port: 2223
-          vars:
-            ansible_user: admin
-        databases:
-          hosts:
-            db1.example.com:
-              ansible_port: 5432</code></p>
+  all:
+    children:
+      webservers:
+        hosts:
+          web1.example.com:
+            ansible_port: 2222
+          web2.example.com:
+            ansible_port: 2223
+        vars:
+          ansible_user: admin
+      databases:
+        hosts:
+          db1.example.com:
+            ansible_port: 5432</code></p>
 <ul>
 <li>Test your inventory by pinging only hosts in the <code>webservers</code> group.</li>
 </ul>
 <p>??? success &ldquo;Solution&rdquo;
   <code>sh
-    ansible webservers -i inventory -m ping</code></p>
+  ansible webservers -i inventory -m ping</code></p>
 <hr />
 <h2 id="002-no-inventory-12-summary">12. Summary<a class="headerlink" href="#002-no-inventory-12-summary" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2718,8 +2715,8 @@
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">TIP</p>
-</div>
 <p>Be cautious when using the <code>shell</code> module, as it can introduce security risks if not used properly. Always validate and sanitize any user input that may be passed to shell commands.</p>
+</div>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#003-modules-__codelineno-5-1"></a><span class="c1"># Let&#39;s get the hostname of the server</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#003-modules-__codelineno-5-2"></a>ansible<span class="w"> </span>all<span class="w"> </span>-m<span class="w"> </span>shell<span class="w"> </span>-a<span class="w"> </span><span class="s1">&#39;hostname&#39;</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#003-modules-__codelineno-5-3"></a>
@@ -2926,12 +2923,13 @@ docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible 
 </li>
 <li>
 <p>Use the Ansible <code>command</code> module to print out the previous shell commands.</p>
-<details class="success">
-<summary>Solution</summary>
-</details>
-<p><code>sh
-docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m command -a 'uname -a'"
-docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m command -a 'date'"</code></p>
+<div class="codehilite"><pre><span></span><code>??? success &quot;Solution&quot;
+`sh
+</code></pre></div>
+
+<p>docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m command -a &lsquo;uname -a&rsquo;&rdquo;
+docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m command -a &lsquo;date&rsquo;&rdquo;
+`</p>
 </li>
 <li>
 <p>Try to run the following command:</p>
@@ -2959,27 +2957,30 @@ docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible 
 </li>
 <li>
 <p>Create a directory called <code>/tmp/ansible-test</code> on all servers using the <code>file</code> module.</p>
-<details class="success">
-<summary>Solution</summary>
-</details>
-<p><code>sh
-docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m file -a 'path=/tmp/ansible-test state=directory mode=0755'"</code></p>
+<div class="codehilite"><pre><span></span><code>??? success &quot;Solution&quot;
+`sh
+</code></pre></div>
+
+<p>docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m file -a &lsquo;path=/tmp/ansible-test state=directory mode=0755&rsquo;&rdquo;
+`</p>
 </li>
 <li>
 <p>Create a file <code>/tmp/info.txt</code> with the content &ldquo;Ansible Lab 003&rdquo; using the <code>copy</code> module.</p>
-<details class="success">
-<summary>Solution</summary>
-</details>
-<p><code>sh
-docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m copy -a \"content='Ansible Lab 003' dest=/tmp/info.txt\""</code></p>
+<div class="codehilite"><pre><span></span><code>??? success &quot;Solution&quot;
+`sh
+</code></pre></div>
+
+<p>docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m copy -a "content=&rsquo;Ansible Lab 003&rsquo; dest=/tmp/info.txt"&rdquo;
+`</p>
 </li>
 <li>
 <p>Use the <code>lineinfile</code> module to add your name to <code>/tmp/info.txt</code>.</p>
-<details class="success">
-<summary>Solution</summary>
-</details>
-<p><code>sh
-docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m lineinfile -a \"path=/tmp/info.txt line='Name: Your Name'\""</code></p>
+<div class="codehilite"><pre><span></span><code>??? success &quot;Solution&quot;
+`sh
+</code></pre></div>
+
+<p>docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m lineinfile -a "path=/tmp/info.txt line=&rsquo;Name: Your Name&rsquo;"&rdquo;
+`</p>
 </li>
 <li>
 <p>Check if the <code>git</code> package is installed on your servers using the <code>shell</code> module.</p>
@@ -2997,43 +2998,48 @@ docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible 
 </li>
 <li>
 <p>Use the <code>file</code> module to change the permissions of <code>/tmp/info.txt</code> to <code>0600</code>.</p>
-<details class="success">
-<summary>Solution</summary>
-</details>
-<p><code>sh
-docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m file -a 'path=/tmp/info.txt mode=0600'"</code></p>
+<div class="codehilite"><pre><span></span><code>??? success &quot;Solution&quot;
+`sh
+</code></pre></div>
+
+<p>docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m file -a &lsquo;path=/tmp/info.txt mode=0600&rsquo;&rdquo;
+`</p>
 </li>
 <li>
 <p>Create a symbolic link from <code>/tmp/info.txt</code> to <code>/tmp/info-link.txt</code>.</p>
-<details class="success">
-<summary>Solution</summary>
-</details>
-<p><code>sh
-docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m file -a 'src=/tmp/info.txt dest=/tmp/info-link.txt state=link'"</code></p>
+<div class="codehilite"><pre><span></span><code>??? success &quot;Solution&quot;
+`sh
+</code></pre></div>
+
+<p>docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m file -a &lsquo;src=/tmp/info.txt dest=/tmp/info-link.txt state=link&rsquo;&rdquo;
+`</p>
 </li>
 <li>
 <p>Use the <code>get_url</code> module to download a file from the internet to <code>/tmp/</code>.</p>
-<details class="success">
-<summary>Solution</summary>
-</details>
-<p><code>sh
-docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m get_url -a 'url=https://raw.githubusercontent.com/ansible/ansible/devel/README.md dest=/tmp/ansible-readme.md'"</code></p>
+<div class="codehilite"><pre><span></span><code>??? success &quot;Solution&quot;
+`sh
+</code></pre></div>
+
+<p>docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m get_url -a &lsquo;url=https://raw.githubusercontent.com/ansible/ansible/devel/README.md dest=/tmp/ansible-readme.md&rsquo;&rdquo;
+`</p>
 </li>
 <li>
 <p>List all files in <code>/tmp</code> directory that start with &ldquo;ansible&rdquo; or &ldquo;info&rdquo;.</p>
-<details class="success">
-<summary>Solution</summary>
-</details>
-<p><code>sh
-docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m shell -a 'ls -la /tmp/ | grep -E \"(ansible|info)\"'"</code></p>
+<div class="codehilite"><pre><span></span><code>??? success &quot;Solution&quot;
+`sh
+</code></pre></div>
+
+<p>docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m shell -a &lsquo;ls -la /tmp/ | grep -E "(ansible|info)"&lsquo;&rdquo;
+`</p>
 </li>
 <li>
 <p>Remove the directory <code>/tmp/ansible-test</code> and all its contents.</p>
-<details class="success">
-<summary>Solution</summary>
-</details>
-<p><code>sh
-docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m file -a 'path=/tmp/ansible-test state=absent'"</code></p>
+<div class="codehilite"><pre><span></span><code>??? success &quot;Solution&quot;
+`sh
+</code></pre></div>
+
+<p>docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m file -a &lsquo;path=/tmp/ansible-test state=absent&rsquo;&rdquo;
+`</p>
 </li>
 <li>
 <p>Use the <code>setup</code> module to gather facts about one of your servers and filter for memory information.</p>
@@ -3049,11 +3055,12 @@ docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m
 </li>
 <li>
 <p>Create a user named <code>ansibleuser</code> with home directory <code>/home/ansibleuser</code>.</p>
-<details class="success">
-<summary>Solution</summary>
-</details>
-<p><code>sh
-docker exec ansible-controller sh -c "cd /labs-scripts &amp;&amp; ansible all -m user -a 'name=ansibleuser home=/home/ansibleuser state=present' --become"</code></p>
+<div class="codehilite"><pre><span></span><code>??? success &quot;Solution&quot;
+`sh
+</code></pre></div>
+
+<p>docker exec ansible-controller sh -c &ldquo;cd /labs-scripts &amp;&amp; ansible all -m user -a &lsquo;name=ansibleuser home=/home/ansibleuser state=present&rsquo; &ndash;become&rdquo;
+`</p>
 </li>
 <li>
 <p>Use modules to check disk usage on all servers.</p>
@@ -15892,7 +15899,7 @@ It is done to prevent naming collision between builtin modules and community mod
       
         <script src="../js/print-site.js"></script>
       
-        <script src="https://buttons.github.io/buttons.js?v=1774157082"></script>
+        <script src="https://buttons.github.io/buttons.js?v=1776273065"></script>
       
     
   </body>

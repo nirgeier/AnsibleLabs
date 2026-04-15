@@ -10,8 +10,8 @@ services:
        ANSIBLE_CONFIG: /labs-scripts/ansible.cfg
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${ROOT_FOLDER}/runtime/.ssh:/root/.ssh
-      - ${ROOT_FOLDER}/runtime/labs-scripts:/labs-scripts
+      - ${RUNTIME_FOLDER}/.ssh:/root/.ssh
+      - ${RUNTIME_FOLDER}/labs-scripts:/labs-scripts
 
   linux-server-1:
     platform: linux/amd64

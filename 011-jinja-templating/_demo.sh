@@ -13,23 +13,20 @@ source $ROOT_FOLDER/Labs/000-setup/02-init-ansible.sh 2>&1 > /dev/null
 clear
 
 # Install requirement
-docker exec ansible-controller sh -c "ansible-galaxy collection install community.docker"
+docker exec ansible-labs bash -c "ansible-galaxy collection install community.docker"
 
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 echo -e "* Copying the playbook to the scripts folder${COLOR_OFF}"
-cp    *.yaml      $RUNTIME_FOLDER/labs-scripts
-cp -r templates/  $RUNTIME_FOLDER/labs-scripts
-
-tree -a $RUNTIME_FOLDER/labs-scripts
+docker exec ansible-labs bash -c "tree -a /home/ansible/labs/011-jinja-templating"
 
 echo -e ""
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 echo -e ""
 echo -e "${GREEN}$ cat install-nginx.yaml ${COLOR_OFF}"
-docker exec ansible-controller sh -c "cd /labs-scripts && cat install-nginx.yaml"
+docker exec ansible-labs bash -c "cd /home/ansible/labs/011-jinja-templating && cat install-nginx.yaml"
 
 echo -e ""
 echo -e "${YELLOW}-----------------------------------${COLOR_OFF}"
 echo -e ""
 echo -e "${GREEN}$ ansible-playbook install-nginx.yaml ${COLOR_OFF}"
-docker exec ansible-controller sh -c "cd /labs-scripts && ansible-playbook install-nginx.yaml"
+docker exec ansible-labs bash -c "cd /home/ansible/labs/011-jinja-templating && ansible-playbook install-nginx.yaml"

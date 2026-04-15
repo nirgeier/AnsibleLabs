@@ -14,8 +14,5 @@ echo "Current directory $CURRENT_DIR"
 source $ROOT_FOLDER/Labs/000-setup/01-init-servers.sh
 source $ROOT_FOLDER/Labs/000-setup/02-init-ansible.sh
 
-# Copy the playbook to the scripts folder
-cp *.yaml $RUNTIME_FOLDER/labs-scripts
-
-# run ansible playbook which installs git on the servers
-docker exec ansible-controller sh -c "cd /labs-scripts && ansible-playbook ./007-create-user.yaml"
+# run ansible playbook
+docker exec ansible-labs bash -c "cd /home/ansible/labs/007-create-user && ansible-playbook ./007-create-user.yaml"
