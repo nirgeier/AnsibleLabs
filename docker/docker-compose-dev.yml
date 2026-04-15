@@ -1,18 +1,30 @@
-# docker-compose.prod.yml
-# Production compose — pulls all pre-built images from GitHub Container Registry.
-# No local build required.
-#
-# Usage:
-#   docker-compose -f docker-compose.prod.yml up -d
-
 services:
 
   # ── Ansible controller + web terminal UI ─────────────────────────────────────
   ansible-labs:
-    image: "ghcr.io/nirgeier/ansiblelabs:${IMAGE_TAG:-latest}"
+    build:
+      args:
+        BUILD_TIME: ${BUILD_TIME:-}
+        IMAGE: ${IMAGE:-ghcr.io/nirgeier/ansiblelabs}
+        IMAGE_TAG: ${IMAGE_TAG:-latest}
+        SourceRepository: ${SourceRepository:-}
+      context: ..
+      dockerfile: docker/Dockerfile
+      x-bake:
+        platforms:
+          - linux/amd64
+          - linux/arm64
+        tags:
+          - ghcr.io/nirgeier/ansiblelabs:latest
+          - ghcr.io/nirgeier/ansiblelabs:${IMAGE_TAG:-latest}
+          - nirgeier/ansiblelabs:latest
+          - nirgeier/ansiblelabs:${IMAGE_TAG:-latest}
     container_name: ansible-labs
+    image: "ghcr.io/nirgeier/ansiblelabs:${IMAGE_TAG:-latest}"
+    labels:
+      - "com.example.app.Metadata.LastTagTime=${BUILD_TIME:-}"
+      - "com.example.app.Metadata.SourceRepository=${SourceRepository:-}"
     restart: unless-stopped
-    pull_policy: always
     ports:
       - "3000:3000"
     stdin_open: true
@@ -28,11 +40,12 @@ services:
 
   # ── Linux target servers ──────────────────────────────────────────────────────
   server-1:
-    image: "ghcr.io/nirgeier/ansiblelabs-server:${IMAGE_TAG:-latest}"
+    build:
+      context: .
+      dockerfile: Dockerfile.server
     container_name: ansible-server-1
     hostname: server-1
     restart: unless-stopped
-    pull_policy: always
     volumes:
       - ssh-keys:/ssh-shared
     networks:
@@ -41,11 +54,12 @@ services:
           - server-1
 
   server-2:
-    image: "ghcr.io/nirgeier/ansiblelabs-server:${IMAGE_TAG:-latest}"
+    build:
+      context: .
+      dockerfile: Dockerfile.server
     container_name: ansible-server-2
     hostname: server-2
     restart: unless-stopped
-    pull_policy: always
     volumes:
       - ssh-keys:/ssh-shared
     networks:
@@ -54,11 +68,12 @@ services:
           - server-2
 
   server-3:
-    image: "ghcr.io/nirgeier/ansiblelabs-server:${IMAGE_TAG:-latest}"
+    build:
+      context: .
+      dockerfile: Dockerfile.server
     container_name: ansible-server-3
     hostname: server-3
     restart: unless-stopped
-    pull_policy: always
     volumes:
       - ssh-keys:/ssh-shared
     networks:
